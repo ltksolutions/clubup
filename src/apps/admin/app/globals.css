@@ -1,0 +1,16 @@
+/* SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+   SPDX-License-Identifier: EUPL-1.2 */
+
+@import "@clubup/ui/styles.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--warm);
+  color: var(--ink);
+}
