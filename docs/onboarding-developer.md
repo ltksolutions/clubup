@@ -41,8 +41,8 @@ Po prečítaní by si mal vedieť odpovedať:
 
 ```bash
 # 1. Clone
-git clone git@github.com:ltksolutions/clubup.sk.git
-cd clubup.sk
+git clone git@github.com:ltksolutions/clubup.git
+cd clubup
 
 # 2. Node verzia
 nvm use   # alebo: nvm install 20
