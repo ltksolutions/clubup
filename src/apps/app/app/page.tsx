@@ -57,7 +57,7 @@ export default function HomePage() {
               variant="outline"
               onClick={() =>
                 (window.location.href =
-                  'https://github.com/ltksolutions/clubup.sk/tree/main/docs')
+                  'https://github.com/ltksolutions/clubup/tree/main/docs')
               }
             >
               GitHub /docs

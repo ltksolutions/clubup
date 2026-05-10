@@ -21,7 +21,7 @@ info:
     url: https://clubup.sk
   license:
     name: EUPL-1.2 (kód) / CC-BY-4.0 (dokumentácia)
-    url: https://github.com/ltksolutions/clubup.sk
+    url: https://github.com/ltksolutions/clubup
 
 servers:
   - url: https://app.clubup.sk/api
