@@ -6,6 +6,20 @@ Formát vychádza z [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) a p
 
 ## [Unreleased]
 
+### Added — 2026-05-10 (sedenie 4 — pre prezentáciu na ministerstve)
+
+#### Developer onboarding
+
+- `docs/onboarding-developer.md` — kompletný step-by-step návod pre nového seniora alebo skúseného mid-level developera. Reading order (10 dokumentov, ~3 h), lokálne dev prostredie (Mongo Docker, mock IdP, env vars), sanity check, známe medzery v scaffoldoch, workflow pre prvý PR, checklist pred ostrým deployom (Fáza 1, 2026 Q2).
+- `eslint.config.js` v koreni — flat config re-exportuje `@clubup/config/eslint.preset.js`, aby `npm run lint` z koreňa fungoval.
+
+#### Sociálne siete — stratégia a vizuál
+
+- `docs/marketing/social-media.md` — kompletná stratégia (LinkedIn primárny, Facebook sekundárny, YouTube archív; Instagram / X / TikTok = NIE v MVP). Tone of voice, vizuálny štýl, ownership workflow (4 roly), frekvencia (~3 hod/týždeň ≈ 0.1 FTE), krízová komunikácia matrix, metriky bez tracking pixelov, účty checklist pred spustením.
+- `website/og-image.svg` (1200×630) — defaultný OpenGraph obrázok pre social sharing. Navy gradient, biele logo, tagline, hero text, meta row „10 tém · 4 úrovne · 40 modulov · Akreditácia ŽU/FRI", URL clubup.sk.
+- **OG / Twitter Card meta tagy** doplnené v **všetkých 6 HTML stránkach** (`index`, `o-projekte`, `osnova`, `partneri`, `kontakt`, `404`) — `og:image` + dimensions + alt text + `twitter:image`.
+- **Footer social ikony** vo všetkých 6 HTML stránkach — LinkedIn / Facebook / YouTube ako placeholdry (vedú na `kontakt.html` s poznámkou „pripravujeme"), GitHub živý link. Štýly v `nav-extras.css` (`.footer-social`, `.footer-social-link`).
+
 ### Added — 2026-05-10 (sedenie 3 — finále)
 
 #### `src/` monorepo scaffold

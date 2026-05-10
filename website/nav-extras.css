@@ -74,3 +74,37 @@ footer .footer-cols {
     grid-template-columns: 1fr;
   }
 }
+
+/* Footer social icons row */
+.footer-social {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.footer-social li {
+  display: block;
+}
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.04);
+  border-bottom: none !important;
+  text-decoration: none;
+  transition: color 0.15s, background-color 0.15s;
+}
+.footer-social-link:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  border-bottom: none !important;
+}
+.footer-social-link svg {
+  display: block;
+}

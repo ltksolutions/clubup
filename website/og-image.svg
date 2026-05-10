@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+     SPDX-License-Identifier: CC-BY-4.0
+     ClubUp.sk — OpenGraph default image (1200×630)
+     Konvertuj na PNG cez: rsvg-convert -w 1200 -h 630 og-image.svg > og-image.png -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2D47"/>
+      <stop offset="100%" stop-color="#243A5A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#388FC3" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#388FC3" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#accent)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="6" fill="#388FC3"/>
+
+  <!-- Logo block (CU monogram + ClubUp wordmark) -->
+  <g transform="translate(80, 100)">
+    <!-- Mountain icon stylized -->
+    <g transform="translate(0, 0)">
+      <path d="M 0 90 L 50 30 L 90 70 L 130 20 L 180 90 Z"
+            fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M 60 50 L 80 30 L 100 50" fill="#FFFFFF"/>
+    </g>
+    <!-- CLUB block -->
+    <g transform="translate(0, 130)">
+      <rect x="0" y="0" width="240" height="80" rx="14" fill="#1A2D47" stroke="#FFFFFF" stroke-width="4"/>
+      <text x="120" y="56" text-anchor="middle"
+            font-family="Poppins, system-ui, sans-serif"
+            font-weight="800" font-size="48"
+            fill="#FFFFFF" letter-spacing="2">CLUB</text>
+    </g>
+    <!-- UP -->
+    <text x="260" y="195"
+          font-family="Poppins, system-ui, sans-serif"
+          font-weight="800" font-size="78"
+          fill="#388FC3" letter-spacing="-1">UP</text>
+  </g>
+
+  <!-- Tagline (italic, accent blue) -->
+  <text x="80" y="360"
+        font-family="Poppins, system-ui, sans-serif"
+        font-weight="400" font-style="italic" font-size="28"
+        fill="#388FC3">Silné kluby. Silný šport.</text>
+
+  <!-- Main heading -->
+  <text x="80" y="450"
+        font-family="Poppins, system-ui, sans-serif"
+        font-weight="800" font-size="56"
+        fill="#FFFFFF">Vzdelávacia platforma</text>
+  <text x="80" y="510"
+        font-family="Poppins, system-ui, sans-serif"
+        font-weight="800" font-size="56"
+        fill="#FFFFFF">pre slovenské športové kluby</text>
+
+  <!-- Bottom meta row -->
+  <g transform="translate(80, 560)">
+    <text x="0" y="0"
+          font-family="Poppins, system-ui, sans-serif"
+          font-weight="500" font-size="20"
+          fill="rgba(255,255,255,0.65)">10 tém · 4 úrovne · 40 modulov · Akreditácia ŽU/FRI</text>
+  </g>
+
+  <!-- URL -->
+  <text x="1120" y="600" text-anchor="end"
+        font-family="JetBrains Mono, ui-monospace, monospace"
+        font-weight="500" font-size="18"
+        fill="rgba(255,255,255,0.5)">clubup.sk</text>
+
+  <!-- Right accent rectangle -->
+  <rect x="1170" y="100" width="6" height="200" fill="#388FC3"/>
+</svg>
