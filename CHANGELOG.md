@@ -6,6 +6,21 @@ Formát vychádza z [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) a p
 
 ## [Unreleased]
 
+### Fixed — 2026-05-10 (sedenie 5 — oprava GitHub URL)
+
+#### Konzistentné GitHub URL naprieč repom
+
+- **Problém:** Linky v 6 HTML stránkach a v `docs/onboarding-developer.md` smerovali na neexistujúci repozitár `github.com/ltksolutions/clubup.sk`. Skutočný repo je `github.com/ltksolutions/clubup` (bez `.sk`). Doména `clubup.sk` zostáva v doménových URL (`https://clubup.sk`, `info@clubup.sk`).
+- **Oprava:** prepísané všetky výskyty `github.com/ltksolutions/clubup.sk` → `github.com/ltksolutions/clubup` v týchto súboroch:
+  - `website/index.html` — nav dropdown, GitHub iconlink, hero ekosystém sekcia (3 karty), footer brand block, footer Open source stĺpec (4 linky), footer-bottom EUPL link
+  - `website/o-projekte.html` — rovnaký pattern + sekcia „Otvorenosť a transparentnosť" (2 karty), „Roadmap" (link na ROADMAP.md), „Princípy → Open source" (card body)
+  - `website/osnova.html` — rovnaký pattern + odkaz na `docs/curriculum/sportovy-manazment.md`
+  - `website/partneri.html` — rovnaký pattern + sekcia „Ekosystém SportUp" (2 karty pre GitHub a Dokumentácia)
+  - `website/kontakt.html` — rovnaký pattern + odkazy na `SECURITY.md`, `docs/operations/gdpr.md`, `docs/operations/security.md` v sekcii „Právne dokumenty"
+  - `website/404.html` — nav dropdown, GitHub iconlink, footer (rovnaký pattern ako ostatné stránky)
+  - `docs/onboarding-developer.md` — `git clone git@github.com:ltksolutions/clubup.git` (predtým `clubup.sk.git`)
+- **Overené ako už správne** (žiadna zmena potrebná): `README.md`, `CITATION.cff`, `SECURITY.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/00-overview.md`, `docs/onboarding-developer.md` (text bez kódu), `docs/marketing/social-media.md`, `docs/operations/*.md`, `docs/decisions/*.md`, `docs/architecture/*.md`, `docs/domain/*.md`, `docs/curriculum/sportovy-manazment.md`.
+
 ### Added — 2026-05-10 (sedenie 4 — pre prezentáciu na ministerstve)
 
 #### Developer onboarding
