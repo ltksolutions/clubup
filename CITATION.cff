@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "Ak používate ClubUp.sk vo svojej práci, prosím citujte ho takto:"
+title: "ClubUp.sk — Vzdelávacia platforma pre manažment športových klubov"
+abstract: >-
+  Otvorená vzdelávacia platforma pre výkonných riaditeľov, manažérov
+  a lídrov športových klubov na Slovensku. Súčasť ekosystému SportUp.sk
+  s napojením na centrálny register cez SSO. Štartovací kurz „Športový
+  manažment pre silnejšie kluby" — 10 tém, 40 modulov, 4 úrovne, s
+  certifikáciou v spolupráci so Žilinskou univerzitou.
+type: software
+authors:
+  - family-names: Letko
+    given-names: Ján
+    email: info@clubup.sk
+    affiliation: LTK Solutions
+repository-code: "https://github.com/ltksolutions/clubup"
+url: "https://clubup.sk"
+license: EUPL-1.2
+license-url: "https://github.com/ltksolutions/clubup/blob/main/LICENSE"
+keywords:
+  - šport
+  - sport
+  - slovakia
+  - vzdelávanie
+  - education
+  - športový manažment
+  - sport management
+  - LMS
+  - learning management system
+  - open source
+  - sportup
+  - clubup
+  - GDPR
+date-released: 2026-05-10

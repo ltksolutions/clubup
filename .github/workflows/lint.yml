@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: Lint & Type-check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: ESLint + Prettier + TypeScript
+    runs-on: ubuntu-latest
+    # Pozn.: Spustí sa až keď v src/ pribudne reálny kód (apps/packages).
+    # Do tej doby sa krok preskočí kvôli prázdnemu workspace.
+    if: ${{ hashFiles('package.json') != '' && hashFiles('src/apps/**/package.json') != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check
+        run: npm run type-check

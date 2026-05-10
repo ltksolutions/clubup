@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: 🐛 Hlásenie chyby (Bug report)
+description: Nahláste chybu v dokumentácii, marketingovom webe alebo aplikácii ClubUp.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Vďaka, že nám pomáhate zlepšovať ClubUp.
+        **Nepoužívajte tento formulár na hlásenie bezpečnostných zraniteľností** — tie posielajte na `info@clubup.sk` (pozri [SECURITY.md](../SECURITY.md)).
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Oblasť
+      description: Ktorej časti projektu sa chyba týka?
+      options:
+        - Dokumentácia (docs/)
+        - Marketingový web (clubup.sk)
+        - Študentská aplikácia (app.clubup.sk)
+        - Admin aplikácia (admin.clubup.sk)
+        - Doménový model / API
+        - Integrácia (SSO, 24-pay, Mux, Teams)
+        - Iné
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Popis chyby
+      description: Stručne popíšte, čo nefunguje.
+      placeholder: Pri pokuse o zápis na kurz „Športový manažment" sa zobrazí HTTP 500…
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Ako chybu reprodukovať
+      description: Krok za krokom, čo ste robili.
+      placeholder: |
+        1. Idem na clubup.sk/kurzy
+        2. Kliknem „Zapísať sa"
+        3. Po prihlásení cez SportUp sa zobrazí…
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Očakávané správanie
+      description: Čo malo nastať namiesto toho?
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Prostredie
+      description: Browser, OS, verzia, prípadne URL stránky.
+      placeholder: |
+        Browser: Chrome 134
+        OS: macOS 15
+        URL: https://clubup.sk/...

@@ -1,0 +1,78 @@
+/* ============================================================
+   ClubUp Design Tokens · v1.0
+   © LTK Solutions s.r.o. — github.com/ltksolutions/clubup.sk
+   Drop into your global stylesheet (e.g. app.css, globals.css)
+   ============================================================ */
+
+:root {
+  /* ---------- Brand ---------- */
+  --clubup-navy:        #1A2D47;   /* primary */
+  --clubup-navy-2:      #243A5A;   /* hover/secondary surface */
+  --clubup-blue:        #388FC3;   /* accent — links, focus, CTA */
+  --clubup-blue-2:      #5BA8D6;   /* hover blue */
+  --clubup-pale:        #E8F4FD;   /* tinted surface, chips */
+
+  /* ---------- Neutrals ---------- */
+  --clubup-ink:         #0E1320;   /* default text */
+  --clubup-gray:        #8E8E92;   /* muted text, captions */
+  --clubup-line:        #E2E5EA;   /* borders, dividers */
+  --clubup-bg:          #F4F6F8;   /* page background */
+  --clubup-warm:        #FAFAF7;   /* alt warm surface */
+  --clubup-paper:       #FFFFFF;   /* cards, modals */
+
+  /* ---------- Semantic ---------- */
+  --clubup-success:     #2E8B57;
+  --clubup-warning:     #E0A33E;
+  --clubup-danger:      #C8453B;
+
+  /* ---------- Typography ---------- */
+  --clubup-font-sans:   'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --clubup-font-serif:  'Poppins', sans-serif;
+  --clubup-font-mono:   'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --clubup-fs-h1:       44px;
+  --clubup-fs-h2:       28px;
+  --clubup-fs-h3:       18px;
+  --clubup-fs-body:     14px;
+  --clubup-fs-small:    12px;
+  --clubup-fs-mono:     12px;
+
+  /* ---------- Spacing (8-pt scale) ---------- */
+  --clubup-space-1:     4px;
+  --clubup-space-2:     8px;
+  --clubup-space-3:     12px;
+  --clubup-space-4:     16px;
+  --clubup-space-5:     24px;
+  --clubup-space-6:     32px;
+  --clubup-space-7:     48px;
+  --clubup-space-8:     64px;
+
+  /* ---------- Radius ---------- */
+  --clubup-radius-xs:   4px;
+  --clubup-radius-sm:   6px;
+  --clubup-radius-md:   8px;
+  --clubup-radius-lg:   12px;
+  --clubup-radius-xl:   16px;
+  --clubup-radius-full: 9999px;
+
+  /* ---------- Elevation ---------- */
+  --clubup-shadow-card:    0 1px 2px rgba(14,19,32,0.06);
+  --clubup-shadow-popover: 0 4px 14px rgba(14,19,32,0.08);
+  --clubup-shadow-modal:   0 16px 40px rgba(14,19,32,0.16);
+
+  /* ---------- Motion ---------- */
+  --clubup-ease:        cubic-bezier(0.2, 0.8, 0.2, 1);
+  --clubup-dur-fast:    120ms;
+  --clubup-dur-base:    200ms;
+  --clubup-dur-slow:    320ms;
+}
+
+/* Dark theme override (apply on <html data-theme="dark">) */
+[data-theme="dark"] {
+  --clubup-paper:  #1A2030;
+  --clubup-bg:     #0E1320;
+  --clubup-line:   rgba(255,255,255,0.10);
+  --clubup-ink:    #F4F6F8;
+  --clubup-gray:   rgba(255,255,255,0.55);
+  --clubup-warm:   #1A2030;
+}

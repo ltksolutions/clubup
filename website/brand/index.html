@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<title>ClubUp · Brand Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy:#1A2D47; --navy-2:#243A5A; --blue:#388FC3; --blue-2:#5BA8D6; --pale:#E8F4FD; --bg:#F4F6F8; --gray:#8E8E92; --line:#E2E5EA; --ink:#0E1320; }
+body { background: var(--bg); font-family:'Poppins',system-ui,sans-serif; color: var(--ink); min-height: 100vh; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 48px 48px 96px; }
+
+/* Hero */
+.hero { background: var(--navy); border-radius: 24px; padding: 64px 56px; color: #fff; position: relative; overflow: hidden; margin-bottom: 32px; }
+.hero::before { content:''; position: absolute; inset: 0; opacity: 0.08; background-image: linear-gradient(to right,rgba(255,255,255,0.4) 1px,transparent 1px), linear-gradient(to bottom,rgba(255,255,255,0.4) 1px,transparent 1px); background-size: 32px 32px; }
+.hero-content { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.hero .crumb { font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--blue-2); text-transform: uppercase; margin-bottom: 12px; }
+.hero h1 { font-size: 64px; font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 14px; }
+.hero h1 em { font-family:'Poppins', sans-serif; font-style: italic; font-weight: 500; color: var(--blue-2); }
+.hero p { font-size: 16px; line-height: 1.55; color: rgba(255,255,255,0.75); max-width: 540px; margin-bottom: 20px; }
+.hero-meta { display: flex; gap: 24px; align-items: center; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.18); }
+.hero-meta .item { display: flex; flex-direction: column; gap: 2px; }
+.hero-meta dt { font-family:'JetBrains Mono',monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.hero-meta dd { font-family:'JetBrains Mono',monospace; font-size: 12px; color: #fff; }
+.hero-mark { width: 200px; height: 200px; border-radius: 32px; background: var(--blue); display:flex; align-items:center; justify-content:center; font-weight:800; font-size: 96px; color: #fff; letter-spacing: -0.05em; box-shadow: 0 24px 60px rgba(56,143,195,0.4); }
+.hero-mark img { width: 140px; height: auto; }
+
+/* Sister projects strip */
+.sisters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 56px; }
+.sister { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; gap: 14px; }
+.sister .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.sister h4 { font-size: 13px; font-weight: 600; color: var(--navy); }
+.sister .role { font-size: 11px; color: var(--gray); margin-top: 2px; }
+.sister.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.sister.active h4 { color: #fff; }
+.sister.active .role { color: rgba(255,255,255,0.65); }
+
+/* Section heading */
+.sec-h { display: flex; align-items: baseline; gap: 14px; margin: 32px 0 20px; }
+.sec-h .num { font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--blue); font-weight: 500; letter-spacing: 0.1em; }
+.sec-h h2 { font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: -0.015em; }
+.sec-h .line { flex: 1; height: 1px; background: var(--line); }
+
+/* Card grid */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; overflow: hidden; }
+.card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(56,143,195,0.12); }
+.card .preview { height: 130px; background: var(--bg); border-radius: 10px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.card .preview.navy { background: var(--navy); }
+.card .preview.pale { background: var(--pale); }
+.card .label { font-family:'JetBrains Mono',monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; }
+.card h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.card p { font-size: 12.5px; line-height: 1.55; color: var(--gray); margin-bottom: 12px; }
+.card .arrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; color: var(--blue); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* Asset preview rendering */
+.preview img { max-width: 70%; max-height: 60px; }
+.preview .icons-strip { display: flex; gap: 14px; align-items: center; }
+.preview .icons-strip svg { color: var(--navy); }
+.preview .icons-strip svg:nth-child(2) { color: var(--blue); }
+.preview .palette { display: flex; gap: 8px; }
+.preview .palette div { width: 32px; height: 56px; border-radius: 6px; }
+.preview .pages { display: flex; gap: 6px; }
+.preview .pages div { width: 38px; height: 54px; background: #fff; border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); position: relative; overflow: hidden; }
+.preview .pages div::before { content:''; position:absolute; top:6px; left:5px; right:5px; height:4px; background: var(--navy); border-radius: 1px; }
+.preview .pages div::after { content:''; position:absolute; top:14px; left:5px; width:14px; height:2px; background: var(--blue); border-radius: 1px; box-shadow: 0 4px 0 var(--gray), 0 8px 0 var(--gray); }
+.preview .code { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.7); line-height: 1.6; white-space: pre; }
+.preview .code .k { color: var(--blue-2); }
+.preview .code .v { color: #B5D99C; }
+
+/* Quick reference */
+.refs { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+.ref { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+.ref .label { font-family:'JetBrains Mono',monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+.ref h4 { font-size: 14px; color: var(--navy); margin-bottom: 8px; font-weight: 600; }
+.ref code { font-family:'JetBrains Mono',monospace; font-size: 11px; background: var(--bg); padding: 2px 6px; border-radius: 4px; color: var(--blue); }
+.ref .row { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 12px; }
+.ref .row .sw { width: 16px; height: 16px; border-radius: 3px; }
+
+/* Footer */
+footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--gray); }
+footer .mono { font-family:'JetBrains Mono', monospace; }
+footer a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div>
+        <div class="crumb">LTK Solutions · Brand System</div>
+        <h1>ClubUp.<br><em>Brand hub.</em></h1>
+        <p>Centrálne miesto pre identitu, logo, tokeny a vývojársky sprievodca platformy ClubUp — riadenie a vzdelávanie pre športové kluby.</p>
+        <div class="hero-meta">
+          <div class="item"><dt>Verzia</dt><dd>v1.0</dd></div>
+          <div class="item"><dt>Aktualizované</dt><dd>05 / 2026</dd></div>
+          <div class="item"><dt>Vlastník</dt><dd>LTK Solutions</dd></div>
+          <div class="item"><dt>Repo</dt><dd>clubup.sk</dd></div>
+        </div>
+      </div>
+      <div class="hero-mark"><img src="logo/clubup-logo-mono-white.svg" alt="ClubUp"></div>
+    </div>
+  </div>
+
+  <!-- SISTERS -->
+  <div class="sisters">
+    <div class="sister"><div class="dot" style="background:#1F8A5B;"></div><div><h4>SportUp.sk</h4><div class="role">Hlavná platforma · zelená</div></div></div>
+    <div class="sister"><div class="dot" style="background:#E07A2C;"></div><div><h4>Activity</h4><div class="role">Tracker tréningov · oranžová</div></div></div>
+    <div class="sister active"><div class="dot" style="background:#388FC3;"></div><div><h4>ClubUp.sk</h4><div class="role">Riadenie klubov · modrá <strong style="color:var(--blue-2);">· toto repo</strong></div></div></div>
+  </div>
+
+  <!-- DOCUMENTS -->
+  <div class="sec-h">
+    <span class="num">01</span><h2>Dokumenty</h2><span class="line"></span>
+  </div>
+
+  <div class="cards">
+    <a class="card" href="manual.html">
+      <div class="preview"><div class="pages"><div></div><div></div><div></div></div></div>
+      <div class="label">PDF · 10 strán A4</div>
+      <h3>Brand manuál</h3>
+      <p>Logo, ochranná zóna, paleta, typografia, ikony, spacing, hlas. Print-ready.</p>
+      <span class="arrow">Otvoriť →</span>
+    </a>
+
+    <a class="card" href="dev.html">
+      <div class="preview navy"><pre class="code"><span class="k">--clubup-navy</span>:  <span class="v">#1A2D47</span>;
+<span class="k">--clubup-blue</span>:  <span class="v">#388FC3</span>;
+<span class="k">--clubup-pale</span>:  <span class="v">#E8F4FD</span>;</pre></div>
+      <div class="label">HTML · Sprievodca</div>
+      <h3>README · pre vývojárov</h3>
+      <p>Tokeny, CSS premenné, Tailwind preset, React snippety, PR checklist.</p>
+      <span class="arrow">Otvoriť →</span>
+    </a>
+
+    <a class="card" href="logo.html">
+      <div class="preview"><img src="logo/clubup-logo-primary.svg" alt="logo"></div>
+      <div class="label">HTML · Export hub</div>
+      <h3>Logo a varianty</h3>
+      <p>4 schválené verzie loga — primary, dark, mono navy, mono biele. Export SVG.</p>
+      <span class="arrow">Otvoriť →</span>
+    </a>
+  </div>
+
+  <!-- ASSETS -->
+  <div class="sec-h">
+    <span class="num">02</span><h2>Aktíva</h2><span class="line"></span>
+  </div>
+
+  <div class="cards">
+    <a class="card" href="icons.html">
+      <div class="preview pale"><div class="icons-strip">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 21 L4 9 L12 4 L20 9 L20 21 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M9 21 L9 14 L15 14 L15 21" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="10" r="1.6" fill="#388FC3"/></svg>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M14 8 C12 7.5 10 8 10 9.5 C10 11 14 11 14 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M3 5 L11 3 L11 21 L3 19 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M21 5 L13 3 L13 21 L21 19 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13" y="3" width="8" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13" y="11" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+      </div></div>
+      <div class="label">SVG · 32 ikon</div>
+      <h3>Icon galéria</h3>
+      <p>Klubová sada s kópiou SVG do schránky, prepínaním veľkostí (16/24/32/48) a dark režimom.</p>
+      <span class="arrow">Otvoriť →</span>
+    </a>
+
+    <a class="card" href="tokens/clubup-tokens.css">
+      <div class="preview"><div class="palette">
+        <div style="background:#1A2D47;"></div>
+        <div style="background:#388FC3;"></div>
+        <div style="background:#E8F4FD;"></div>
+        <div style="background:#0E1320;"></div>
+        <div style="background:#8E8E92;"></div>
+      </div></div>
+      <div class="label">CSS · Tokeny</div>
+      <h3>tokens.css</h3>
+      <p>CSS custom properties — pripoj cez <code style="background:var(--bg); padding:1px 5px; border-radius:3px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue);">@import</code>.</p>
+      <span class="arrow">Stiahnuť →</span>
+    </a>
+
+    <a class="card" href="tokens/tailwind.config.js">
+      <div class="preview navy"><pre class="code"><span class="k">module.exports</span> = {
+  <span class="k">theme</span>: { <span class="k">extend</span>: {
+    <span class="k">colors</span>: { <span class="k">clubup</span>: <span class="v">{...}</span> }
+  }}};</pre></div>
+      <div class="label">JS · Preset</div>
+      <h3>Tailwind config</h3>
+      <p>Hotový preset — všetky <code style="background:var(--bg); padding:1px 5px; border-radius:3px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue);">bg-clubup-*</code> triedy.</p>
+      <span class="arrow">Stiahnuť →</span>
+    </a>
+  </div>
+
+  <!-- SOURCE FILES -->
+  <div class="sec-h">
+    <span class="num">03</span><h2>Zdrojové súbory</h2><span class="line"></span>
+  </div>
+
+  <div class="cards" style="grid-template-columns: repeat(2, 1fr);">
+    <a class="card" href="logo/clubup-logo-primary.svg" style="grid-column: span 1;">
+      <div class="preview"><img src="logo/clubup-logo-primary.svg" alt="primary"></div>
+      <div class="label">SVG · primary</div>
+      <h3>clubup-logo-primary.svg</h3>
+      <p>Default voľba — webová aplikácia, marketing, dokumenty.</p>
+      <span class="arrow">Stiahnuť →</span>
+    </a>
+
+    <a class="card" href="logo/clubup-logo-dark.svg">
+      <div class="preview navy"><img src="logo/clubup-logo-dark.svg" alt="dark"></div>
+      <div class="label">SVG · dark</div>
+      <h3>clubup-logo-dark.svg</h3>
+      <p>Pre tmavé pozadia — navy hero sekcie, footer.</p>
+      <span class="arrow">Stiahnuť →</span>
+    </a>
+
+    <a class="card" href="logo/clubup-logo-mono-navy.svg">
+      <div class="preview"><img src="logo/clubup-logo-mono-navy.svg" alt="mono navy"></div>
+      <div class="label">SVG · mono navy</div>
+      <h3>clubup-logo-mono-navy.svg</h3>
+      <p>Jednofarebný variant — pre minimálne / zdržanlivé použitia.</p>
+      <span class="arrow">Stiahnuť →</span>
+    </a>
+
+    <a class="card" href="logo/clubup-logo-mono-white.svg">
+      <div class="preview navy"><img src="logo/clubup-logo-mono-white.svg" alt="mono white"></div>
+      <div class="label">SVG · mono white</div>
+      <h3>clubup-logo-mono-white.svg</h3>
+      <p>Pre fotky, gradienty, sociálne siete — vždy 100 % opacity.</p>
+      <span class="arrow">Stiahnuť →</span>
+    </a>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="sec-h">
+    <span class="num">04</span><h2>Rýchla referencia</h2><span class="line"></span>
+  </div>
+
+  <div class="refs">
+    <div class="ref">
+      <div class="label">Brand farby</div>
+      <div class="row"><span class="sw" style="background:#1A2D47;"></span><strong style="color:var(--navy);">Navy</strong> <code>#1A2D47</code></div>
+      <div class="row"><span class="sw" style="background:#388FC3;"></span><strong style="color:var(--navy);">Blue</strong> <code>#388FC3</code></div>
+      <div class="row"><span class="sw" style="background:#E8F4FD;"></span><strong style="color:var(--navy);">Pale</strong> <code>#E8F4FD</code></div>
+    </div>
+    <div class="ref">
+      <div class="label">Fonty</div>
+      <div class="row"><strong style="color:var(--navy);">Poppins</strong></div>
+      <div class="row"><strong style="color:var(--navy); font-family:'Poppins', sans-serif; font-style:italic; font-weight:700;">Poppins italic</strong></div>
+      <div class="row"><strong style="color:var(--navy); font-family:'JetBrains Mono', monospace;">JetBrains Mono</strong></div>
+    </div>
+    <div class="ref">
+      <div class="label">Mriežka</div>
+      <div class="row"><code>4 8 12 16</code></div>
+      <div class="row"><code>24 32 48 64</code></div>
+      <div class="row" style="color:var(--gray); font-size:11px;">8-bodový systém</div>
+    </div>
+  </div>
+
+  <footer>
+    <span>ClubUp Brand · v1.0 · © LTK Solutions s.r.o. 2026</span>
+    <span class="mono"><a href="dev.html">README</a> · <a href="manual.html">Manuál</a> · <a href="mailto:info@clubup.sk">info@clubup.sk</a></span>
+  </footer>
+</div>
+</body>
+</html>

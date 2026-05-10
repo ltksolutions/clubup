@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+     SPDX-License-Identifier: CC-BY-4.0 -->
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O projekte — ClubUp.sk</title>
+<meta name="description" content="ClubUp.sk je open-source vzdelávacia platforma pre slovenské športové kluby. Súčasť ekosystému SportUp.sk. Postavená na otvorenej architektúre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="nav-extras.css">
+<link rel="icon" href="brand/logo/clubup-logo-primary.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#1A2D47">
+<link rel="canonical" href="https://clubup.sk/o-projekte.html">
+<meta property="og:title" content="O projekte — ClubUp.sk">
+<meta property="og:description" content="Vzdelávacia platforma pre slovenské športové kluby — open-source, transparentná, postavená na otvorenej architektúre.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:url" content="https://clubup.sk/o-projekte.html">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo" aria-label="ClubUp"><img src="brand/logo/clubup-logo-mono-white.svg" alt="ClubUp" width="160" height="68"></a>
+    <button class="nav-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-projekte.html">O projekte</a></li>
+      <li><a href="osnova.html">Osnova kurzu</a></li>
+      <li><a href="partneri.html">Partneri</a></li>
+      <li class="nav-dropdown"><button class="nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" data-dropdown="ecosystem">Ekosystém <svg class="dd-chevron" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1,3 5.5,8 10,3"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li role="none"><a href="https://sportup.sk" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">SportUp.sk ↗</span><span class="dd-desc">Centrálny register osôb a organizácií slovenského športu</span></a></li><li role="none"><a href="https://activity.sportup.sk" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">Activity.SportUp.sk ↗</span><span class="dd-desc">Podujatia, aktivity a pohybové programy</span></a></li><li role="none"><a href="index.html" class="dd-item" role="menuitem"><span class="dd-name">ClubUp.sk</span><span class="dd-desc">Vzdelávanie pre športové kluby (vy ste tu)</span></a></li><li role="none"><a href="https://github.com/ltksolutions/clubup.sk" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">GitHub repozitár ↗</span><span class="dd-desc">Zdrojový kód, issues, roadmap</span></a></li><li role="none"><a href="https://github.com/ltksolutions/clubup.sk/tree/main/docs" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">Dokumentácia ↗</span><span class="dd-desc">Architektúra, doménový model, API, ADR</span></a></li><li role="none"><a href="brand/index.html" class="dd-item" role="menuitem"><span class="dd-name">Brand kit</span><span class="dd-desc">Logá, farby, typografia</span></a></li></ul></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="https://github.com/ltksolutions/clubup.sk" class="nav-iconlink" data-label="GitHub" aria-label="GitHub repozitár" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></li>
+      <li><a href="https://app.clubup.sk" class="nav-cta">Prihlásiť sa</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">O projekte</div>
+    <h1>Prečo vznikol <em>ClubUp</em></h1>
+    <p class="lead">
+      Slovenské športové kluby sú často vedené ľuďmi, ktorí to robia popri zamestnaní, často bez špecifického
+      vzdelania v športovom manažmente. ClubUp im má dať systematické know-how — dostupne, online a v slovenčine.
+    </p>
+  </div>
+</header>
+
+<main>
+  <div class="container narrow">
+
+    <section>
+      <h2>Misia</h2>
+      <p class="lead">
+        <strong>Posilniť slovenský šport tým, že posilníme kluby.</strong> Klub s kompetentným manažmentom
+        je stabilnejší, lepšie financovaný a lepšie pripravený na rozvoj športovcov.
+      </p>
+      <p>
+        Slovenské kluby spravidla nemajú prístup k profesionálnemu vzdelávaniu v športovom manažmente
+        — buď je len v zahraničí, drahé, alebo pre špecifické cieľové skupiny (profesionálne tímy).
+        ClubUp túto medzeru zacelí.
+      </p>
+    </section>
+
+    <section>
+      <h2>Princípy</h2>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="card-number">01</span>
+          <h3>Open source</h3>
+          <p>Celý kód platformy je otvorený pod EUPL-1.2 licenciou. Ktokoľvek si môže pozrieť, ako funguje, prispieť alebo prevádzkovať vlastnú inštanciu pre iný šport či krajinu.</p>
+          <p><a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener">GitHub repozitár ↗</a></p>
+        </div>
+        <div class="card">
+          <span class="card-number">02</span>
+          <h3>Slovenský kontext</h3>
+          <p>Obsah je zacielený na slovenskú legislatívu, slovenský systém financovania (PUŠ, dotácie), slovenské zväzy a slovenské kluby. Žiadne univerzálne tipy — všetko priamo aplikovateľné.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">03</span>
+          <h3>Akademická akreditácia</h3>
+          <p>Kurikulum je <a href="partneri.html">akreditované Žilinskou univerzitou</a>. Certifikát je teda formálne uznávaný a má za sebou akademickú váhu.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">04</span>
+          <h3>Praktická aplikovateľnosť</h3>
+          <p>Žiadna teória pre teóriu. Každý modul má praktické cvičenia, vzorové dokumenty (zmluvy, rozpočty, projekty), a prípadové štúdie zo slovenských klubov.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">05</span>
+          <h3>Flexibilné tempo</h3>
+          <p>Žiadne pevné termíny stretnutí. Sami si určujete tempo. Záznamy webinárov, asynchrónne cvičenia, dostupnosť 24/7. Ideálne pre ľudí, ktorí klub vedú popri zamestnaní.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">06</span>
+          <h3>Ochrana osobných údajov</h3>
+          <p>GDPR-first dizajn. Žiadne tracker pixely, žiadny predaj dát tretím stranám, žiadne nátlakové marketingové triky. Iba transparentná služba s jasnými pravidlami.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Postavené na otvorenej architektúre</h2>
+      <p class="lead">
+        ClubUp je súčasťou ekosystému <a href="https://sportup.sk" target="_blank" rel="noopener">SportUp.sk</a>
+        — otvoreného riešenia pre slovenský šport.
+      </p>
+
+      <p>
+        SportUp ekosystém zahŕňa centrálny register osôb a organizácií, register športovísk,
+        platformu pre podujatia a aktivity (<a href="https://activity.sportup.sk" target="_blank" rel="noopener">Activity.SportUp.sk</a>),
+        a vzdelávaciu platformu (ClubUp.sk).
+      </p>
+
+      <p>
+        Všetky aplikácie ekosystému zdieľajú jednotnú identitu cez <strong>SSO</strong> — používateľ má
+        jednu totožnosť naprieč celým ekosystémom. Klub registrovaný v SportUp.sk si jednoducho
+        zakúpi kurz pre svojho manažéra v ClubUp.sk.
+      </p>
+
+      <div class="callout">
+        <h4>Otvorená architektúra</h4>
+        <p>
+          ClubUp si neviaže klubu na seba. Všetky entity (osoby, organizácie) sú v centrálnom registri SportUp,
+          ku ktorému majú prístup aj iné aplikácie. ClubUp si autoritatívne vlastní len vzdelávací obsah,
+          výsledky testov a certifikáty.
+        </p>
+      </div>
+
+      <div class="grid cols-3 mt-4">
+        <a href="https://sportup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>SportUp.sk ↗</h3>
+          <p>Centrálny register osôb, organizácií, aktivít a športovísk.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://activity.sportup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>Activity.SportUp.sk ↗</h3>
+          <p>Platforma pre športové podujatia a aktivity.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>GitHub ↗</h3>
+          <p>Otvorený kód, dokumentácia, issues — všetko verejne.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tím a kontext</h2>
+      <p>
+        ClubUp je projekt <strong>LTK Solutions s.r.o.</strong>, slovenskej firmy zameranej na softvér pre verejný sektor a šport.
+        LTK Solutions paralelne stavia <a href="https://sportup.sk" target="_blank" rel="noopener">SportUp.sk</a>,
+        <a href="https://activity.sportup.sk" target="_blank" rel="noopener">Activity.SportUp.sk</a> a ďalšie zložky ekosystému.
+      </p>
+      <p>
+        Vzdelávacie kurikulum vzniká v <strong>partnerstve so Žilinskou univerzitou v Žiline,
+        Fakultou riadenia a informatiky</strong>. Lektormi sú akademickí pracovníci FRI ŽU
+        plus externí experti — športoví riaditelia, právnici špecializujúci sa na šport, ekonómovia v športe.
+      </p>
+      <p>
+        Detaily o partnerstve so ŽU v sekcii <a href="partneri.html">Partneri</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Roadmap</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Fáza</th><th>Kedy</th><th>Obsah</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill accent">Fáza 0</span></td>
+              <td>2025 Q4 – 2026 Q1</td>
+              <td>Príprava platformy, vývoj MVP, akreditácia kurikula, brand identity, právne formality</td>
+            </tr>
+            <tr>
+              <td><span class="pill accent">Fáza 1</span></td>
+              <td>2026 Q2</td>
+              <td>Spustenie kurzu „Športový manažment pre silnejšie kluby" — Úroveň 1 a 2 dostupné</td>
+            </tr>
+            <tr>
+              <td><span class="pill accent">Fáza 2</span></td>
+              <td>2026 Q3 – Q4</td>
+              <td>Doplnenie Úrovne 3 a 4, intermediate certifikáty, prvé živé webináre</td>
+            </tr>
+            <tr>
+              <td><span class="pill warning">Fáza 3</span></td>
+              <td>2027</td>
+              <td>Rozšírenie o ďalšie kurzy: Marketing pre menšie kluby, Financovanie športu, Trenérsky manažment, Klubový sekretár</td>
+            </tr>
+            <tr>
+              <td><span class="pill warning">Fáza 4</span></td>
+              <td>2027–2028</td>
+              <td>Skupinové licencie pre kluby, mentorské balíčky, integrácia s národnými zväzmi a SOŠV</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-2">
+        Live verzia roadmapy: <a href="https://github.com/ltksolutions/clubup.sk/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP.md na GitHube ↗</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Otvorenosť a transparentnosť</h2>
+      <p>
+        Zdrojový kód ClubUp je verejne dostupný na GitHube. Každá technologická voľba (architektúra,
+        databáza, platobná brána) má svoj odôvodnený záznam v dokumentácii — <strong>ADR (Architecture Decision Records)</strong>.
+      </p>
+      <p>
+        Záväzkujeme sa k transparentnému vývoju — rozhodnutia, postup a otvorené úlohy vidíte v repozitári.
+        Sme otvorení komentárom, návrhom a kolaborácii.
+      </p>
+
+      <div class="grid cols-3">
+        <a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>GitHub repozitár ↗</h3>
+          <p>Zdrojový kód, dokumentácia, issues, roadmap. Otvorené pod EUPL-1.2.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://github.com/ltksolutions/clubup.sk/tree/main/docs" target="_blank" rel="noopener" class="card-link">
+          <h3>Dokumentácia ↗</h3>
+          <p>Architektúra, doménový model, REST API, ADR, curriculum, operations, GDPR, security.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="brand/index.html" class="card-link">
+          <h3>Brand kit</h3>
+          <p>Logá, farby, typografia, design tokens. Pre marketing, partnerov a vývojárov.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Kontakt a podpora</h2>
+      <p>
+        Otázky, návrhy, spolupráca — píšte na <a href="mailto:info@clubup.sk">info@clubup.sk</a> alebo cez
+        <a href="kontakt.html">kontaktný formulár</a>.
+      </p>
+      <p>
+        Pre médiá a odbornú verejnosť máme samostatnú adresu <a href="mailto:press@clubup.sk">press@clubup.sk</a>.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-col footer-brand-block">
+      <img src="brand/logo/clubup-logo-mono-white.svg" alt="ClubUp">
+      <div class="footer-brand-tagline">Silné kluby. Silný šport.</div>
+      <p class="footer-brand-desc">Vzdelávacia platforma pre slovenské športové kluby. Súčasť ekosystému SportUp.sk.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Projekt</h5>
+      <ul>
+        <li><a href="o-projekte.html">O projekte</a></li>
+        <li><a href="osnova.html">Osnova kurzu</a></li>
+        <li><a href="partneri.html">Partneri</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Ekosystém</h5>
+      <ul>
+        <li><a href="https://sportup.sk" target="_blank" rel="noopener">SportUp.sk ↗</a></li>
+        <li><a href="https://activity.sportup.sk" target="_blank" rel="noopener">Activity.SportUp.sk ↗</a></li>
+        <li><a href="brand/index.html">Brand kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Open source</h5>
+      <ul>
+        <li><a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener">GitHub repozitár ↗</a></li>
+        <li><a href="https://github.com/ltksolutions/clubup.sk/tree/main/docs" target="_blank" rel="noopener">Dokumentácia ↗</a></li>
+        <li><a href="https://github.com/ltksolutions/clubup.sk/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog ↗</a></li>
+        <li><a href="https://github.com/ltksolutions/clubup.sk/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Právne</h5>
+      <ul>
+        <li><a href="kontakt.html#zasady">Ochrana osobných údajov</a></li>
+        <li><a href="kontakt.html#vop">Obchodné podmienky</a></li>
+        <li><a href="kontakt.html#reklamacie">Reklamačný poriadok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 LTK Solutions s.r.o. · ClubUp.sk</div>
+    <div>info@clubup.sk · <a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener">EUPL-1.2</a></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

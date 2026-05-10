@@ -1,0 +1,55 @@
+{
+  "name": "@clubup/db",
+  "version": "0.0.0",
+  "private": true,
+  "description": "MongoDB models, Zod schemas, and repositories for ClubUp.",
+  "license": "EUPL-1.2",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    },
+    "./errors": {
+      "types": "./dist/errors.d.ts",
+      "default": "./dist/errors.js"
+    },
+    "./courses": {
+      "types": "./dist/courses/index.d.ts",
+      "default": "./dist/courses/index.js"
+    },
+    "./enrollments": {
+      "types": "./dist/enrollments/index.d.ts",
+      "default": "./dist/enrollments/index.js"
+    },
+    "./audit": {
+      "types": "./dist/audit/index.d.ts",
+      "default": "./dist/audit/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "mongodb": "^6.10.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@clubup/config": "*",
+    "@types/node": "^20.16.0",
+    "mongodb-memory-server": "^10.1.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.0"
+  }
+}

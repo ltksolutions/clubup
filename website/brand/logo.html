@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<title>ClubUp — Logo · všetky varianty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1A2D47;
+  --blue: #388FC3;
+  --paper: #FFFFFF;
+  --bg: #F4F6F8;
+  --pale: #E8F4FD;
+  --gray: #8E8E92;
+  --line: #E2E5EA;
+  --ink: #0E1320;
+}
+body { background: var(--bg); font-family: 'Poppins', system-ui, sans-serif; color: var(--ink); }
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image: linear-gradient(to right,rgba(26,45,71,0.04) 1px,transparent 1px), linear-gradient(to bottom,rgba(26,45,71,0.04) 1px,transparent 1px);
+  background-size: 32px 32px;
+}
+.page { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:64px 48px 120px; }
+.page-header { margin-bottom:64px; padding-bottom:24px; border-bottom:1px solid var(--line); }
+.page-header .crumb { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); margin-bottom:14px; }
+.page-header h1 { font-family:'Poppins',sans-serif; font-size:32px; font-weight:700; letter-spacing:-0.02em; color:var(--navy); margin-bottom:8px; }
+.page-header p { font-size:14px; color:var(--gray); max-width:640px; line-height:1.55; }
+.section { margin-bottom:72px; }
+.section-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); margin-bottom:16px; }
+.row { display:flex; gap:16px; flex-wrap:wrap; }
+.card {
+  background:var(--paper); border:1px solid var(--line); border-radius:14px;
+  position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;
+  transition:border-color .15s, box-shadow .15s;
+}
+.card.dark   { background:var(--navy); border-color:var(--navy); }
+.card.bg     { background:var(--bg); }
+.card.pale   { background:var(--pale); border-color:var(--pale); }
+.card.blue   { background:var(--blue); border-color:var(--blue); }
+.card.warm   { background:#FAFAF7; }
+.cap { position:absolute; bottom:14px; left:18px; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); }
+.cap.on-dark { color:rgba(255,255,255,0.55); }
+.cap.on-blue { color:rgba(255,255,255,0.7); }
+.logo-img { display:block; }
+
+.export-box { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:24px 28px; display:flex; flex-direction:column; gap:14px; }
+.export-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); display:flex; justify-content:space-between; align-items:center; }
+.export-title .meta { font-weight:400; color:var(--gray); }
+.export-row { display:flex; gap:16px; align-items:center; padding:14px; background:var(--bg); border-radius:8px; }
+.export-thumb { width:96px; height:64px; display:flex; align-items:center; justify-content:center; background:var(--paper); border-radius:6px; border:1px solid var(--line); flex-shrink:0; }
+.export-thumb.dark { background:var(--navy); border-color:var(--navy); }
+.export-thumb.blue { background:var(--blue); border-color:var(--blue); }
+.export-thumb img { max-width:80%; max-height:80%; }
+.export-meta { flex:1; display:flex; flex-direction:column; gap:4px; min-width:0; }
+.export-meta .name { font-size:13px; font-weight:600; color:var(--navy); }
+.export-meta .path { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--gray); }
+.dl-btn { font-family:'Poppins',sans-serif; font-size:12px; font-weight:600; background:var(--navy); color:#fff; border:none; cursor:pointer; padding:8px 16px; border-radius:999px; text-decoration:none; transition:opacity .15s; flex-shrink:0; }
+.dl-btn:hover { opacity:0.85; }
+
+.chip-row { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid var(--line); }
+.chip-row:last-child { border-bottom:0; }
+.chip { width:36px; height:36px; border-radius:8px; flex-shrink:0; }
+.chip-meta .name { font-size:13px; font-weight:600; color:var(--navy); }
+.chip-meta .hex  { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--gray); }
+
+.spec { display:grid; grid-template-columns:140px 1fr; gap:8px 20px; font-size:13px; }
+.spec dt { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--gray); letter-spacing:0.04em; text-transform:uppercase; padding-top:2px; }
+.spec dd { color:var(--ink); }
+
+.tagline { font-family:'Poppins',sans-serif; font-style:italic; font-weight:700; color:var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-header">
+    <div class="crumb">ClubUp · Brand · Logo</div>
+    <h1>Logo — všetky povolené varianty</h1>
+    <p>Kanonické zdrojové SVG-čka, anatómia, ochranná zóna, monochromatické verzie a ukážky použitia. Slúži ako autoritatívny zdroj pre repozitár <strong>ltksolutions/clubup</strong>.</p>
+  </div>
+
+  <!-- 01 HERO -->
+  <div class="section">
+    <div class="section-title">01 · Primárne logo · plnofarebná verzia</div>
+    <div class="card" style="width:100%; height:340px;">
+      <img src="logo/clubup-logo-primary.svg" alt="ClubUp logo" class="logo-img" style="width:560px; max-width:80%;">
+      <span class="cap">Primary · Light background</span>
+    </div>
+  </div>
+
+  <!-- 02 ANATOMY + COLOURS -->
+  <div class="section">
+    <div class="section-title">02 · Anatómia · farby · pomer strán</div>
+    <div class="row">
+      <div class="card" style="flex:1.3; min-width:380px; height:380px; padding:36px; align-items:flex-start; flex-direction:column; gap:0; justify-content:center;">
+        <div style="position:relative; width:100%; max-width:480px; margin:0 auto;">
+          <img src="logo/clubup-logo-primary.svg" alt="" style="width:100%; display:block;">
+          <!-- Annotation labels -->
+          <div style="position:absolute; left:7%; top:-4%; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray); white-space:nowrap;">
+            <span style="display:inline-block; width:14px; border-top:1px dashed var(--blue); vertical-align:middle; margin-right:6px;"></span>Mountain mark
+          </div>
+          <div style="position:absolute; left:18%; top:48%; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray); white-space:nowrap;">
+            <span style="display:inline-block; width:14px; border-top:1px dashed var(--blue); vertical-align:middle; margin-right:6px;"></span>CLUB · navy block, white inset
+          </div>
+          <div style="position:absolute; right:0; top:32%; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray); white-space:nowrap;">
+            UP · blue, sans-serif <span style="display:inline-block; width:14px; border-top:1px dashed var(--blue); vertical-align:middle; margin-left:6px;"></span>
+          </div>
+          <div style="position:absolute; left:18%; bottom:-4%; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray); white-space:nowrap;">
+            <span style="display:inline-block; width:14px; border-top:1px dashed var(--blue); vertical-align:middle; margin-right:6px;"></span>Tagline · italic serif
+          </div>
+        </div>
+        <span class="cap">Anatómia loga</span>
+      </div>
+
+      <div class="card" style="flex:1; min-width:300px; height:380px; padding:32px; align-items:stretch; justify-content:flex-start; flex-direction:column;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); margin-bottom:18px;">Brand farby</div>
+        <div class="chip-row">
+          <div class="chip" style="background:var(--navy);"></div>
+          <div class="chip-meta"><div class="name">ClubUp Navy</div><div class="hex">#1A2D47</div></div>
+        </div>
+        <div class="chip-row">
+          <div class="chip" style="background:var(--blue);"></div>
+          <div class="chip-meta"><div class="name">ClubUp Blue</div><div class="hex">#388FC3</div></div>
+        </div>
+        <div class="chip-row">
+          <div class="chip" style="background:#fff; border:1px solid var(--line);"></div>
+          <div class="chip-meta"><div class="name">White</div><div class="hex">#FFFFFF</div></div>
+        </div>
+        <div class="chip-row" style="border:0;">
+          <div class="chip" style="background:var(--gray);"></div>
+          <div class="chip-meta"><div class="name">Subtitle Gray</div><div class="hex">#8E8E92</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1; min-width:280px; height:380px; padding:32px; align-items:stretch; justify-content:flex-start; flex-direction:column;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); margin-bottom:18px;">Špecifikácia</div>
+        <dl class="spec">
+          <dt>Pomer</dt><dd>2.35 : 1</dd>
+          <dt>ViewBox</dt><dd>3692 × 1913</dd>
+          <dt>Tagline</dt><dd class="tagline">Silné kluby. Silný šport.</dd>
+          <dt>Min. print</dt><dd>30 mm šírka</dd>
+          <dt>Min. screen</dt><dd>120 px šírka</dd>
+          <dt>Min. symbol</dt><dd>32 px (favicon)</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 COLOUR APPLICATIONS -->
+  <div class="section">
+    <div class="section-title">03 · Farebné aplikácie pozadia</div>
+    <div class="row">
+      <div class="card" style="flex:1; min-width:280px; height:220px;">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap">Biele pozadie</span>
+      </div>
+      <div class="card pale" style="flex:1; min-width:280px; height:220px;">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap">Accent Blue Light · #E8F4FD</span>
+      </div>
+      <div class="card bg" style="flex:1; min-width:280px; height:220px;">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap">Light background · #F4F6F8</span>
+      </div>
+      <div class="card dark" style="flex:1; min-width:280px; height:220px;">
+        <img src="logo/clubup-logo-dark.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap on-dark">Navy pozadie · dark variant</span>
+      </div>
+      <div class="card blue" style="flex:1; min-width:280px; height:220px;">
+        <img src="logo/clubup-logo-mono-white.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap on-blue">Blue pozadie · mono biela</span>
+      </div>
+      <div class="card" style="flex:1; min-width:280px; height:220px;">
+        <img src="logo/clubup-logo-mono-navy.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap">Mono · navy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 MONO -->
+  <div class="section">
+    <div class="section-title">04 · Monochromatické verzie</div>
+    <div class="row">
+      <div class="card" style="flex:1; min-width:300px; height:220px;">
+        <img src="logo/clubup-logo-mono-black.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap">Mono · čierna</span>
+      </div>
+      <div class="card" style="flex:1; min-width:300px; height:220px;">
+        <img src="logo/clubup-logo-mono-navy.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap">Mono · navy</span>
+      </div>
+      <div class="card dark" style="flex:1; min-width:300px; height:220px;">
+        <img src="logo/clubup-logo-mono-white.svg" alt="" style="width:300px; max-width:80%;">
+        <span class="cap on-dark">Mono · biela</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 SAFE ZONE -->
+  <div class="section">
+    <div class="section-title">05 · Ochranná zóna a minimálna veľkosť</div>
+    <div class="row">
+      <div class="card" style="flex:1.4; min-width:380px; height:300px; padding:48px;">
+        <div style="position:relative; width:340px; height:170px; outline:1.5px dashed var(--blue); outline-offset:32px; display:flex; align-items:center; justify-content:center;">
+          <img src="logo/clubup-logo-primary.svg" alt="" style="width:340px;">
+          <div style="position:absolute; left:-58px; top:50%; transform:translateY(-50%); font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue); font-weight:600;">U</div>
+          <div style="position:absolute; right:-58px; top:50%; transform:translateY(-50%); font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue); font-weight:600;">U</div>
+          <div style="position:absolute; left:50%; top:-58px; transform:translateX(-50%); font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue); font-weight:600;">U</div>
+          <div style="position:absolute; left:50%; bottom:-58px; transform:translateX(-50%); font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue); font-weight:600;">U</div>
+        </div>
+        <span class="cap">Ochranná zóna · U = výška písmena U z loga</span>
+      </div>
+
+      <div class="card" style="flex:1; min-width:300px; height:300px; padding:36px; flex-direction:column; gap:24px; align-items:center; justify-content:center;">
+        <div style="display:flex; gap:24px; align-items:flex-end;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+            <img src="logo/clubup-logo-primary.svg" alt="" style="width:120px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">120 px · min</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+            <img src="logo/clubup-logo-primary.svg" alt="" style="width:200px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">200 px · default</span>
+          </div>
+        </div>
+        <span class="cap">Minimálna veľkosť · digitál</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 INCORRECT USAGE -->
+  <div class="section">
+    <div class="section-title">06 · Nesprávne použitie</div>
+    <div class="row">
+      <div class="card" style="flex:1; min-width:240px; height:200px;">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:240px; transform:scaleY(0.6);">
+        <span style="position:absolute; top:14px; right:14px; color:#C8243A; font-weight:700; font-size:14px;">✕</span>
+        <span class="cap">Nedeformujte</span>
+      </div>
+      <div class="card" style="flex:1; min-width:240px; height:200px;">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:240px; filter:hue-rotate(140deg) saturate(1.6);">
+        <span style="position:absolute; top:14px; right:14px; color:#C8243A; font-weight:700; font-size:14px;">✕</span>
+        <span class="cap">Nemeňte farby</span>
+      </div>
+      <div class="card" style="flex:1; min-width:240px; height:200px;">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:240px; transform:rotate(-12deg);">
+        <span style="position:absolute; top:14px; right:14px; color:#C8243A; font-weight:700; font-size:14px;">✕</span>
+        <span class="cap">Neotáčajte</span>
+      </div>
+      <div class="card" style="flex:1; min-width:240px; height:200px; background:repeating-linear-gradient(45deg, #ffd166, #ffd166 8px, #ef476f 8px, #ef476f 16px);">
+        <img src="logo/clubup-logo-primary.svg" alt="" style="width:240px;">
+        <span style="position:absolute; top:14px; right:14px; color:#fff; font-weight:700; font-size:14px;">✕</span>
+        <span class="cap on-blue">Bez rušivého pozadia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 APP ICONS -->
+  <div class="section">
+    <div class="section-title">07 · App icons · favicon</div>
+    <div class="card" style="width:100%; height:280px; padding:36px; gap:32px; justify-content:center;">
+      <!-- iOS large -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:140px; height:140px; background:linear-gradient(180deg, #2A4470, var(--navy)); border-radius:32px; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(26,45,71,0.25);">
+          <div style="font-family:'Poppins',sans-serif; font-weight:800; font-size:60px; letter-spacing:-0.04em; line-height:1;">
+            <span style="color:#fff;">C</span><span style="color:var(--blue);">U</span>
+          </div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">iOS · 1024px</span>
+      </div>
+      <!-- Android adaptive -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:108px; height:108px; background:#fff; border:1px solid var(--line); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(26,45,71,0.12);">
+          <div style="font-family:'Poppins',sans-serif; font-weight:800; font-size:46px; letter-spacing:-0.04em; line-height:1;">
+            <span style="color:var(--navy);">C</span><span style="color:var(--blue);">U</span>
+          </div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">Android · adaptive</span>
+      </div>
+      <!-- Blue tile -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:84px; height:84px; background:var(--blue); border-radius:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(56,143,195,0.4);">
+          <div style="font-family:'Poppins',sans-serif; font-weight:800; font-size:38px; color:#fff; letter-spacing:-0.04em;">CU</div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">Blue · 192px</span>
+      </div>
+      <!-- Favicon -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:64px; height:64px; background:var(--navy); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+          <div style="font-family:'Poppins',sans-serif; font-weight:800; font-size:30px; line-height:1; letter-spacing:-0.04em;">
+            <span style="color:#fff;">C</span><span style="color:var(--blue);">U</span>
+          </div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">Favicon · 64px</span>
+      </div>
+      <!-- Tiny -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:32px; height:32px; background:var(--navy); border-radius:6px; display:flex; align-items:center; justify-content:center;">
+          <div style="font-family:'Poppins',sans-serif; font-weight:800; font-size:15px; line-height:1; letter-spacing:-0.04em;">
+            <span style="color:#fff;">C</span><span style="color:var(--blue);">U</span>
+          </div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray);">32px</span>
+      </div>
+
+      <span class="cap">App icons · zjednodušený CU monogram</span>
+    </div>
+  </div>
+
+  <!-- 08 SVG EXPORT -->
+  <div class="section">
+    <div class="section-title">08 · SVG export · stiahnutie</div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+
+      <div class="export-box">
+        <div class="export-title">Primárne logo · plnofarebná verzia <span class="meta">2.35:1 · 7.5 KB</span></div>
+        <div class="export-row">
+          <div class="export-thumb"><img src="logo/clubup-logo-primary.svg" alt=""></div>
+          <div class="export-meta">
+            <div class="name">clubup-logo-primary.svg</div>
+            <div class="path">apps/web/assets/logo.svg</div>
+          </div>
+          <a class="dl-btn" href="logo/clubup-logo-primary.svg" download>Stiahnuť SVG</a>
+        </div>
+      </div>
+
+      <div class="export-box">
+        <div class="export-title">Dark mode · pre tmavé pozadia <span class="meta">white block + soft blue</span></div>
+        <div class="export-row">
+          <div class="export-thumb dark"><img src="logo/clubup-logo-dark.svg" alt=""></div>
+          <div class="export-meta">
+            <div class="name">clubup-logo-dark.svg</div>
+            <div class="path">apps/web/assets/logo-dark.svg</div>
+          </div>
+          <a class="dl-btn" href="logo/clubup-logo-dark.svg" download>Stiahnuť SVG</a>
+        </div>
+      </div>
+
+      <div class="export-box">
+        <div class="export-title">Mono · navy <span class="meta">jednofarebná navy</span></div>
+        <div class="export-row">
+          <div class="export-thumb"><img src="logo/clubup-logo-mono-navy.svg" alt=""></div>
+          <div class="export-meta">
+            <div class="name">clubup-logo-mono-navy.svg</div>
+            <div class="path">apps/web/assets/logo-mono-navy.svg</div>
+          </div>
+          <a class="dl-btn" href="logo/clubup-logo-mono-navy.svg" download>Stiahnuť SVG</a>
+        </div>
+      </div>
+
+      <div class="export-box">
+        <div class="export-title">Mono · biela <span class="meta">na tmavé/farebné pozadia</span></div>
+        <div class="export-row">
+          <div class="export-thumb dark"><img src="logo/clubup-logo-mono-white.svg" alt=""></div>
+          <div class="export-meta">
+            <div class="name">clubup-logo-mono-white.svg</div>
+            <div class="path">apps/web/assets/logo-mono-white.svg</div>
+          </div>
+          <a class="dl-btn" href="logo/clubup-logo-mono-white.svg" download>Stiahnuť SVG</a>
+        </div>
+      </div>
+
+      <div class="export-box">
+        <div class="export-title">Mono · čierna <span class="meta">pre tlač jedným atramentom</span></div>
+        <div class="export-row">
+          <div class="export-thumb"><img src="logo/clubup-logo-mono-black.svg" alt=""></div>
+          <div class="export-meta">
+            <div class="name">clubup-logo-mono-black.svg</div>
+            <div class="path">apps/web/assets/logo-mono-black.svg</div>
+          </div>
+          <a class="dl-btn" href="logo/clubup-logo-mono-black.svg" download>Stiahnuť SVG</a>
+        </div>
+      </div>
+
+      <div class="export-box" style="background:var(--bg); border-style:dashed;">
+        <div class="export-title" style="color:var(--navy);">CSS · Brand tokens</div>
+        <pre style="font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.7; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:14px 18px; overflow-x:auto; user-select:all; margin:0;">:root {
+  --clubup-navy:    #1A2D47;
+  --clubup-blue:    #388FC3;
+  --clubup-white:   #FFFFFF;
+  --clubup-gray:    #8E8E92;
+  --clubup-bg:      #F4F6F8;
+  --clubup-pale:    #E8F4FD;
+}</pre>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

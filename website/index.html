@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!-- SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+     SPDX-License-Identifier: CC-BY-4.0 -->
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClubUp.sk — Vzdelávacia platforma pre slovenské športové kluby</title>
+<meta name="description" content="Akreditované online vzdelávanie v športovom manažmente pre výkonných riaditeľov, manažérov a generálnych sekretárov klubov. Certifikát od Žilinskej univerzity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="nav-extras.css">
+
+<!-- Favicon & PWA -->
+<link rel="icon" href="brand/logo/clubup-logo-primary.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#1A2D47">
+
+<link rel="canonical" href="https://clubup.sk/">
+
+<meta property="og:title" content="ClubUp.sk — Vzdelávacia platforma pre slovenské športové kluby">
+<meta property="og:description" content="Akreditované online vzdelávanie v športovom manažmente. 10 tém, 4 úrovne, 40 modulov. Certifikát od Žilinskej univerzity.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:site_name" content="ClubUp.sk">
+<meta property="og:url" content="https://clubup.sk/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClubUp.sk — Vzdelávacia platforma pre slovenské športové kluby">
+<meta name="twitter:description" content="Akreditované online vzdelávanie v športovom manažmente.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ClubUp.sk",
+  "url": "https://clubup.sk/",
+  "inLanguage": "sk-SK",
+  "description": "Vzdelávacia platforma pre slovenské športové kluby."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "ClubUp.sk",
+  "url": "https://clubup.sk/",
+  "logo": "https://clubup.sk/brand/logo/clubup-logo-primary.svg",
+  "description": "Vzdelávacia platforma pre slovenské športové kluby. Akreditované kurzy v športovom manažmente.",
+  "slogan": "Silné kluby. Silný šport.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@clubup.sk",
+    "contactType": "customer support",
+    "availableLanguage": ["sk"]
+  }
+}
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo" aria-label="ClubUp — Silné kluby. Silný šport.">
+      <img src="brand/logo/clubup-logo-mono-white.svg" alt="ClubUp" width="160" height="68">
+    </a>
+    <button class="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-projekte.html">O projekte</a></li>
+      <li><a href="osnova.html">Osnova kurzu</a></li>
+      <li><a href="partneri.html">Partneri</a></li>
+      <li class="nav-dropdown"><button class="nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true" data-dropdown="ecosystem">Ekosystém <svg class="dd-chevron" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1,3 5.5,8 10,3"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li role="none"><a href="https://sportup.sk" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">SportUp.sk ↗</span><span class="dd-desc">Centrálny register osôb a organizácií slovenského športu</span></a></li><li role="none"><a href="https://activity.sportup.sk" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">Activity.SportUp.sk ↗</span><span class="dd-desc">Podujatia, aktivity a pohybové programy</span></a></li><li role="none"><a href="index.html" class="dd-item" role="menuitem"><span class="dd-name">ClubUp.sk</span><span class="dd-desc">Vzdelávanie pre športové kluby (vy ste tu)</span></a></li><li role="none"><a href="https://github.com/ltksolutions/clubup.sk" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">GitHub repozitár ↗</span><span class="dd-desc">Zdrojový kód, issues, roadmap</span></a></li><li role="none"><a href="https://github.com/ltksolutions/clubup.sk/tree/main/docs" class="dd-item" role="menuitem" target="_blank" rel="noopener"><span class="dd-name">Dokumentácia ↗</span><span class="dd-desc">Architektúra, doménový model, API, ADR</span></a></li><li role="none"><a href="brand/index.html" class="dd-item" role="menuitem"><span class="dd-name">Brand kit</span><span class="dd-desc">Logá, farby, typografia</span></a></li></ul></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="https://github.com/ltksolutions/clubup.sk" class="nav-iconlink" data-label="GitHub" aria-label="GitHub repozitár" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></li>
+      <li><a href="https://app.clubup.sk" class="nav-cta">Prihlásiť sa</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Akreditovaný kurz · v príprave 2026</div>
+    <h1>Silné kluby. <em>Silný šport.</em></h1>
+    <p class="lead">
+      Vzdelávacia platforma pre slovenské športové kluby. Komplexné vzdelávanie v športovom manažmente
+      pre výkonných riaditeľov, manažérov a generálnych sekretárov — <strong>od základov po stratégiu</strong>.
+    </p>
+    <div class="hero-cta">
+      <a href="osnova.html" class="btn btn-primary">Pozrieť osnovu kurzu →</a>
+      <a href="o-projekte.html" class="btn btn-secondary">O projekte</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="num">10</span>
+        <span class="label">Tém v kurze</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="num">4</span>
+        <span class="label">Úrovne náročnosti</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="num">40</span>
+        <span class="label">Modulov vzdelávania</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="num">~50</span>
+        <span class="label">Hodín obsahu</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- Pre koho je ClubUp -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">01 — Pre koho</span>
+        <h2>Pre koho je ClubUp určený</h2>
+      </div>
+      <p class="lead">
+        Riadenie športového klubu je odborná disciplína. Pripravili sme vzdelávací program pre tých,
+        ktorí to robia — alebo sa to chystajú robiť — naplno.
+      </p>
+
+      <div class="grid cols-3">
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Výkonní riaditelia klubov</h3>
+          <p>Ľudia, ktorí klub riadia na dennej báze a potrebujú systematické vzdelanie v ekonomike, práve, marketingu a stratégii.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Generálni sekretári a manažéri</h3>
+          <p>Generálni sekretári zväzov, manažéri konkrétnych oblastí — financie, marketing, infraštruktúra. Hĺbková expertíza vo zvolenej úrovni.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="12 2 15 8.5 22 9.5 17 14.5 18.5 21.5 12 18 5.5 21.5 7 14.5 2 9.5 9 8.5 12 2"/></svg>
+          </div>
+          <h3>Zakladatelia nových klubov</h3>
+          <p>Tí, ktorí klub práve zakladajú alebo o tom uvažujú — od výberu právnej formy cez financovanie po prvé podujatia.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>Pracovníci samosprávy</h3>
+          <p>Zamestnanci miest a obcí zodpovední za šport — pre lepšie pochopenie potrieb klubov a efektívnejšiu spoluprácu.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Lídri zväzov</h3>
+          <p>Predsedovia, viceprezidenti a riadiaci pracovníci národných zväzov — komplexný pohľad na riadenie športu na Slovensku a v zahraničí.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Študenti odboru</h3>
+          <p>Študenti odborov športový manažment a príbuzných disciplín — praktické rozšírenie akademických znalostí so slovenským kontextom.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 levels -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">02 — Štruktúra kurzu</span>
+        <h2>Štyri úrovne — od základov po stratégiu</h2>
+      </div>
+      <p class="lead">
+        Štruktúrované vzdelávanie postavené na <strong>4 úrovniach náročnosti</strong>. Každá úroveň pokrýva
+        rovnakých 10 tém, ale v inom prevedení — od orientácie po expertízu.
+      </p>
+
+      <div class="grid cols-2">
+        <div class="level-card">
+          <span class="level-badge">Úroveň 1 · Základy</span>
+          <h3>Orientácia v rámci slovenského športu</h3>
+          <p class="level-desc">
+            Pre tých, ktorí začínajú s riadením klubu. Pochopíte právny rámec, finančný systém,
+            úlohy aktérov v slovenskom športe a základy organizovania klubu.
+          </p>
+          <div class="level-meta">
+            <span><strong>10</strong> modulov</span>
+            <span><strong>~7,5 h</strong> obsahu</span>
+            <span><strong>Bez certifikátu</strong></span>
+          </div>
+        </div>
+        <div class="level-card">
+          <span class="level-badge">Úroveň 2 · Pokročilý</span>
+          <h3>Praktické riadenie procesov v klube</h3>
+          <p class="level-desc">
+            Hlbší pohľad na konkrétne procesy — pracovné zmluvy, vlastné príjmy, organizačná štruktúra,
+            komunikácia so zainteresovanými stranami, plánovanie podujatí.
+          </p>
+          <div class="level-meta">
+            <span><strong>10</strong> modulov</span>
+            <span><strong>~8 h</strong> obsahu</span>
+            <span><strong>Bez certifikátu</strong></span>
+          </div>
+        </div>
+        <div class="level-card">
+          <span class="level-badge">Úroveň 3 · Špecialista</span>
+          <h3>Hĺbková expertíza v jednotlivých oblastiach</h3>
+          <p class="level-desc">
+            Špecializovaná tematika — športový odborník a podnikanie, sponzorské zmluvy, dotácie,
+            budovanie značky, logistika podujatí, vzťahy v tíme. Kompetencia špecialistu.
+          </p>
+          <div class="level-meta">
+            <span><strong>10</strong> modulov</span>
+            <span><strong>~8 h</strong> obsahu</span>
+            <span><strong>Medzicertifikát</strong></span>
+          </div>
+        </div>
+        <div class="level-card">
+          <span class="level-badge">Úroveň 4 · Stratég</span>
+          <h3>Dlhodobé plánovanie a transformácia</h3>
+          <p class="level-desc">
+            Strategický pohľad — riadenie športu doma a v zahraničí, kódexy klubu, dane, finančná stabilita,
+            rozvoj organizácie, marketing podujatí, budovanie komunity, technologické novinky.
+          </p>
+          <div class="level-meta">
+            <span><strong>10</strong> modulov</span>
+            <span><strong>~9 h</strong> obsahu</span>
+            <span><strong>Finálny certifikát</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="osnova.html" class="btn btn-outline">Pozrieť kompletnú osnovu →</a>
+      </div>
+    </section>
+
+    <!-- 10 tém preview -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">03 — Témy</span>
+        <h2>10 tém pokrývajúcich celý záber riadenia klubu</h2>
+      </div>
+      <p class="lead">
+        Každá z 10 tém má vlastný modul v každej z 4 úrovní. Kurz je preto komplexný, ale postupne
+        nadstavovaný — nikoho nezaplaví, ale každého posunie.
+      </p>
+
+      <div class="grid cols-3">
+        <div class="topic-card">
+          <span class="topic-num">Téma 01</span>
+          <h3>Prostredie športu a jeho účastníci</h3>
+          <p>Úloha športu, aktéri, právny rámec a riadenie športu doma a v zahraničí.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 02</span>
+          <h3>Právne predpisy v športe</h3>
+          <p>Právne formy klubu, kľúčové zákony, podnikanie športového odborníka, interné kódexy.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 03</span>
+          <h3>Finančné a ekonomické pojmy</h3>
+          <p>Ekonomika v športe, pracovné zmluvy, sponzorské zmluvy, dane v športovej organizácii.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 04</span>
+          <h3>Financovanie športu</h3>
+          <p>Systém PUŠ, vlastné príjmy, dotácie a granty, finančná stabilita.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 05</span>
+          <h3>Športová organizácia a riadenie</h3>
+          <p>Vízia a ciele, organizačná štruktúra, špecifiká manažmentu, rozvoj organizácie.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 06</span>
+          <h3>Zainteresované strany</h3>
+          <p>Hlavné stakeholdri a komunikácia, dobrovoľníci a podporovatelia, budovanie komunity.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 07</span>
+          <h3>Organizácia podujatí a projektové riadenie</h3>
+          <p>Špecifiká športového podujatia, plánovanie, logistika, marketing podujatí.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 08</span>
+          <h3>Sociálno-psychologické aspekty</h3>
+          <p>Význam športu, riešenie konfliktov, vzťahy v tíme, sebarealizácia a autorita.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 09</span>
+          <h3>Športový marketing a komunikácia</h3>
+          <p>Marketingová stratégia, komunikačné kanály, budovanie značky, moderné nástroje.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-num">Téma 10</span>
+          <h3>Športová infraštruktúra</h3>
+          <p>Šport ako miesto výkonu, prevádzka a údržba, financovanie investícií, technologické novinky.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Akreditácia -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">04 — Certifikácia</span>
+        <h2>Akreditovaný certifikát od Žilinskej univerzity</h2>
+      </div>
+
+      <div class="grid cols-2">
+        <div>
+          <p class="lead">
+            Po úspešnom absolvovaní všetkých štyroch úrovní získate <strong>akreditovaný certifikát</strong>
+            od Fakulty riadenia a informatiky Žilinskej univerzity v Žiline.
+          </p>
+          <p>
+            Certifikát potvrdzuje vaše vedomosti a kompetencie pre riadenie športovej organizácie
+            v slovenskom prostredí. Je <strong>verejne overiteľný</strong> a uznávaný v rámci ekosystému
+            slovenského športu.
+          </p>
+          <p>
+            Po dokončení Úrovne 3 a Úrovne 4 dostanete aj <strong>medzicertifikáty</strong>
+            (Špecialista a Stratég v športovom manažmente).
+          </p>
+        </div>
+        <div class="partner-card">
+          <div class="partner-logo">FRI<br>ŽU</div>
+          <div class="partner-content">
+            <h3>Žilinská univerzita v Žiline</h3>
+            <p>Fakulta riadenia a informatiky — akademický partner ClubUp.</p>
+            <p>
+              <a href="partneri.html">Viac o partnerstve →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ekosystém SportUp -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">05 — Ekosystém</span>
+        <h2>Súčasť ekosystému SportUp.sk</h2>
+      </div>
+      <p class="lead">
+        ClubUp je jednou z aplikácií ekosystému <strong>SportUp.sk</strong> — otvoreného riešenia
+        pre slovenský šport. Aplikácie ekosystému zdieľajú jednotnú identitu cez SSO.
+      </p>
+
+      <div class="grid cols-3">
+        <a href="https://sportup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>SportUp.sk ↗</h3>
+          <p>Centrálny register osôb, organizácií, aktivít a športovísk slovenského športu.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://activity.sportup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>Activity.SportUp.sk ↗</h3>
+          <p>Platforma pre športové podujatia, aktivity a pohybové programy.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="index.html" class="card-link">
+          <h3>ClubUp.sk</h3>
+          <p>Vzdelávacia platforma pre riadiacich pracovníkov športových klubov (vy ste tu).</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="grid cols-2 mt-4">
+        <a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener" class="card-link">
+          <h3>GitHub repozitár ↗</h3>
+          <p>Zdrojový kód, dokumentácia, issues a roadmap projektu. Sledujte vývoj v reálnom čase. Otvorené pod EUPL-1.2.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://github.com/ltksolutions/clubup.sk/tree/main/docs" target="_blank" rel="noopener" class="card-link">
+          <h3>Dokumentácia ↗</h3>
+          <p>Architektúra, doménový model, REST API, ADR (Architecture Decision Records), curriculum a operations.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">06 — Časté otázky</span>
+        <h2>Časté otázky</h2>
+      </div>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Kedy bude kurz dostupný?</summary>
+          <div class="faq-body">
+            <p>Kurz je v aktívnej príprave. Plánovaný spustenie je v <strong>roku 2026</strong>. Aktualizácie pošleme prihláseným záujemcom emailom (formulár v sekcii <a href="kontakt.html">Kontakt</a>).</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Koľko bude kurz stáť?</summary>
+          <div class="faq-body">
+            <p>Cena celého kurzu (4 úrovne, 40 modulov, certifikát od ŽU) bude orientačne <strong>490 € vrátane DPH</strong>.</p>
+            <p>K dispozícii bude aj jednotlivá Úroveň 1 (Základy) za 99 € — vstupný produkt bez certifikátu, vhodný pre tých, ktorí si chcú vyskúšať obsah.</p>
+            <p>Pre kluby, ktoré chcú vzdelávať viacerých zamestnancov, plánujeme skupinové licencie so zľavou.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Ako dlho trvá absolvovanie kurzu?</summary>
+          <div class="faq-body">
+            <p>Kurz je dimenzovaný na <strong>~50 hodín samoštúdia</strong> + záverečné testy. Pri tempe jeden modul týždenne to znamená <strong>6–9 mesiacov</strong> popri pracovných povinnostiach.</p>
+            <p>Štúdium je <strong>flexibilné</strong> — sami si určíte tempo. Témy v rámci úrovne môžete absolvovať v ľubovoľnom poradí.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Aký je rozdiel medzi úrovňami?</summary>
+          <div class="faq-body">
+            <p>Úrovne sú <strong>sekvenčné</strong> — najprv Úroveň 1, potom 2, 3 a 4. Každá pokrýva rovnakých 10 tém, ale s rastúcou hĺbkou:</p>
+            <ul>
+              <li><strong>Úroveň 1 — Základy:</strong> Orientácia v rámci slovenského športu</li>
+              <li><strong>Úroveň 2 — Pokročilý:</strong> Praktické riadenie procesov</li>
+              <li><strong>Úroveň 3 — Špecialista:</strong> Hĺbková expertíza (medzicertifikát)</li>
+              <li><strong>Úroveň 4 — Stratég:</strong> Dlhodobé plánovanie a transformácia (final certifikát)</li>
+            </ul>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Bude kurz obsahovať live webináre?</summary>
+          <div class="faq-body">
+            <p>Áno. Plánujeme <strong>min. 4 živé webináre per Úroveň</strong> s lektormi z FRI ŽU a externými expertmi (športoví riaditelia, právnici, ekonómovia v športe).</p>
+            <p>Webináre sú voliteľné — záznam je dostupný v príslušnej časti modulu, takže nezáleží či sa zúčastníte naživo.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Je certifikát uznávaný?</summary>
+          <div class="faq-body">
+            <p>Certifikát je <strong>akreditovaný Žilinskou univerzitou v Žiline, Fakultou riadenia a informatiky</strong>. Je verejne overiteľný cez stránku <code>clubup.sk/verify/&lt;číslo&gt;</code>.</p>
+            <p>Uznávaný je v rámci slovenského športového ekosystému — v ďalšej fáze pracujeme na uznaní zo strany SOŠV a národných zväzov.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Čo ak nemám čas alebo zmením názor?</summary>
+          <div class="faq-body">
+            <p>Pri kúpe máte <strong>14 dní na vrátenie peňazí bez udania dôvodu</strong> (zákonné právo spotrebiteľa).</p>
+            <p>Po tom prístup k zakúpenému kurzu zostáva platný <strong>2 roky</strong> od zápisu — máte čas dokončiť kurz vlastným tempom.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="callout" style="text-align: center; padding: 2.5rem 1.5rem;">
+        <h4>Záujem o kurz</h4>
+        <h3 style="margin-top: 0.5rem; font-size: 1.5rem;">Buďte medzi prvými, ktorí sa zapíšu</h3>
+        <p style="max-width: 50ch; margin-left: auto; margin-right: auto;">
+          Kurz spúšťame v roku 2026. Nechajte nám email a pošleme vám správu hneď ako bude zápis otvorený.
+        </p>
+        <p style="margin-top: 1.5rem; margin-bottom: 0;">
+          <a href="kontakt.html" class="btn btn-primary">Mám záujem →</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-col footer-brand-block">
+      <img src="brand/logo/clubup-logo-mono-white.svg" alt="ClubUp">
+      <div class="footer-brand-tagline">Silné kluby. Silný šport.</div>
+      <p class="footer-brand-desc">Vzdelávacia platforma pre slovenské športové kluby. Súčasť ekosystému SportUp.sk.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Projekt</h5>
+      <ul>
+        <li><a href="o-projekte.html">O projekte</a></li>
+        <li><a href="osnova.html">Osnova kurzu</a></li>
+        <li><a href="partneri.html">Partneri</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Ekosystém</h5>
+      <ul>
+        <li><a href="https://sportup.sk" target="_blank" rel="noopener">SportUp.sk ↗</a></li>
+        <li><a href="https://activity.sportup.sk" target="_blank" rel="noopener">Activity.SportUp.sk ↗</a></li>
+        <li><a href="brand/index.html">Brand kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Open source</h5>
+      <ul>
+        <li><a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener">GitHub repozitár ↗</a></li>
+        <li><a href="https://github.com/ltksolutions/clubup.sk/tree/main/docs" target="_blank" rel="noopener">Dokumentácia ↗</a></li>
+        <li><a href="https://github.com/ltksolutions/clubup.sk/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog ↗</a></li>
+        <li><a href="https://github.com/ltksolutions/clubup.sk/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Právne</h5>
+      <ul>
+        <li><a href="kontakt.html#zasady">Ochrana osobných údajov</a></li>
+        <li><a href="kontakt.html#vop">Obchodné podmienky</a></li>
+        <li><a href="kontakt.html#reklamacie">Reklamačný poriadok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 LTK Solutions s.r.o. · ClubUp.sk</div>
+    <div>info@clubup.sk · <a href="https://github.com/ltksolutions/clubup.sk" target="_blank" rel="noopener">EUPL-1.2</a></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

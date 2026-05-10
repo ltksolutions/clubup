@@ -1,0 +1,29 @@
+/* SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+   SPDX-License-Identifier: EUPL-1.2
+
+   Shared CSS variables for ClubUp components.
+   Imported by apps via:  @import "@clubup/ui/styles.css";
+
+   Tokens mirror website/brand/tokens/clubup-tokens.css. */
+
+:root {
+  --navy: #1A2D47;
+  --navy-dark: #12203A;
+  --blue: #388FC3;
+  --blue-dark: #2A7AAA;
+  --blue-light: #E8F4FD;
+  --paper: #FFFFFF;
+  --warm: #FAFAF7;
+  --ink: #0E1320;
+  --text-muted: #5E6B7D;
+  --border: #E2E5EA;
+  --success: #2E8B57;
+  --warning: #E0A33E;
+  --danger: #C8453B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    /* Reserved for future dark mode. MVP is light-only. */
+  }
+}

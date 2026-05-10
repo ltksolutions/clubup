@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "brand": {
+    "navy":   { "value": "#1A2D47", "type": "color", "description": "Primary brand color, headers, navigation" },
+    "navy2":  { "value": "#243A5A", "type": "color", "description": "Secondary navy, hover states" },
+    "blue":   { "value": "#388FC3", "type": "color", "description": "Accent color, links, focus, CTAs" },
+    "blue2":  { "value": "#5BA8D6", "type": "color", "description": "Hover variant of blue" },
+    "pale":   { "value": "#E8F4FD", "type": "color", "description": "Tinted surface, chips, badges" }
+  },
+  "neutral": {
+    "ink":   { "value": "#0E1320", "type": "color" },
+    "gray":  { "value": "#8E8E92", "type": "color" },
+    "line":  { "value": "#E2E5EA", "type": "color" },
+    "bg":    { "value": "#F4F6F8", "type": "color" },
+    "warm":  { "value": "#FAFAF7", "type": "color" },
+    "paper": { "value": "#FFFFFF", "type": "color" }
+  },
+  "semantic": {
+    "success": { "value": "#2E8B57", "type": "color" },
+    "warning": { "value": "#E0A33E", "type": "color" },
+    "danger":  { "value": "#C8453B", "type": "color" }
+  },
+  "font": {
+    "sans":  { "value": "Poppins, system-ui, sans-serif",        "type": "fontFamily" },
+    "serif": { "value": "Poppins, system-ui, sans-serif",       "type": "fontFamily", "description": "Use italic 500/700 for accent" },
+    "mono":  { "value": "JetBrains Mono, ui-monospace, Menlo", "type": "fontFamily" }
+  },
+  "size": {
+    "h1":    { "value": "44px", "type": "fontSize" },
+    "h2":    { "value": "28px", "type": "fontSize" },
+    "h3":    { "value": "18px", "type": "fontSize" },
+    "body":  { "value": "14px", "type": "fontSize" },
+    "small": { "value": "12px", "type": "fontSize" }
+  },
+  "space": {
+    "1": { "value": "4px",  "type": "spacing" },
+    "2": { "value": "8px",  "type": "spacing" },
+    "3": { "value": "12px", "type": "spacing" },
+    "4": { "value": "16px", "type": "spacing" },
+    "5": { "value": "24px", "type": "spacing" },
+    "6": { "value": "32px", "type": "spacing" },
+    "7": { "value": "48px", "type": "spacing" },
+    "8": { "value": "64px", "type": "spacing" }
+  },
+  "radius": {
+    "xs":   { "value": "4px",    "type": "borderRadius" },
+    "sm":   { "value": "6px",    "type": "borderRadius" },
+    "md":   { "value": "8px",    "type": "borderRadius" },
+    "lg":   { "value": "12px",   "type": "borderRadius" },
+    "xl":   { "value": "16px",   "type": "borderRadius" },
+    "full": { "value": "9999px", "type": "borderRadius" }
+  },
+  "shadow": {
+    "card":    { "value": "0 1px 2px rgba(14,19,32,0.06)",   "type": "boxShadow" },
+    "popover": { "value": "0 4px 14px rgba(14,19,32,0.08)",  "type": "boxShadow" },
+    "modal":   { "value": "0 16px 40px rgba(14,19,32,0.16)", "type": "boxShadow" }
+  }
+}

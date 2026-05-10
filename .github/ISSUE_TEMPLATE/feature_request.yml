@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: 💡 Návrh funkcionality (Feature request)
+description: Navrhnite novú funkcionalitu, kurz, modul alebo zlepšenie.
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ďakujeme za nápad. Čím konkrétnejší popis, tým lepšie.
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Oblasť návrhu
+      options:
+        - Nový kurz / vzdelávací modul
+        - Funkcionalita študentskej aplikácie
+        - Funkcionalita admin aplikácie
+        - Marketingový web
+        - API / integrácia
+        - Doménový model
+        - Iné
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Aký problém riešite?
+      description: Popíšte situáciu, ktorá vás priviedla k tomuto návrhu.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Návrh riešenia
+      description: Čo presne navrhujete? Ak je to UI prvok, doložte mockup alebo skicu, ak je to API, načrtnite endpoint.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatívy, ktoré ste zvážili
+      description: Aké iné riešenia ste premysleli a prečo ich nenavrhujete?
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Doplnkový kontext
+      description: Linky na podobné riešenia, screenshoty, citácie z legislatívy a podobne.

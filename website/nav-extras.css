@@ -1,0 +1,76 @@
+/* SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+   SPDX-License-Identifier: EUPL-1.2
+
+   =========================================================
+   ClubUp.sk — nav extras
+   Loaded after styles.css. Contains rules for ecosystem links
+   in the nav (GitHub icon) and footer adjustments.
+   ========================================================= */
+
+/* Nav GitHub icon — visible always (desktop + mobile) */
+.nav-iconlink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border-bottom: none !important;
+  padding: 0 !important;
+  color: rgba(255, 255, 255, 0.78);
+  transition: color 0.15s, background-color 0.15s;
+}
+.nav-iconlink:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  border-bottom: none !important;
+}
+.nav-iconlink svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.nav-iconlink:hover svg { opacity: 1; }
+
+/* Mobile menu — icon link expands to row with text */
+@media (max-width: 1024px) {
+  .nav-iconlink {
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    padding: 0.95rem 0.25rem !important;
+    border-radius: 0;
+  }
+  .nav-iconlink::after {
+    content: attr(data-label);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-iconlink:hover { background-color: transparent; }
+  .nav-iconlink svg { width: 18px; height: 18px; }
+}
+
+/* Footer — 5 columns layout (overrides 4-col from styles.css) */
+footer .footer-cols {
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+}
+@media (max-width: 1024px) {
+  footer .footer-cols {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 720px) {
+  footer .footer-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  footer .footer-cols {
+    grid-template-columns: 1fr;
+  }
+}

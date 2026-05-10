@@ -1,0 +1,29 @@
+{
+  "name": "@clubup/config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared TypeScript, ESLint, Prettier and Tailwind config for ClubUp monorepo.",
+  "license": "EUPL-1.2",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    "./tsconfig.base.json": "./tsconfig.base.json",
+    "./tsconfig.next.json": "./tsconfig.next.json",
+    "./tsconfig.lib.json": "./tsconfig.lib.json",
+    "./eslint.preset.js": "./eslint.preset.js",
+    "./tailwind.preset.js": "./tailwind.preset.js"
+  },
+  "files": [
+    "tsconfig.base.json",
+    "tsconfig.next.json",
+    "tsconfig.lib.json",
+    "eslint.preset.js",
+    "tailwind.preset.js",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0"
+  }
+}

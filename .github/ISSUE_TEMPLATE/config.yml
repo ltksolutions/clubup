@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
+# SPDX-License-Identifier: CC-BY-4.0
+
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Bezpečnostná zraniteľnosť
+    url: mailto:info@clubup.sk
+    about: Bezpečnostné incidenty hláste e-mailom, NIE cez verejné Issue. Pozri SECURITY.md.
+  - name: 💬 Otázka alebo diskusia
+    url: https://github.com/ltksolutions/clubup/discussions
+    about: Pre otázky, brainstorming a všeobecnú diskusiu použite Discussions.
+  - name: 📘 Dokumentácia
+    url: https://github.com/ltksolutions/clubup/tree/main/docs
+    about: Pred otvorením Issue si pozrite, či odpoveď nie je už v dokumentácii.

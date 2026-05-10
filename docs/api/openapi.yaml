@@ -1,0 +1,455 @@
+# SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+# SPDX-License-Identifier: CC-BY-4.0
+
+openapi: 3.1.0
+info:
+  title: ClubUp API
+  description: |
+    REST API pre vzdelávaciu platformu ClubUp.sk.
+    
+    Toto je **skeleton** — kompletná špecifikácia bude doplnená pri implementácii.
+    Pre detailný popis endpointov pozri:
+    
+    - `courses.md` — kurzy, levels, topics, modules, parts, tests
+    - `enrollments.md` — zápisy
+    - `orders.md` — objednávky a platby
+    - `webhooks.md` — 24-pay, Mux, Teams webhooky
+  version: 0.1.0
+  contact:
+    name: LTK Solutions
+    email: info@clubup.sk
+    url: https://clubup.sk
+  license:
+    name: EUPL-1.2 (kód) / CC-BY-4.0 (dokumentácia)
+    url: https://github.com/ltksolutions/clubup.sk
+
+servers:
+  - url: https://app.clubup.sk/api
+    description: Produkcia (študentská app)
+  - url: https://admin.clubup.sk/api
+    description: Produkcia (admin app)
+  - url: http://localhost:3000/api
+    description: Lokálny development
+
+tags:
+  - name: Courses
+    description: Kurzy (verejné)
+  - name: Learning
+    description: Obsah pre prihláseného študenta
+  - name: Tests
+    description: Testy a pokusy
+  - name: Enrollments
+    description: Zápisy do kurzov
+  - name: Orders
+    description: Objednávky
+  - name: Admin Courses
+    description: Admin operácie nad kurzami
+  - name: Admin Enrollments
+    description: Admin operácie nad zápismi
+  - name: Webhooks
+    description: Webhook endpoints (24-pay, Mux)
+
+paths:
+  # === Public Courses ===
+  /courses:
+    get:
+      tags: [Courses]
+      summary: Verejný katalóg publikovaných kurzov
+      parameters:
+        - name: tag
+          in: query
+          schema: { type: string }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, default: 20, maximum: 50 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/CourseListItem' }
+                  pagination: { $ref: '#/components/schemas/Pagination' }
+
+  /courses/{slug}:
+    get:
+      tags: [Courses]
+      summary: Detail kurzu (Levels + Topics)
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { $ref: '#/components/responses/CourseDetail' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /courses/{slug}/learn:
+    get:
+      tags: [Learning]
+      summary: Detail kurzu so stavom postupu (vyžaduje enrollment)
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { description: Žiadny aktívny enrollment }
+
+  # === Parts (obsah pre študenta) ===
+  /parts/{id}:
+    get:
+      tags: [Learning]
+      summary: Detail časti s content blocks
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+        '403': { description: Časť je locked alebo bez enrollmentu }
+
+  /parts/{id}/playback-url:
+    get:
+      tags: [Learning]
+      summary: Získa signed Mux playback URL pre video block
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+
+  /parts/{id}/progress:
+    post:
+      tags: [Learning]
+      summary: Update progress časti / blocku
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                blockId: { type: string }
+                state: { type: string, enum: [in_progress, completed] }
+                secondsWatched: { type: number }
+                markPartCompleted: { type: boolean }
+      responses:
+        '200': { description: OK }
+
+  # === Tests ===
+  /tests/{id}/attempts:
+    post:
+      tags: [Tests]
+      summary: Spustí nový pokus o test
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '201': { description: Created }
+        '409':
+          description: max_attempts_reached / cooldown_active
+        '403':
+          description: prerequisites_not_met
+
+    get:
+      tags: [Tests]
+      summary: História pokusov študenta
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+
+  /tests/{id}/attempts/{attemptId}/submit:
+    post:
+      tags: [Tests]
+      summary: Submit pokusu (vyhodnotenie)
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: attemptId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      questionId: { type: string }
+                      selectedAnswerIds:
+                        type: array
+                        items: { type: string }
+                      textAnswer: { type: string }
+      responses:
+        '200': { description: OK }
+
+  # === Enrollments ===
+  /enrollments/me:
+    get:
+      tags: [Enrollments]
+      summary: Moje zápisy
+      security: [{ sessionCookie: [] }]
+      responses:
+        '200': { description: OK }
+
+  /enrollments/{id}:
+    get:
+      tags: [Enrollments]
+      summary: Detail zápisu
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+
+  # === Orders ===
+  /orders:
+    post:
+      tags: [Orders]
+      summary: Vytvor objednávku → redirect na 24-pay
+      security: [{ sessionCookie: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [courseId, billingAddress, billingType, agreedTos, agreedRefundPolicy]
+              properties:
+                courseId: { type: string }
+                billingType: { type: string, enum: [personal, company] }
+                billingAddress: { type: object }
+                sponsorOrgId: { type: string }
+                agreedTos: { type: boolean }
+                agreedRefundPolicy: { type: boolean }
+      responses:
+        '201': { description: Created }
+
+  /orders/me:
+    get:
+      tags: [Orders]
+      summary: Moje objednávky
+      security: [{ sessionCookie: [] }]
+      responses:
+        '200': { description: OK }
+
+  /orders/{id}:
+    get:
+      tags: [Orders]
+      summary: Detail objednávky
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+
+  /orders/{id}/invoice:
+    get:
+      tags: [Orders]
+      summary: Stiahne faktúru ako PDF
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/pdf:
+              schema: { type: string, format: binary }
+
+  /orders/{id}/retry-payment:
+    post:
+      tags: [Orders]
+      summary: Po zlyhaní platby skús znova
+      security: [{ sessionCookie: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+
+  # === Webhooks ===
+  /webhooks/24pay:
+    post:
+      tags: [Webhooks]
+      summary: 24-pay payment events
+      parameters:
+        - name: x-24pay-signature
+          in: header
+          required: true
+          schema: { type: string }
+        - name: x-24pay-event-id
+          in: header
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+          application/x-www-form-urlencoded:
+            schema: { type: object }
+      responses:
+        '200': { description: OK (idempotent ack) }
+        '401': { description: Invalid signature }
+
+  /webhooks/mux:
+    post:
+      tags: [Webhooks]
+      summary: Mux video events
+      parameters:
+        - name: mux-signature
+          in: header
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200': { description: OK }
+        '401': { description: Invalid signature }
+
+  # === Verifikácia certifikátu (public) ===
+  /verify/{registrationNumber}:
+    get:
+      tags: [Courses]
+      summary: Verejné overenie certifikátu
+      parameters:
+        - name: registrationNumber
+          in: path
+          required: true
+          schema: { type: string }
+        - name: h
+          in: query
+          required: true
+          schema: { type: string, description: 'verificationHash' }
+      responses:
+        '200': { description: OK — certifikát je platný }
+        '404': { description: Neexistuje alebo chybný hash }
+
+components:
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: __Secure-clubup.session
+
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        page: { type: integer }
+        pageSize: { type: integer }
+        totalItems: { type: integer }
+        totalPages: { type: integer }
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string, description: 'Stable error code' }
+        message: { type: string }
+        details: { type: object }
+
+    CourseListItem:
+      type: object
+      properties:
+        _id: { type: string }
+        slug: { type: string }
+        title: { type: string }
+        shortDescription: { type: string }
+        coverImageUrl: { type: string }
+        priceCents: { type: integer }
+        currency: { type: string, example: EUR }
+        vatIncluded: { type: boolean }
+        durationHours: { type: number }
+        language: { type: string, example: sk }
+        tags:
+          type: array
+          items: { type: string }
+
+    # Ďalšie schémy doplníme pri implementácii — pôjdu zo Zod schém v packages/db
+
+  responses:
+    Unauthorized:
+      description: Chýba session
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+    CourseDetail:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              course: { type: object }
+              levels: { type: array, items: { type: object } }
+              enrollment: { type: object, nullable: true }

@@ -1,0 +1,75 @@
+# REUSE 3.3 specification — https://reuse.software/spec
+# Centralizovaná licenčná metadata pre celý ClubUp.sk repozitár.
+# Validuj cez: python3 -m reuse lint
+
+version = 1
+
+# ─── 1. Repo metadata: README, CHANGELOG, licenčné súbory, repo-meta ───
+[[annotations]]
+path = [
+    "README.md",
+    "CHANGELOG.md",
+    "ROADMAP.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md",
+    "CITATION.cff",
+    "LICENSE",
+    "LICENSE-DOCS",
+    ".gitignore",
+    ".gitattributes",
+    "vercel.json",
+    "REUSE.toml",
+    "package.json",
+    "package-lock.json",
+    "turbo.json",
+    ".nvmrc",
+    ".editorconfig",
+    ".prettierrc",
+    ".prettierignore",
+]
+SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# ─── 2. Dokumentácia (docs/) — CC-BY-4.0 ───
+[[annotations]]
+path = "docs/**"
+SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# ─── 3. Marketingový web (website/) — CC-BY-4.0 ───
+# HTML, CSS, JS, OG image, manifest, brand assety, favicon. Ak by sa
+# v website/ niekedy objavili samostatné moduly s vlastnou logikou,
+# môžu byť presunuté do src/ a re-licencované pod EUPL-1.2.
+[[annotations]]
+path = "website/**"
+SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# ─── 4. GitHub Community files (.github/) ───
+[[annotations]]
+path = ".github/**"
+SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# ─── 5. Aplikácie a balíky (src/) — EUPL-1.2 ───
+# Zdrojový kód monorepa: apps/app (študentská aplikácia), apps/admin
+# (admin), packages/* (zdieľané UI, db, auth, config). Konfiguračné
+# a build súbory v rámci src/ sú tiež EUPL — sú integrálnou súčasťou
+# kódu, nie dokumentáciou.
+[[annotations]]
+path = "src/**"
+SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
+SPDX-License-Identifier = "EUPL-1.2"
+
+# ─── 6. README v src/ a v podsekciách aplikácií ───
+# README súbory v src/ a v src/apps/* sú dokumentácia, nie kód.
+[[annotations]]
+path = [
+    "src/README.md",
+    "src/apps/*/README.md",
+    "src/packages/*/README.md",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
+SPDX-License-Identifier = "CC-BY-4.0"

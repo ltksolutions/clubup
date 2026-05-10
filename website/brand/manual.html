@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<title>ClubUp — Brand Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1A2D47;
+  --navy-2: #243A5A;
+  --blue: #388FC3;
+  --blue-2: #5BA8D6;
+  --pale: #E8F4FD;
+  --paper: #FFFFFF;
+  --bg: #F4F6F8;
+  --warm: #FAFAF7;
+  --gray: #8E8E92;
+  --line: #E2E5EA;
+  --ink: #0E1320;
+  --success: #2E8B57;
+  --danger: #C8453B;
+}
+html { background: #DDE2E8; }
+body { font-family: 'Poppins', system-ui, sans-serif; color: var(--ink); padding: 32px 0; }
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 24px;
+  background: var(--paper);
+  padding: 22mm 20mm;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(14,19,32,0.08);
+  page-break-after: always;
+}
+.page.dark { background: var(--navy); color: #fff; }
+.page.warm { background: var(--warm); }
+
+/* Page chrome */
+.page-num {
+  position: absolute; bottom: 14mm; left: 20mm; right: 20mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gray);
+  border-top: 1px solid var(--line); padding-top: 8px;
+}
+.page.dark .page-num { color: rgba(255,255,255,0.5); border-top-color: rgba(255,255,255,0.12); }
+.crumb { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+.page.dark .crumb { color: var(--blue-2); }
+h1.title { font-size: 38px; font-weight: 700; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 6px; line-height: 1.05; }
+.page.dark h1.title { color: #fff; }
+.title-sub { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 400; font-size: 17px; color: var(--gray); margin-bottom: 36px; }
+.page.dark .title-sub { color: rgba(255,255,255,0.65); }
+
+h2 { font-size: 13px; font-weight: 600; letter-spacing: -0.005em; color: var(--navy); margin-bottom: 10px; }
+.page.dark h2 { color: #fff; }
+p { font-size: 11.5px; line-height: 1.6; color: var(--ink); }
+.page.dark p { color: rgba(255,255,255,0.85); }
+.muted { color: var(--gray); }
+.page.dark .muted { color: rgba(255,255,255,0.55); }
+
+.label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Cover */
+.cover {
+  background: var(--navy);
+  color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 30mm 24mm;
+}
+.cover::before {
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:0.16;
+  background-image: linear-gradient(to right,rgba(255,255,255,0.4) 1px,transparent 1px), linear-gradient(to bottom,rgba(255,255,255,0.4) 1px,transparent 1px);
+  background-size: 14mm 14mm;
+}
+.cover > * { position: relative; z-index: 1; }
+.cover-mark { width: 56mm; height: 56mm; border-radius: 12mm; background: var(--blue); display:flex; align-items:center; justify-content:center; font-family:'Poppins',sans-serif; font-weight:800; font-size: 38px; color:#fff; letter-spacing:-0.04em; }
+.cover-mark::after { content:''; position: absolute; width: 60mm; height: 60mm; border:1px solid rgba(255,255,255,0.25); border-radius: 13mm; }
+.cover h1.lead { font-size: 92px; font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; margin-top: auto; }
+.cover h1.lead em { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 500; color: var(--blue-2); }
+.cover-meta { display:flex; justify-content:space-between; align-items:flex-end; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 28px; }
+.cover-meta dl { display:flex; gap: 32px; }
+.cover-meta dt { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+.cover-meta dd { font-size: 12px; font-weight:500; color:#fff; }
+
+/* TOC */
+.toc { display:flex; flex-direction:column; gap: 4px; }
+.toc-item { display:flex; align-items:baseline; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.toc-num { font-family:'JetBrains Mono',monospace; font-size: 11px; font-weight:500; color: var(--blue); width: 28px; }
+.toc-name { font-size: 14px; font-weight: 500; color: var(--ink); flex: 1; }
+.toc-name em { font-family:'Poppins', sans-serif; font-style: italic; font-weight: 400; color: var(--gray); margin-left: 6px; font-size: 12px; }
+.toc-page { font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--gray); }
+
+/* Logo specimen */
+.specimen {
+  border: 1px solid var(--line); border-radius: 8px; padding: 18mm 12mm;
+  display: flex; align-items: center; justify-content: center; min-height: 80mm;
+  background: var(--paper); position: relative; margin-bottom: 6mm;
+}
+.specimen.dark { background: var(--navy); border-color: var(--navy); }
+.specimen.pale { background: var(--pale); border-color: var(--pale); }
+.specimen .tag { position:absolute; top: 10px; left: 14px; font-family:'JetBrains Mono',monospace; font-size:9px; color: var(--gray); letter-spacing: 0.1em; }
+.specimen.dark .tag { color: rgba(255,255,255,0.5); }
+.specimen img { max-width: 70%; max-height: 28mm; }
+
+.grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.grid-3 { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
+.grid-4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
+
+/* Clear space diagram */
+.clearspace-diag { background: var(--bg); border-radius: 8px; padding: 16mm; position: relative; display:flex; justify-content:center; align-items:center; min-height: 72mm; }
+.clearspace-box { position: relative; }
+.clearspace-box img { display:block; max-width: 80mm; }
+.cs-line { position: absolute; background: var(--blue); }
+.cs-line.top { top: -10mm; left: 0; right: 0; height: 1px; }
+.cs-line.bot { bottom: -10mm; left: 0; right: 0; height: 1px; }
+.cs-line.left { left: -10mm; top: 0; bottom: 0; width: 1px; }
+.cs-line.right { right: -10mm; top: 0; bottom: 0; width: 1px; }
+.cs-arrow { position: absolute; font-family:'JetBrains Mono',monospace; font-size: 9px; color: var(--blue); font-weight: 600; }
+.cs-arrow.x { top: -5mm; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 6px; }
+.cs-arrow.y { left: -5mm; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: center; background: var(--bg); padding: 0 6px; }
+.x-marker { position: absolute; background: var(--blue); color: #fff; width: 4mm; height: 4mm; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size: 8px; font-weight:600; border-radius: 1px; }
+.x-marker.tl { top: -10mm; left: -10mm; }
+.x-marker.tr { top: -10mm; right: -10mm; }
+
+/* Color swatches */
+.swatch { border-radius: 6px; padding: 0; overflow: hidden; border: 1px solid var(--line); }
+.swatch .chip { height: 38mm; display:flex; align-items:flex-end; padding: 8px 12px; color: #fff; font-family:'JetBrains Mono',monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+.swatch .chip.dark-text { color: var(--ink); }
+.swatch .meta { padding: 10px 12px 12px; display:flex; flex-direction: column; gap: 3px; background: var(--paper); }
+.swatch .name { font-size: 11px; font-weight: 600; color: var(--navy); }
+.swatch .vals { font-family:'JetBrains Mono',monospace; font-size: 9px; color: var(--gray); line-height: 1.5; }
+
+/* Type specimen */
+.type-row { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 30mm 1fr; gap: 12px; align-items: baseline; }
+.type-row .tag { font-family:'JetBrains Mono',monospace; font-size: 9px; color: var(--gray); letter-spacing: 0.1em; }
+.type-row .demo { color: var(--ink); }
+.type-h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--navy); }
+.type-h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--navy); }
+.type-h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: var(--navy); }
+.type-body { font-size: 13px; line-height: 1.55; color: var(--ink); }
+.type-small { font-size: 11px; color: var(--gray); }
+.type-mono { font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--blue); letter-spacing: 0.04em; }
+.type-italic { font-family:'Poppins', sans-serif; font-style: italic; font-weight: 500; font-size: 22px; color: var(--blue); }
+
+/* Misuse */
+.dont { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 12mm 8mm 14mm; position: relative; min-height: 36mm; display:flex; align-items:center; justify-content:center; }
+.dont::before { content:''; position:absolute; top:8px; left:8px; width: 16px; height: 16px; border-radius: 50%; background: var(--danger); }
+.dont::after { content:'✕'; position:absolute; top:8px; left:8px; width: 16px; height: 16px; display:flex; align-items:center; justify-content:center; color:#fff; font-size: 11px; font-weight: 700; }
+.dont .label-bot { position: absolute; bottom: 8px; left: 12px; right: 12px; font-size: 10px; color: var(--ink); }
+.dont img { max-width: 56mm; max-height: 22mm; }
+
+/* Icon strip */
+.icon-strip { display:flex; gap: 14px; flex-wrap: wrap; padding: 10px 0; }
+.ic-cell { display:flex; flex-direction:column; align-items:center; gap: 4px; }
+.ic-cell svg { color: var(--navy); }
+.ic-cell .l { font-family:'JetBrains Mono',monospace; font-size: 8px; color: var(--gray); }
+
+/* Token table */
+.tok { width:100%; border-collapse: collapse; font-size: 11px; }
+.tok th { font-family:'JetBrains Mono',monospace; font-size: 9px; font-weight:500; letter-spacing:0.1em; text-transform: uppercase; color: var(--gray); text-align:left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.tok td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.tok td.swatch-cell { width: 8mm; }
+.tok td.swatch-cell div { width: 6mm; height: 6mm; border-radius: 2px; border: 1px solid rgba(0,0,0,0.06); }
+.tok td .mono { font-size: 10.5px; color: var(--ink); }
+.tok td .name { font-weight:500; }
+
+/* Spacing scale viz */
+.space-viz { display: flex; align-items: flex-end; gap: 6px; padding: 12px 0; }
+.space-block { background: var(--blue); border-radius: 2px; }
+.space-block.x4 { width: 4px; height: 4px; }
+.space-block.x8 { width: 8px; height: 8px; }
+.space-block.x12 { width: 12px; height: 12px; }
+.space-block.x16 { width: 16px; height: 16px; }
+.space-block.x24 { width: 24px; height: 24px; }
+.space-block.x32 { width: 32px; height: 32px; }
+.space-block.x48 { width: 48px; height: 48px; }
+.space-block.x64 { width: 64px; height: 64px; }
+
+/* UI patterns */
+.ui-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.ui-card .ic { width: 32px; height: 32px; border-radius: 8px; background: var(--pale); display:flex; align-items:center; justify-content:center; color: var(--blue); margin-bottom: 10px; }
+.ui-card h4 { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.ui-card p.t { font-size: 10px; line-height: 1.45; color: var(--gray); }
+
+.btn-row { display:flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 8px 0; }
+.btn { padding: 8px 16px; border-radius: 6px; font-size: 11px; font-weight: 500; border: none; cursor: pointer; font-family: inherit; }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-secondary { background: var(--navy); color: #fff; }
+.btn-outline { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+.btn-ghost { background: transparent; color: var(--blue); }
+
+.callout { background: var(--pale); border-left: 3px solid var(--blue); border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 10px 0; font-size: 11px; line-height: 1.5; color: var(--navy); }
+.callout strong { font-weight: 600; }
+
+/* Voice columns */
+.voice-cols { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.voice-cols .vcol { padding: 10px 12px; border-radius: 6px; }
+.voice-cols .vcol.do { background: rgba(46,139,87,0.08); border-left: 3px solid var(--success); }
+.voice-cols .vcol.dont { background: rgba(200,69,59,0.06); border-left: 3px solid var(--danger); padding-bottom: 10px; min-height: 0; display: block; }
+.voice-cols .vcol.dont::before, .voice-cols .vcol.dont::after { content: none; }
+.voice-cols .vc-h { font-family:'JetBrains Mono',monospace; font-size: 9px; letter-spacing:0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.voice-cols .do .vc-h { color: var(--success); }
+.voice-cols .dont .vc-h { color: var(--danger); }
+.voice-cols .vc-l { font-size: 11px; line-height: 1.55; color: var(--ink); }
+
+/* Print */
+@media print {
+  html, body { background: white; padding: 0; }
+  .page { margin: 0; box-shadow: none; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- =================== PAGE 1: COVER =================== -->
+<div class="page cover">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+    <div>
+      <div class="crumb" style="color:rgba(255,255,255,0.6); margin-bottom:4px;">LTK Solutions · Brand</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--blue-2); letter-spacing:0.12em;">v1.0 · Máj 2026</div>
+    </div>
+    <div class="cover-mark"><img src="logo/clubup-logo-mono-white.svg" style="width:38mm;" alt="ClubUp"></div>
+  </div>
+
+  <h1 class="lead">Brand<br>manuál<br><em>ClubUp.</em></h1>
+
+  <div class="cover-meta">
+    <dl>
+      <div><dt>Vlastník</dt><dd>LTK Solutions s.r.o.</dd></div>
+      <div><dt>Repozitár</dt><dd>github.com/ltksolutions/clubup.sk</dd></div>
+      <div><dt>Verzia</dt><dd>1.0</dd></div>
+      <div><dt>Strán</dt><dd>8</dd></div>
+    </dl>
+  </div>
+</div>
+
+<!-- =================== PAGE 2: TOC + INTRO =================== -->
+<div class="page">
+  <div class="crumb">00 · Obsah</div>
+  <h1 class="title">O dokumente</h1>
+  <p class="title-sub">Krátky sprievodca, ako pracovať so značkou ClubUp v rozhraní, dokumentoch a komunikácii.</p>
+
+  <p style="margin-bottom: 14px;">
+    <strong>ClubUp</strong> je vzdelávací a riadiaci nástroj pre športové kluby a ich funkcionárov v rámci ekosystému <strong>SportUp.sk</strong>. Vizuálny systém zdieľa rovnakú DNA so sesterskými projektami <span class="mono" style="color:var(--blue);">sportup.sk</span> a <span class="mono" style="color:var(--blue);">activity.sportup.sk</span> &mdash; líši sa však tematickou paletou (klubová modrá) a ikonografickým slovníkom (vzdelávanie, tímy, kluby).
+  </p>
+  <p style="margin-bottom: 24px;">
+    Tento manuál je <strong>záväzný</strong> pre dizajnérov, vývojárov aj autorov obsahu. Obsahuje hotové tokeny, knižnicu ikon, ukážky komponentov a sprievodcu hlasom značky.
+  </p>
+
+  <div class="callout" style="margin-bottom: 28px;">
+    <strong>Repozitár obsahuje aj:</strong> <span class="mono">/brand/logo/</span> &mdash; všetky varianty loga (SVG), <span class="mono">logo.html</span> &mdash; export hub, <span class="mono">icons.html</span> &mdash; klikateľná knižnica 32 ikon, <span class="mono">dev.html</span> &mdash; sprievodca pre vývojárov s tokenmi a CSS premennými.
+  </div>
+
+  <h2 style="margin-top:8px;">Obsah</h2>
+  <div class="toc">
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">Logo a varianty <em>primárne, mono, dark</em></span><span class="toc-page">str. 3</span></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Ochranná zóna a minimálna veľkosť</span><span class="toc-page">str. 4</span></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Zakázané použitia <em>misuse</em></span><span class="toc-page">str. 5</span></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Farby <em>paleta a tokeny</em></span><span class="toc-page">str. 6</span></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Typografia <em>Poppins, JetBrains Mono</em></span><span class="toc-page">str. 7</span></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Ikony <em>32 px set, stroke 1.8</em></span><span class="toc-page">str. 8</span></div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">Spacing, mriežka, komponenty</span><span class="toc-page">str. 9</span></div>
+    <div class="toc-item"><span class="toc-num">08</span><span class="toc-name">Hlas, tón a kontakt</span><span class="toc-page">str. 10</span></div>
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>02 · Obsah</span></div>
+</div>
+
+<!-- =================== PAGE 3: LOGO VARIANTS =================== -->
+<div class="page">
+  <div class="crumb">01 · Logo</div>
+  <h1 class="title">Logo a varianty.</h1>
+  <p class="title-sub">Štyri schválené verzie. Inú podobu loga nepoužívajte.</p>
+
+  <div class="grid-2">
+    <div class="specimen"><span class="tag">PRIMARY · plnofarebné</span><img src="logo/clubup-logo-primary.svg" alt="primary"></div>
+    <div class="specimen dark"><span class="tag" style="color:rgba(255,255,255,0.5);">DARK · na tmavom</span><img src="logo/clubup-logo-dark.svg" alt="dark"></div>
+    <div class="specimen"><span class="tag">MONO NAVY · jednofarebné tmavé</span><img src="logo/clubup-logo-mono-navy.svg" alt="mono-navy"></div>
+    <div class="specimen pale"><span class="tag">MONO BLACK · tlač / fax</span><img src="logo/clubup-logo-mono-black.svg" alt="mono-black"></div>
+  </div>
+
+  <div style="margin-top: 8mm; display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+    <div>
+      <h2>Kedy použiť ktorú</h2>
+      <p style="font-size:11px;"><strong style="color:var(--navy);">Primary</strong> &mdash; default voľba pre web, aplikáciu, marketing, digitálne materiály.</p>
+      <p style="font-size:11px; margin-top:6px;"><strong style="color:var(--navy);">Dark</strong> &mdash; iba na tmavé pozadia (navy, čierna, tmavá fotka). Modrý akcent ostáva.</p>
+      <p style="font-size:11px; margin-top:6px;"><strong style="color:var(--navy);">Mono navy</strong> &mdash; jednofarebná tlač, pečiatky, faxy, embossing, gravírovanie.</p>
+      <p style="font-size:11px; margin-top:6px;"><strong style="color:var(--navy);">Mono biele</strong> &mdash; na fotografiách s nízkym kontrastom &mdash; vždy s 50% blackoutom alebo gradientom pozadia.</p>
+    </div>
+    <div>
+      <h2>Formáty súborov</h2>
+      <p style="font-size:11px;"><span class="mono" style="color:var(--blue);">SVG</span> &mdash; default pre web a tlač. Vždy preferujte vektor.</p>
+      <p style="font-size:11px; margin-top:6px;"><span class="mono" style="color:var(--blue);">PNG @2x</span> &mdash; sociálne siete, e-mail. Min. 1024×512.</p>
+      <p style="font-size:11px; margin-top:6px;"><span class="mono" style="color:var(--blue);">PDF</span> &mdash; tlač (vizitky, hlavičkové papiere, billboardy).</p>
+      <p style="font-size:11px; margin-top:6px;"><span class="mono" style="color:var(--blue);">ICO/PNG 32×32</span> &mdash; favicon (zjednodušená značka, len symbol).</p>
+    </div>
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>03 · Logo</span></div>
+</div>
+
+<!-- =================== PAGE 4: CLEARSPACE + SIZE =================== -->
+<div class="page">
+  <div class="crumb">02 · Ochranná zóna</div>
+  <h1 class="title">Ochranná zóna a&nbsp;veľkosti.</h1>
+  <p class="title-sub">Logu treba dychať. Nech ho neobchádza žiadny iný prvok.</p>
+
+  <h2>Ochranná zóna = X</h2>
+  <p style="margin-bottom: 8px;">Minimálny odstup od loga ku ktorémukoľvek inému prvku (text, obrázok, okraj plátna) sa rovná <strong>výške písmena „C&ldquo;</strong> v slovnej značke. V manuáli ho označujeme <span class="mono" style="color:var(--blue);">X</span>.</p>
+
+  <div class="clearspace-diag">
+    <div class="clearspace-box">
+      <img src="logo/clubup-logo-primary.svg" alt="logo with clearspace">
+      <div class="cs-line top"></div><div class="cs-line bot"></div>
+      <div class="cs-line left"></div><div class="cs-line right"></div>
+      <div class="x-marker tl">X</div>
+      <div class="x-marker tr">X</div>
+      <div class="cs-arrow x">X</div>
+      <div class="cs-arrow y">X</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 10mm;">
+    <div>
+      <h2>Minimálne veľkosti</h2>
+      <table class="tok" style="margin-top: 4px;">
+        <tr><td><span class="name">Digital · plné logo</span></td><td class="mono" style="color:var(--blue);">120 px width min</td></tr>
+        <tr><td><span class="name">Digital · symbol</span></td><td class="mono" style="color:var(--blue);">24 px width min</td></tr>
+        <tr><td><span class="name">Tlač · plné logo</span></td><td class="mono" style="color:var(--blue);">25 mm width min</td></tr>
+        <tr><td><span class="name">Tlač · symbol</span></td><td class="mono" style="color:var(--blue);">8 mm width min</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Veľkostné štandardy</h2>
+      <p style="font-size:11px;">Vizitka <span class="mono" style="color:var(--gray);">— 30 mm</span></p>
+      <p style="font-size:11px; margin-top:4px;">Hlavičkový papier <span class="mono" style="color:var(--gray);">— 45 mm</span></p>
+      <p style="font-size:11px; margin-top:4px;">Web header <span class="mono" style="color:var(--gray);">— 140&ndash;180 px</span></p>
+      <p style="font-size:11px; margin-top:4px;">Mobil app bar <span class="mono" style="color:var(--gray);">— 96 px (symbol)</span></p>
+      <p style="font-size:11px; margin-top:4px;">Email signature <span class="mono" style="color:var(--gray);">— 120 px</span></p>
+    </div>
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>04 · Ochranná zóna</span></div>
+</div>
+
+<!-- =================== PAGE 5: MISUSE =================== -->
+<div class="page">
+  <div class="crumb">03 · Zakázané použitia</div>
+  <h1 class="title">Toto nikdy.</h1>
+  <p class="title-sub">Šesť situácií, ktoré ničia identitu značky.</p>
+
+  <div class="grid-3">
+    <div class="dont"><img src="logo/clubup-logo-primary.svg" style="transform: skewX(-12deg);" alt=""><div class="label-bot">Nedeformujte &mdash; žiadne natiahnutie, sklon, perspektíva.</div></div>
+    <div class="dont" style="background: linear-gradient(135deg, #ff5e9c, #ffd166);"><img src="logo/clubup-logo-mono-white.svg" alt=""><div class="label-bot" style="color:#fff;">Nepoužívajte na rušivých, neurčených pozadiach.</div></div>
+    <div class="dont"><img src="logo/clubup-logo-primary.svg" style="filter: hue-rotate(120deg);" alt=""><div class="label-bot">Neprefarbujte &mdash; iba schválené farby.</div></div>
+    <div class="dont"><img src="logo/clubup-logo-primary.svg" style="filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));" alt=""><div class="label-bot">Žiadne tiene, glow ani 3D efekty.</div></div>
+    <div class="dont"><img src="logo/clubup-logo-primary.svg" style="opacity: 0.35;" alt=""><div class="label-bot">Neprehlušujte priehľadnosťou pod 100&nbsp;%.</div></div>
+    <div class="dont"><img src="logo/clubup-logo-primary.svg" style="transform: rotate(-12deg);" alt=""><div class="label-bot">Logo nikdy neotáčajte ani nenakláňajte.</div></div>
+  </div>
+
+  <div class="callout" style="margin-top: 8mm;">
+    <strong>Pravidlo:</strong> ak vás napadne „čo keby som logo&hellip;&ldquo; &mdash; pravdepodobne to nesmiete. Ak si nie ste istý, kontaktujte držiteľa značky <span class="mono" style="color:var(--blue);">info@clubup.sk</span>.
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>05 · Zakázané použitia</span></div>
+</div>
+
+<!-- =================== PAGE 6: COLORS =================== -->
+<div class="page">
+  <div class="crumb">04 · Farby</div>
+  <h1 class="title">Paleta.</h1>
+  <p class="title-sub">Klubová modrá je primárna značková farba. Navy je hlas, blue je akcent.</p>
+
+  <h2 style="margin-top: 4mm;">Brand</h2>
+  <div class="grid-3">
+    <div class="swatch"><div class="chip" style="background:#1A2D47;">#1A2D47</div><div class="meta"><span class="name">Navy &mdash; primary</span><span class="vals">RGB 26 · 45 · 71<br>CMYK 90 · 75 · 45 · 50<br>Pantone 2767 C</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#388FC3;">#388FC3</div><div class="meta"><span class="name">Blue &mdash; akcent</span><span class="vals">RGB 56 · 143 · 195<br>CMYK 75 · 30 · 5 · 0<br>Pantone 2925 C</span></div></div>
+    <div class="swatch"><div class="chip dark-text" style="background:#E8F4FD;">#E8F4FD</div><div class="meta"><span class="name">Pale &mdash; surface</span><span class="vals">RGB 232 · 244 · 253<br>CMYK 8 · 2 · 0 · 0<br>Pantone 656 C</span></div></div>
+  </div>
+
+  <h2 style="margin-top: 8mm;">Neutrals</h2>
+  <div class="grid-4">
+    <div class="swatch"><div class="chip" style="background:#0E1320;">#0E1320</div><div class="meta"><span class="name">Ink</span><span class="vals">text default</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#8E8E92;">#8E8E92</div><div class="meta"><span class="name">Gray</span><span class="vals">muted text</span></div></div>
+    <div class="swatch"><div class="chip dark-text" style="background:#E2E5EA;">#E2E5EA</div><div class="meta"><span class="name">Line</span><span class="vals">borders, dividers</span></div></div>
+    <div class="swatch"><div class="chip dark-text" style="background:#F4F6F8;">#F4F6F8</div><div class="meta"><span class="name">BG</span><span class="vals">page background</span></div></div>
+  </div>
+
+  <h2 style="margin-top: 8mm;">Semantic</h2>
+  <div class="grid-3">
+    <div class="swatch"><div class="chip" style="background:#2E8B57;">#2E8B57</div><div class="meta"><span class="name">Success</span><span class="vals">potvrdenia, OK stavy</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#E0A33E;">#E0A33E</div><div class="meta"><span class="name">Warning</span><span class="vals">upozornenia</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#C8453B;">#C8453B</div><div class="meta"><span class="name">Danger</span><span class="vals">chyby, deštruktívne akcie</span></div></div>
+  </div>
+
+  <div class="callout" style="margin-top: 10mm;">
+    <strong>Použitie 60-30-10:</strong> 60&nbsp;% plochy biela / pale, 30&nbsp;% navy (hlavičky, akcenty, CTA pozadia), 10&nbsp;% blue (linky, ikony, focus stavy, primárne tlačidlá).
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>06 · Farby</span></div>
+</div>
+
+<!-- =================== PAGE 7: TYPOGRAPHY =================== -->
+<div class="page">
+  <div class="crumb">05 · Typografia</div>
+  <h1 class="title">Typografia.</h1>
+  <p class="title-sub">Poppins pre rozhranie a komunikáciu. JetBrains Mono pre kód a metadáta. Logotyp Helvetica Neue Black Italic (v krivkách).</p>
+
+  <h2>Poppins &mdash; primárne písmo</h2>
+  <p class="muted" style="font-size: 10.5px; margin-bottom: 4px;">Geometrické sans-serif. Voľne dostupné cez Google Fonts. Zhodné s ekosystémom SportUp.sk. Weights: 300, 400, 500, 600, 700, 800 + italic 400, 500, 700.</p>
+
+  <div class="type-row"><span class="tag">H1 / 44 / 700</span><span class="demo type-h1">ClubUp pre kluby.</span></div>
+  <div class="type-row"><span class="tag">H2 / 28 / 700</span><span class="demo type-h2">Vzdelávanie pre funkcionárov</span></div>
+  <div class="type-row"><span class="tag">H3 / 18 / 600</span><span class="demo type-h3">Riadenie tímu od A po Z</span></div>
+  <div class="type-row"><span class="tag">Body / 13 / 400</span><span class="demo type-body">ClubUp je nadstavba SportUp.sk pre prezidentov, manažérov a trénerov klubov &mdash; štruktúrované kurzy, správa licencií, súťaží a financovania.</span></div>
+  <div class="type-row"><span class="tag">Small / 11 / 400</span><span class="demo type-small">Doplnkový text, popisky, metadata, captions.</span></div>
+
+  <h2 style="margin-top: 8mm;">Poppins italic &mdash; akcent</h2>
+  <p class="muted" style="font-size: 10.5px; margin-bottom: 4px;">Italic 500/700 pre dôraz v nadpisoch a krátke citácie. Zhodný princíp ako pri SportUp.sk.</p>
+  <div class="type-row"><span class="tag">Display italic</span><span class="demo type-italic">„Klub je viac než tréning &mdash; je to systém.&ldquo;</span></div>
+
+  <h2 style="margin-top: 8mm;">JetBrains Mono &mdash; technické</h2>
+  <p class="muted" style="font-size: 10.5px; margin-bottom: 4px;">Pre code-snippets, čísla v dashboardoch, štítky, krížové referencie a metadáta v UI.</p>
+  <div class="type-row"><span class="tag">Mono / 11 / 500</span><span class="demo type-mono">--clubup-blue: #388FC3;  /* primary accent */</span></div>
+
+  <div class="callout" style="margin-top: 6mm;">
+    <strong>Logotyp:</strong> <span class="mono">Helvetica Neue Black Italic, weight 900</span> &mdash; v exportoch loga prevedené na krivky, takže font nie je potrebný v projekte. <br><strong>Web fallback:</strong> <span class="mono">font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;</span>
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>07 · Typografia</span></div>
+</div>
+
+<!-- =================== PAGE 8: ICONS =================== -->
+<div class="page">
+  <div class="crumb">06 · Ikony</div>
+  <h1 class="title">Ikonografický systém.</h1>
+  <p class="title-sub">32 ikon · 24×24 grid · stroke 1.8 · navy s blue akcentom.</p>
+
+  <h2>Pravidlá</h2>
+  <p style="font-size: 11px; margin-bottom: 4px;"><strong>Mriežka:</strong> 24×24 viewBox, padding 2 px, kresba v zóne 20×20.</p>
+  <p style="font-size: 11px; margin-bottom: 4px;"><strong>Stroke:</strong> 1.8 px, <code class="mono">stroke-linecap="round"</code>, <code class="mono">stroke-linejoin="round"</code>.</p>
+  <p style="font-size: 11px; margin-bottom: 4px;"><strong>Akcent:</strong> jeden modrý prvok (<span class="mono" style="color:var(--blue);">#388FC3</span>) na ikonu &mdash; vyznačuje, čo je „aktívne&ldquo; alebo „nové&ldquo;.</p>
+  <p style="font-size: 11px; margin-bottom: 12px;"><strong>Veľkosti v UI:</strong> 16, 20, 24 (default), 32, 48 px. Vždy násobky 4.</p>
+
+  <h2 style="margin-top:6mm;">Klub & tímy</h2>
+  <div class="icon-strip">
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 21 L4 9 L12 4 L20 9 L20 21 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M9 21 L9 14 L15 14 L15 21" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="10" r="1.6" fill="#388FC3"/></svg><span class="l">club</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.5" stroke="#1A2D47" stroke-width="1.8" fill="none"/><circle cx="16" cy="9" r="2.6" stroke="#388FC3" stroke-width="1.8" fill="none"/><path d="M2.5 19 C2.5 15.7 5.4 13 9 13 C12.6 13 15.5 15.7 15.5 19" stroke="#1A2D47" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M16 14 C18.7 14 21 16 21 19" stroke="#388FC3" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg><span class="l">team</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M4 20 C4 16.1 7.6 13 12 13 C16.4 13 20 16.1 20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg><span class="l">member</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M7 18 C7 15.2 9.2 13 12 13 C14.8 13 17 15.2 17 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg><span class="l">role</span></div>
+  </div>
+
+  <h2 style="margin-top:5mm;">Vzdelávanie</h2>
+  <div class="icon-strip">
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 5 L11 3 L11 21 L3 19 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M21 5 L13 3 L13 21 L21 19 Z" stroke="#388FC3" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg><span class="l">course</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M7 8 L17 8 M7 12 L13 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="18" r="3.5" stroke="#388FC3" stroke-width="1.8" fill="none"/><path d="M10 22 L12 19.5 L14 22" stroke="#388FC3" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg><span class="l">cert</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M10 9.5 L15 12 L10 14.5 Z" fill="#388FC3"/><path d="M8 21 L16 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="l">lesson</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-opacity="0.25"/><path d="M12 3 A9 9 0 0 1 21 12" stroke="#388FC3" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M9 12 L11 14 L15 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="l">progress</span></div>
+  </div>
+
+  <h2 style="margin-top:5mm;">Riadenie</h2>
+  <div class="icon-strip">
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13" y="3" width="8" height="6" rx="1.5" stroke="#388FC3" stroke-width="1.8" fill="none"/><rect x="13" y="11" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="3" y="15" width="8" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg><span class="l">dashboard</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 10 L21 10" stroke="currentColor" stroke-width="1.8"/><path d="M8 2 L8 6 M16 2 L16 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15" r="1.4" fill="#388FC3"/></svg><span class="l">calendar</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M14 8 C12 7.5 10 8 10 9.5 C10 11 14 11 14 12.5 C14 14 12 14.5 10 14" stroke="#388FC3" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M12 6 L12 8 M12 14 L12 16" stroke="#388FC3" stroke-width="1.8" stroke-linecap="round"/></svg><span class="l">finance</span></div>
+    <div class="ic-cell"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 21 L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="5" y="13" width="3.5" height="6" rx="1" fill="currentColor" fill-opacity="0.3"/><rect x="10.25" y="9" width="3.5" height="10" rx="1" fill="#388FC3"/><rect x="15.5" y="5" width="3.5" height="14" rx="1" fill="#1A2D47"/></svg><span class="l">chart</span></div>
+  </div>
+
+  <div class="callout" style="margin-top: 8mm;">
+    <strong>Plný set 32 ikon</strong> nájdete v <span class="mono" style="color:var(--blue);">icons.html</span> &mdash; klikateľná galéria s kópiou SVG do schránky a prepínaním veľkostí.
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>08 · Ikony</span></div>
+</div>
+
+<!-- =================== PAGE 9: SPACING / COMPONENTS =================== -->
+<div class="page">
+  <div class="crumb">07 · Spacing & komponenty</div>
+  <h1 class="title">Mriežka, spacing, komponenty.</h1>
+  <p class="title-sub">8-bodový systém. Všetky odsadenia sú násobky 4 px.</p>
+
+  <h2>Spacing tokens</h2>
+  <div class="space-viz">
+    <div style="text-align:center;"><div class="space-block x4"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">4</div></div>
+    <div style="text-align:center;"><div class="space-block x8"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">8</div></div>
+    <div style="text-align:center;"><div class="space-block x12"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">12</div></div>
+    <div style="text-align:center;"><div class="space-block x16"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">16</div></div>
+    <div style="text-align:center;"><div class="space-block x24"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">24</div></div>
+    <div style="text-align:center;"><div class="space-block x32"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">32</div></div>
+    <div style="text-align:center;"><div class="space-block x48"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">48</div></div>
+    <div style="text-align:center;"><div class="space-block x64"></div><div class="mono" style="font-size:8px; color:var(--gray); margin-top:4px;">64</div></div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 8mm;">
+    <div>
+      <h2>Border radius</h2>
+      <table class="tok">
+        <tr><td><span class="name">xs</span></td><td class="mono">4px</td><td class="muted">badges, tags</td></tr>
+        <tr><td><span class="name">sm</span></td><td class="mono">6px</td><td class="muted">buttons, inputs</td></tr>
+        <tr><td><span class="name">md</span></td><td class="mono">8px</td><td class="muted">icon containers</td></tr>
+        <tr><td><span class="name">lg</span></td><td class="mono">12px</td><td class="muted">cards, panels</td></tr>
+        <tr><td><span class="name">xl</span></td><td class="mono">16px</td><td class="muted">modals</td></tr>
+        <tr><td><span class="name">full</span></td><td class="mono">9999px</td><td class="muted">pills, avatars</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Elevation</h2>
+      <table class="tok">
+        <tr><td><span class="name">flat</span></td><td class="mono">0</td></tr>
+        <tr><td><span class="name">card</span></td><td class="mono">0 1px 2px rgba(0,0,0,.06)</td></tr>
+        <tr><td><span class="name">popover</span></td><td class="mono">0 4px 14px rgba(14,19,32,.08)</td></tr>
+        <tr><td><span class="name">modal</span></td><td class="mono">0 16px 40px rgba(14,19,32,.16)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 8mm;">Komponentová DNA</h2>
+
+  <div class="grid-3" style="margin-top: 4mm;">
+    <div class="ui-card"><div class="ic">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 5 L11 3 L11 21 L3 19 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M21 5 L13 3 L13 21 L21 19 Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></svg>
+    </div><h4>Kurz funkcionára</h4><p class="t">Card · padding 14/16 · radius 12 · ikona v pale chip-e 32×32.</p></div>
+    <div class="ui-card"><div class="ic">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.5" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M2.5 19 C2.5 15.7 5.4 13 9 13 C12.6 13 15.5 15.7 15.5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+    </div><h4>Tím a roly</h4><p class="t">Štandardná štruktúra: ikona → titulok 12/600 → popis 10/gray.</p></div>
+    <div class="ui-card"><div class="ic">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13" y="11" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+    </div><h4>Dashboard</h4><p class="t">Mriežka 12 stĺpcov · gap 24 · cards radius 12.</p></div>
+  </div>
+
+  <h2 style="margin-top: 8mm;">Tlačidlá</h2>
+  <div class="btn-row">
+    <button class="btn btn-primary">Primárna akcia</button>
+    <button class="btn btn-secondary">Sekundárna</button>
+    <button class="btn btn-outline">Outline</button>
+    <button class="btn btn-ghost">Zrušiť</button>
+  </div>
+  <p style="font-size:10px; color:var(--gray); margin-top:6px;">Padding 8/16 · radius 6 · weight 500 · font-size 11&ndash;14 · žiadne tiene v default stave.</p>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0</span><span>09 · Spacing & komponenty</span></div>
+</div>
+
+<!-- =================== PAGE 10: VOICE & CONTACT =================== -->
+<div class="page warm">
+  <div class="crumb">08 · Hlas</div>
+  <h1 class="title">Hlas a tón.</h1>
+  <p class="title-sub">Hovoríme s funkcionármi klubov &mdash; teda s ľuďmi, ktorí vedú dobrovoľníkov, deti a seniorov zároveň.</p>
+
+  <div class="voice-cols" style="margin-top: 6mm;">
+    <div class="vcol do">
+      <div class="vc-h">✓ Áno</div>
+      <p class="vc-l">Konkrétne, vecné, bez korpoblábolu. „Nahrajte zoznam hráčov a my pripravíme licenčné karty.&ldquo;</p>
+    </div>
+    <div class="vcol dont">
+      <div class="vc-h">✕ Nie</div>
+      <p class="vc-l">Marketingové frázy: „Synergický ekosystém pre digitálnu transformáciu klubového manažmentu.&ldquo;</p>
+    </div>
+    <div class="vcol do">
+      <div class="vc-h">✓ Áno</div>
+      <p class="vc-l">Tykáme funkcionárom (klubová atmosféra), vykáme úradom (zväz, ministerstvo).</p>
+    </div>
+    <div class="vcol dont">
+      <div class="vc-h">✕ Nie</div>
+      <p class="vc-l">Anglicizmy tam, kde existuje slušná slovenská alternatíva: „onboarding&ldquo; → „uvedenie&ldquo;.</p>
+    </div>
+    <div class="vcol do">
+      <div class="vc-h">✓ Áno</div>
+      <p class="vc-l">Krátke vety, aktívny rod. „Klub schvaľuje rozpočet.&ldquo; nie „Rozpočet je schvaľovaný klubom.&ldquo;</p>
+    </div>
+    <div class="vcol dont">
+      <div class="vc-h">✕ Nie</div>
+      <p class="vc-l">Snobský právnický jazyk. „Prejavom súhlasu uvedeným v zmysle&hellip;&ldquo;</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 10mm;">Mikrokopy &mdash; časté frázy</h2>
+  <table class="tok" style="margin-top:6px;">
+    <tr><th>Kontext</th><th>Použiť</th><th>Nepoužívať</th></tr>
+    <tr><td><span class="name">Prázdny stav</span></td><td>Tu zatiaľ nič nie je. Pridajte prvý kurz.</td><td class="muted">No data available.</td></tr>
+    <tr><td><span class="name">Chyba</span></td><td>Niečo sa nepodarilo &mdash; skúste to znova.</td><td class="muted">An error has occurred.</td></tr>
+    <tr><td><span class="name">Úspech</span></td><td>Hotovo. Prihláška je odoslaná.</td><td class="muted">Successfully submitted.</td></tr>
+    <tr><td><span class="name">Potvrdenie</span></td><td>Naozaj zmazať tím <em>Žilina U15</em>?</td><td class="muted">Are you sure?</td></tr>
+  </table>
+
+  <h2 style="margin-top: 10mm;">Vzťah k sesterským značkám</h2>
+  <div class="grid-3" style="margin-top: 4mm;">
+    <div class="ui-card" style="border-color: var(--navy); border-width:2px;"><h4 style="color:var(--blue);">SportUp.sk</h4><p class="t">Hlavná platforma. Zelená paleta. Pre športovcov a širokú verejnosť.</p></div>
+    <div class="ui-card"><h4>Activity</h4><p class="t">Tracker tréningov a aktivít. Oranžová paleta. Pre individuálnych užívateľov.</p></div>
+    <div class="ui-card" style="background: var(--navy); border-color: var(--navy);"><h4 style="color:#fff;">ClubUp.sk</h4><p class="t" style="color: rgba(255,255,255,0.7);">Riadenie a vzdelávanie pre kluby. Modrá paleta. Pre funkcionárov.</p></div>
+  </div>
+
+  <div class="callout" style="margin-top: 12mm;">
+    <strong>Kontakt &mdash; držiteľ značky</strong><br>
+    LTK Solutions s.r.o. &middot; <span class="mono" style="color:var(--blue);">info@clubup.sk</span><br>
+    Repozitár: <span class="mono">github.com/ltksolutions/clubup.sk</span> &middot; Otázky a žiadosti o úpravu manuálu cez Issues.
+  </div>
+
+  <div class="page-num"><span>ClubUp Brand Manual v1.0 &middot; © LTK Solutions 2026</span><span>10 · Hlas &amp; kontakt</span></div>
+</div>
+
+</body>
+</html>

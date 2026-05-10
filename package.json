@@ -1,0 +1,45 @@
+{
+  "name": "clubup",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ClubUp.sk — vzdelávacia platforma pre manažment športových klubov. Súčasť ekosystému SportUp.sk.",
+  "license": "EUPL-1.2",
+  "author": {
+    "name": "Ján Letko",
+    "email": "info@clubup.sk",
+    "url": "https://clubup.sk"
+  },
+  "homepage": "https://clubup.sk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltksolutions/clubup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ltksolutions/clubup/issues"
+  },
+  "workspaces": [
+    "src/apps/*",
+    "src/packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css,html}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css,html}\"",
+    "reuse": "pipx run reuse lint",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "turbo": "^2.3.3",
+    "typescript": "^5.6.3"
+  },
+  "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

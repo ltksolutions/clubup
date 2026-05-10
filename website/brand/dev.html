@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<title>ClubUp Brand · README pre vývojárov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy:#1A2D47; --blue:#388FC3; --pale:#E8F4FD; --bg:#F4F6F8; --gray:#8E8E92; --line:#E2E5EA; --ink:#0E1320; --code:#1A2030; --success:#2E8B57; }
+body { background: var(--bg); font-family:'Poppins',system-ui,sans-serif; color: var(--ink); }
+.layout { display: grid; grid-template-columns: 240px 1fr; max-width: 1280px; margin: 0 auto; min-height: 100vh; }
+aside { padding: 40px 24px; border-right: 1px solid var(--line); position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; }
+.brand { display:flex; align-items:center; gap:10px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.brand .mark { width: 32px; height: 32px; border-radius: 8px; background: var(--blue); color: #fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; letter-spacing:-0.04em; }
+.brand .meta { display:flex; flex-direction:column; gap:2px; }
+.brand .meta strong { font-size: 13px; color: var(--navy); }
+.brand .meta span { font-family:'JetBrains Mono',monospace; font-size: 9px; letter-spacing:0.1em; text-transform:uppercase; color: var(--gray); }
+.nav-h { font-family:'JetBrains Mono',monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin: 18px 0 6px; }
+.nav-h:first-of-type { margin-top: 0; }
+aside a { display: block; padding: 6px 8px; border-radius: 4px; font-size: 13px; color: var(--ink); text-decoration: none; transition: background 0.12s; }
+aside a:hover { background: var(--pale); color: var(--navy); }
+main { padding: 56px 56px 120px; max-width: 880px; }
+.crumb { font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+h1.title { font-size: 36px; font-weight: 700; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 6px; line-height: 1.1; }
+.lede { font-size: 15px; line-height: 1.6; color: var(--gray); max-width: 640px; margin-bottom: 36px; }
+h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; color: var(--navy); margin: 56px 0 8px; padding-top: 16px; }
+h2 .num { font-family:'JetBrains Mono',monospace; font-size: 14px; color: var(--blue); margin-right: 10px; font-weight: 500; }
+h3 { font-size: 14px; font-weight: 600; color: var(--navy); margin: 24px 0 8px; }
+p { font-size: 14px; line-height: 1.65; color: var(--ink); margin-bottom: 12px; }
+p code, li code { font-family:'JetBrains Mono',monospace; font-size: 12.5px; background: var(--pale); color: var(--navy); padding: 2px 6px; border-radius: 4px; }
+ul { margin: 8px 0 16px 18px; }
+ul li { font-size: 14px; line-height: 1.7; }
+
+pre { background: var(--code); color: #DCE3EE; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-family:'JetBrains Mono',monospace; font-size: 12.5px; line-height: 1.65; margin: 14px 0 8px; position: relative; }
+pre::before { content: attr(data-lang); position: absolute; top: 10px; right: 14px; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+pre .c-key { color: #5BA8D6; }
+pre .c-str { color: #B5D99C; }
+pre .c-num { color: #E0A33E; }
+pre .c-cmt { color: rgba(255,255,255,0.35); font-style: italic; }
+pre .c-prop { color: #C8B5DB; }
+
+.callout { background: var(--pale); border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 14px 0; font-size: 13px; line-height: 1.6; color: var(--navy); }
+.callout strong { font-weight: 600; }
+.callout.warn { background: rgba(224,163,62,0.08); border-left-color: #E0A33E; color: #6b4a0d; }
+
+.tree { font-family:'JetBrains Mono',monospace; font-size: 12.5px; line-height: 1.85; background: var(--code); color: #DCE3EE; padding: 18px 22px; border-radius: 10px; margin: 14px 0; }
+.tree .dir { color: #5BA8D6; }
+.tree .file { color: #DCE3EE; }
+.tree .cmt { color: rgba(255,255,255,0.4); }
+
+table.kv { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+table.kv th { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); font-weight: 500; }
+table.kv td { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+table.kv td.swatch { width: 28px; }
+table.kv td.swatch div { width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.06); }
+table.kv td.mono, table.kv td .mono { font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--ink); }
+table.kv td .name { font-weight: 500; color: var(--navy); }
+
+.qa { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.qa .card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; text-decoration:none; display:block; transition: all 0.14s; }
+.qa .card:hover { border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(56,143,195,0.1); }
+.qa .card h4 { font-size: 14px; color: var(--navy); margin-bottom: 4px; font-weight: 600; }
+.qa .card p { font-size: 12px; color: var(--gray); margin: 0; }
+.qa .card .arr { float: right; color: var(--blue); }
+
+footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--gray); }
+footer .mono { font-family:'JetBrains Mono',monospace; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand">
+      <div class="mark">C</div>
+      <div class="meta"><strong>ClubUp Brand</strong><span>v1.0 · Repo</span></div>
+    </div>
+
+    <div class="nav-h">Začni tu</div>
+    <a href="#install">Inštalácia</a>
+    <a href="#tree">Štruktúra repa</a>
+    <a href="#quick-links">Rýchle odkazy</a>
+
+    <div class="nav-h">Tokeny</div>
+    <a href="#colors">Farby</a>
+    <a href="#typography">Typografia</a>
+    <a href="#spacing">Spacing & radius</a>
+
+    <div class="nav-h">Implementácia</div>
+    <a href="#css">CSS premenné</a>
+    <a href="#tailwind">Tailwind preset</a>
+    <a href="#react">React komponenty</a>
+    <a href="#icons">Ikony</a>
+
+    <div class="nav-h">Postup</div>
+    <a href="#checklist">PR checklist</a>
+    <a href="#governance">Vlastníctvo</a>
+  </aside>
+
+  <main>
+    <div class="crumb">ClubUp · README pre vývojárov</div>
+    <h1 class="title">Brand v kóde.</h1>
+    <p class="lede">Tento dokument je sprievodca pre programátorov projektu <code style="background:transparent; color:var(--blue); padding:0;">clubup.sk</code>. Obsahuje hotové dizajn-tokeny, CSS premenné, Tailwind preset, ukážky komponentov a checklist toho, čo musí PR spĺňať z hľadiska značky.</p>
+
+    <h2 id="install"><span class="num">01</span>Inštalácia</h2>
+    <p>Brand kit je súčasťou marketingového webu — všetky logá, tokeny aj manuál sú v <code>website/brand/</code> a po nasadení verejne dostupné na <code>https://clubup.sk/brand/</code>. Pre použitie v aplikáciách (študent, admin) referencujte CSS / Tailwind preset priamo z tohto priečinka v repe.</p>
+    <pre data-lang="bash"><span class="c-cmt"># V monorepe — referencuj priamo</span>
+src/apps/app/app/globals.css:
+  <span class="c-key">@import</span> <span class="c-str">'../../../../website/brand/tokens/clubup-tokens.css'</span>;
+
+<span class="c-cmt"># V externom projekte — kópia alebo CDN</span>
+curl https://clubup.sk/brand/tokens/clubup-tokens.css -o ./brand/tokens/clubup-tokens.css
+
+<span class="c-cmt"># Alebo cez git submodul (pre nezávislé projekty)</span>
+git submodule add https://github.com/ltksolutions/clubup.sk brand-upstream</pre>
+
+    <h2 id="tree"><span class="num">02</span>Štruktúra brand priečinka</h2>
+    <div class="tree">
+<span class="dir">website/brand/</span>
+├── <span class="file">BRAND.md</span>                        <span class="cmt"># Markdown index pre dev/marketing/PR</span>
+├── <span class="file">index.html</span>                      <span class="cmt"># Brand Hub — start here</span>
+├── <span class="file">manual.html</span>                     <span class="cmt"># 10-stránkový A4 manuál (HTML)</span>
+├── <span class="file">logo.html</span>                       <span class="cmt"># export hub všetkých variantov loga</span>
+├── <span class="file">icons.html</span>                      <span class="cmt"># 32-icon galéria, copy-to-clipboard</span>
+├── <span class="file">dev.html</span>                        <span class="cmt"># tento súbor</span>
+│
+├── <span class="dir">logo/</span>                            <span class="cmt"># SVG logá — nikdy needituj manuálne</span>
+│   ├── <span class="file">clubup-logo-primary.svg</span>     <span class="cmt"># default, plné farebné</span>
+│   ├── <span class="file">clubup-logo-dark.svg</span>        <span class="cmt"># pre tmavé pozadia</span>
+│   ├── <span class="file">clubup-logo-mono-navy.svg</span>   <span class="cmt"># jednofarebné navy</span>
+│   ├── <span class="file">clubup-logo-mono-black.svg</span>  <span class="cmt"># tlač</span>
+│   ├── <span class="file">clubup-logo-mono-white.svg</span>  <span class="cmt"># pre fotky / tmavé</span>
+│   └── <span class="file">clubup-logo-original.svg</span>    <span class="cmt"># master archív</span>
+│
+└── <span class="dir">tokens/</span>
+    ├── <span class="file">clubup-tokens.css</span>           <span class="cmt"># CSS custom properties</span>
+    ├── <span class="file">clubup-tokens.json</span>          <span class="cmt"># DTCG-format tokeny</span>
+    └── <span class="file">tailwind.config.js</span>          <span class="cmt"># Tailwind preset</span>
+    </div>
+
+    <h2 id="quick-links"><span class="num">03</span>Rýchle odkazy</h2>
+    <div class="qa">
+      <a class="card" href="manual.html"><span class="arr">→</span><h4>Brand manuál</h4><p>10-stránkový A4 dokument s celým systémom.</p></a>
+      <a class="card" href="logo.html"><span class="arr">→</span><h4>Logo hub</h4><p>Všetky varianty + jeden-klik export SVG.</p></a>
+      <a class="card" href="icons.html"><span class="arr">→</span><h4>Icon galéria</h4><p>32 ikon s kópiou SVG do schránky.</p></a>
+      <a class="card" href="tokens/clubup-tokens.css"><span class="arr">→</span><h4>tokens.css</h4><p>CSS premenné — pripojiť do globálneho CSS.</p></a>
+    </div>
+
+    <h2 id="colors"><span class="num">04</span>Farby</h2>
+    <table class="kv">
+      <tr><th></th><th>Token</th><th>HEX</th><th>Použitie</th></tr>
+      <tr><td class="swatch"><div style="background:#1A2D47;"></div></td><td><span class="name">--clubup-navy</span></td><td class="mono">#1A2D47</td><td>Primárna značková, hlavičky, navigácia</td></tr>
+      <tr><td class="swatch"><div style="background:#388FC3;"></div></td><td><span class="name">--clubup-blue</span></td><td class="mono">#388FC3</td><td>Akcent, linky, focus, primárne tlačidlá</td></tr>
+      <tr><td class="swatch"><div style="background:#E8F4FD;"></div></td><td><span class="name">--clubup-pale</span></td><td class="mono">#E8F4FD</td><td>Tinted surface, chips, badges</td></tr>
+      <tr><td class="swatch"><div style="background:#0E1320;"></div></td><td><span class="name">--clubup-ink</span></td><td class="mono">#0E1320</td><td>Default text</td></tr>
+      <tr><td class="swatch"><div style="background:#8E8E92;"></div></td><td><span class="name">--clubup-gray</span></td><td class="mono">#8E8E92</td><td>Muted text, captions</td></tr>
+      <tr><td class="swatch"><div style="background:#E2E5EA;"></div></td><td><span class="name">--clubup-line</span></td><td class="mono">#E2E5EA</td><td>Borders, dividers</td></tr>
+      <tr><td class="swatch"><div style="background:#F4F6F8;"></div></td><td><span class="name">--clubup-bg</span></td><td class="mono">#F4F6F8</td><td>Page background</td></tr>
+      <tr><td class="swatch"><div style="background:#2E8B57;"></div></td><td><span class="name">--clubup-success</span></td><td class="mono">#2E8B57</td><td>OK stavy</td></tr>
+      <tr><td class="swatch"><div style="background:#E0A33E;"></div></td><td><span class="name">--clubup-warning</span></td><td class="mono">#E0A33E</td><td>Upozornenia</td></tr>
+      <tr><td class="swatch"><div style="background:#C8453B;"></div></td><td><span class="name">--clubup-danger</span></td><td class="mono">#C8453B</td><td>Chyby, deštrukcia</td></tr>
+    </table>
+
+    <div class="callout"><strong>60-30-10 pravidlo:</strong> 60 % plochy biela / pale, 30 % navy (akcenty + CTA pozadia), 10 % blue (linky, ikonové akcenty, focus). Nepoužívajte navy ako background pre celú stránku — iba pre hlavičky a hero sekcie.</div>
+
+    <h2 id="typography"><span class="num">05</span>Typografia</h2>
+    <p>Dva fonty z Google Fonts + jeden monospace. Importujte ich na začiatku každej HTML stránky alebo cez CSS <code>@import</code>.</p>
+    <pre data-lang="html"><span class="c-prop">&lt;link</span> <span class="c-key">rel</span>=<span class="c-str">"preconnect"</span> <span class="c-key">href</span>=<span class="c-str">"https://fonts.googleapis.com"</span><span class="c-prop">&gt;</span>
+<span class="c-prop">&lt;link</span> <span class="c-key">rel</span>=<span class="c-str">"stylesheet"</span> <span class="c-key">href</span>=<span class="c-str">"https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&display=swap"</span><span class="c-prop">&gt;</span></pre>
+
+    <table class="kv">
+      <tr><th>Font</th><th>Použitie</th><th>Weights</th></tr>
+      <tr><td><span class="name">Poppins</span></td><td>UI a body text — všetko default</td><td class="mono">300 / 400 / 500 / 600 / 700 / 800</td></tr>
+      <tr><td><span class="name">Poppins italic</span></td><td><strong>Akcent</strong> — display nadpisy, citácie</td><td class="mono">italic 500 / 700</td></tr>
+      <tr><td><span class="name">JetBrains Mono</span></td><td>Code, čísla, štítky, metadata</td><td class="mono">400 / 500 / 600</td></tr>
+    </table>
+
+    <h2 id="spacing"><span class="num">06</span>Spacing &amp; radius</h2>
+    <p>8-bodový systém. Všetky odsadenia a veľkosti = násobky 4 px. Žiadne 7, 13, 25.</p>
+    <pre data-lang="css"><span class="c-cmt">/* Spacing */</span>
+<span class="c-prop">--clubup-space-1</span>: <span class="c-num">4px</span>;
+<span class="c-prop">--clubup-space-2</span>: <span class="c-num">8px</span>;
+<span class="c-prop">--clubup-space-3</span>: <span class="c-num">12px</span>;
+<span class="c-prop">--clubup-space-4</span>: <span class="c-num">16px</span>;   <span class="c-cmt">/* gap default */</span>
+<span class="c-prop">--clubup-space-5</span>: <span class="c-num">24px</span>;   <span class="c-cmt">/* card padding default */</span>
+<span class="c-prop">--clubup-space-6</span>: <span class="c-num">32px</span>;
+<span class="c-prop">--clubup-space-7</span>: <span class="c-num">48px</span>;   <span class="c-cmt">/* section gap */</span>
+<span class="c-prop">--clubup-space-8</span>: <span class="c-num">64px</span>;
+
+<span class="c-cmt">/* Radius */</span>
+<span class="c-prop">--clubup-radius-sm</span>: <span class="c-num">6px</span>;    <span class="c-cmt">/* buttons, inputs */</span>
+<span class="c-prop">--clubup-radius-md</span>: <span class="c-num">8px</span>;    <span class="c-cmt">/* icon containers */</span>
+<span class="c-prop">--clubup-radius-lg</span>: <span class="c-num">12px</span>;   <span class="c-cmt">/* cards */</span>
+<span class="c-prop">--clubup-radius-xl</span>: <span class="c-num">16px</span>;   <span class="c-cmt">/* modals */</span></pre>
+
+    <h2 id="css"><span class="num">07</span>CSS premenné</h2>
+    <p>Importujte <code>tokens/clubup-tokens.css</code> raz, na vrchole vašej globálnej kaskády.</p>
+    <pre data-lang="css"><span class="c-cmt">/* app.css */</span>
+<span class="c-key">@import</span> <span class="c-str">'./brand/tokens/clubup-tokens.css'</span>;
+
+<span class="c-cmt">/* Použitie */</span>
+.btn-primary {
+  <span class="c-prop">background</span>: <span class="c-key">var</span>(--clubup-blue);
+  <span class="c-prop">color</span>: <span class="c-key">var</span>(--clubup-paper);
+  <span class="c-prop">padding</span>: <span class="c-key">var</span>(--clubup-space-2) <span class="c-key">var</span>(--clubup-space-4);
+  <span class="c-prop">border-radius</span>: <span class="c-key">var</span>(--clubup-radius-sm);
+  <span class="c-prop">font-family</span>: <span class="c-key">var</span>(--clubup-font-sans);
+  <span class="c-prop">font-weight</span>: <span class="c-num">500</span>;
+  <span class="c-prop">transition</span>: <span class="c-key">var</span>(--clubup-dur-base) <span class="c-key">var</span>(--clubup-ease);
+}
+.btn-primary:<span class="c-key">hover</span> { <span class="c-prop">background</span>: <span class="c-key">var</span>(--clubup-blue-2); }</pre>
+
+    <h2 id="tailwind"><span class="num">08</span>Tailwind preset</h2>
+    <pre data-lang="js"><span class="c-cmt">// tailwind.config.js</span>
+<span class="c-key">const</span> clubup = <span class="c-key">require</span>(<span class="c-str">'./brand/tokens/tailwind.config.js'</span>);
+
+<span class="c-prop">module.exports</span> = {
+  <span class="c-prop">presets</span>: [clubup],
+  <span class="c-prop">content</span>: [<span class="c-str">'./src/**/*.{ts,tsx,html}'</span>],
+};</pre>
+    <p>Po nastavení máte k dispozícii triedy ako <code>bg-clubup-navy</code>, <code>text-clubup-blue</code>, <code>shadow-clubup-card</code>, <code>rounded-lg</code> (12 px).</p>
+
+    <h2 id="react"><span class="num">09</span>React komponenty — ukážky</h2>
+
+    <h3>Button</h3>
+    <pre data-lang="tsx"><span class="c-key">export</span> <span class="c-key">function</span> <span class="c-prop">Button</span>({ variant = <span class="c-str">'primary'</span>, ...props }) {
+  <span class="c-key">const</span> styles = {
+    <span class="c-prop">primary</span>:   <span class="c-str">'bg-clubup-blue text-white hover:bg-clubup-blue-2'</span>,
+    <span class="c-prop">secondary</span>: <span class="c-str">'bg-clubup-navy text-white hover:bg-clubup-navy-2'</span>,
+    <span class="c-prop">outline</span>:   <span class="c-str">'bg-transparent border border-clubup-navy text-clubup-navy'</span>,
+    <span class="c-prop">ghost</span>:     <span class="c-str">'bg-transparent text-clubup-blue hover:bg-clubup-pale'</span>,
+  };
+  <span class="c-key">return</span> &lt;<span class="c-prop">button</span>
+    <span class="c-prop">className</span>={<span class="c-str">`px-4 py-2 rounded-sm font-medium text-sm transition ${styles[variant]}`</span>}
+    {...props}
+  /&gt;;
+}</pre>
+
+    <h3>Card</h3>
+    <pre data-lang="tsx"><span class="c-key">export</span> <span class="c-key">function</span> <span class="c-prop">Card</span>({ icon, title, children }) {
+  <span class="c-key">return</span> (
+    &lt;<span class="c-prop">div</span> <span class="c-prop">className</span>=<span class="c-str">"bg-white border border-clubup-line rounded-lg p-5 shadow-clubup-card"</span>&gt;
+      &lt;<span class="c-prop">div</span> <span class="c-prop">className</span>=<span class="c-str">"w-8 h-8 rounded-md bg-clubup-pale text-clubup-blue grid place-items-center mb-3"</span>&gt;
+        {icon}
+      &lt;/<span class="c-prop">div</span>&gt;
+      &lt;<span class="c-prop">h4</span> <span class="c-prop">className</span>=<span class="c-str">"text-clubup-navy font-semibold mb-1"</span>&gt;{title}&lt;/<span class="c-prop">h4</span>&gt;
+      &lt;<span class="c-prop">p</span> <span class="c-prop">className</span>=<span class="c-str">"text-clubup-gray text-sm leading-relaxed"</span>&gt;{children}&lt;/<span class="c-prop">p</span>&gt;
+    &lt;/<span class="c-prop">div</span>&gt;
+  );
+}</pre>
+
+    <h3>Logo komponent</h3>
+    <pre data-lang="tsx"><span class="c-key">import</span> primary <span class="c-key">from</span> <span class="c-str">'@/brand/logo/clubup-logo-primary.svg'</span>;
+<span class="c-key">import</span> dark    <span class="c-key">from</span> <span class="c-str">'@/brand/logo/clubup-logo-dark.svg'</span>;
+
+<span class="c-key">export</span> <span class="c-key">function</span> <span class="c-prop">Logo</span>({ variant = <span class="c-str">'primary'</span>, height = <span class="c-num">40</span> }) {
+  <span class="c-key">const</span> src = variant === <span class="c-str">'dark'</span> ? dark : primary;
+  <span class="c-key">return</span> &lt;<span class="c-prop">img</span> <span class="c-prop">src</span>={src} <span class="c-prop">height</span>={height} <span class="c-prop">alt</span>=<span class="c-str">"ClubUp"</span> /&gt;;
+}</pre>
+
+    <h2 id="icons"><span class="num">10</span>Ikony</h2>
+    <p>Ikony sú inline SVG, 24×24 viewBox, stroke 1.8 px, <code>stroke-linecap="round"</code>. Skopírujte konkrétnu ikonu z <a href="icons.html" style="color:var(--blue);">icons.html</a> klikom na ikonu — uloží sa do schránky ako SVG.</p>
+    <pre data-lang="tsx"><span class="c-cmt">// Príklad — ikona „dashboard&ldquo;</span>
+<span class="c-key">export</span> <span class="c-key">const</span> <span class="c-prop">DashboardIcon</span> = ({ size = <span class="c-num">24</span> }) =&gt; (
+  &lt;<span class="c-prop">svg</span> <span class="c-prop">width</span>={size} <span class="c-prop">height</span>={size} <span class="c-prop">viewBox</span>=<span class="c-str">"0 0 24 24"</span> <span class="c-prop">fill</span>=<span class="c-str">"none"</span>&gt;
+    &lt;<span class="c-prop">rect</span> <span class="c-prop">x</span>=<span class="c-str">"3"</span> <span class="c-prop">y</span>=<span class="c-str">"3"</span> <span class="c-prop">width</span>=<span class="c-str">"8"</span> <span class="c-prop">height</span>=<span class="c-str">"10"</span> <span class="c-prop">rx</span>=<span class="c-str">"1.5"</span>
+          <span class="c-prop">stroke</span>=<span class="c-str">"currentColor"</span> <span class="c-prop">strokeWidth</span>=<span class="c-str">"1.8"</span> /&gt;
+    &lt;<span class="c-prop">rect</span> <span class="c-prop">x</span>=<span class="c-str">"13"</span> <span class="c-prop">y</span>=<span class="c-str">"3"</span> <span class="c-prop">width</span>=<span class="c-str">"8"</span> <span class="c-prop">height</span>=<span class="c-str">"6"</span> <span class="c-prop">rx</span>=<span class="c-str">"1.5"</span>
+          <span class="c-prop">stroke</span>=<span class="c-str">"#388FC3"</span> <span class="c-prop">strokeWidth</span>=<span class="c-str">"1.8"</span> /&gt;
+    &lt;<span class="c-cmt">/* ... */</span>&gt;
+  &lt;/<span class="c-prop">svg</span>&gt;
+);</pre>
+    <div class="callout"><strong>Pravidlo akcentu:</strong> každá ikona má <strong>jeden</strong> modrý prvok (<code>#388FC3</code>). Zvyšok je <code>currentColor</code>, aby sa dal prefarbiť cez CSS.</div>
+
+    <h2 id="checklist"><span class="num">11</span>PR checklist</h2>
+    <p>Pred mergom skontrolujte:</p>
+    <ul>
+      <li>Žiadne hardcoded HEX hodnoty v kóde — všetko cez <code>var(--clubup-*)</code> alebo Tailwind triedy.</li>
+      <li>Žiadny font okrem Poppins / JetBrains Mono. Logotyp je v krivkách.</li>
+      <li>Spacing a radius hodnoty z 8-bodového systému (4, 8, 12, 16, 24, 32&hellip;).</li>
+      <li>Logo iba zo schválených SVG variantov v <code>website/brand/logo/</code>.</li>
+      <li>Ikony stroke 1.8, 24×24 grid, jeden blue akcent.</li>
+      <li>Texty po slovensky, tykanie funkcionárom (viď <a href="manual.html#voice" style="color:var(--blue);">Hlas a tón</a>).</li>
+      <li>Kontrast textu vs. pozadia ≥ 4.5:1 (WCAG AA).</li>
+    </ul>
+
+    <h2 id="governance"><span class="num">12</span>Vlastníctvo a zmeny</h2>
+    <p>Značku vlastní <strong>LTK Solutions s.r.o.</strong> Akékoľvek úpravy manuálu, loga alebo tokenov musia prejsť cez Pull Request s reviewom dizajnéra. Otázky cez Issues alebo e-mailom.</p>
+    <table class="kv">
+      <tr><td><span class="name">Repozitár</span></td><td class="mono">github.com/ltksolutions/clubup.sk</td></tr>
+      <tr><td><span class="name">Dizajn issues</span></td><td class="mono">github.com/ltksolutions/clubup.sk/labels/brand</td></tr>
+      <tr><td><span class="name">Kontakt</span></td><td class="mono">info@clubup.sk</td></tr>
+      <tr><td><span class="name">Sesterské</span></td><td class="mono">sportup.sk · activity.sportup.sk</td></tr>
+    </table>
+
+    <footer>
+      <span>ClubUp Brand · v1.0 · Máj 2026</span>
+      <span class="mono">© LTK Solutions s.r.o.</span>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
