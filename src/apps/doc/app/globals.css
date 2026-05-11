@@ -1,0 +1,103 @@
+/* SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
+   SPDX-License-Identifier: EUPL-1.2
+
+   ClubUp docs site — brand overrides on top of nextra-theme-docs.
+   Mirrors design tokens from website/styles.css (the marketing site).
+*/
+
+:root {
+  --clubup-navy: #1A2D47;
+  --clubup-navy-dark: #12203A;
+  --clubup-blue: #388FC3;
+  --clubup-blue-dark: #2A7AAA;
+  --clubup-blue-light: #E8F4FD;
+  --clubup-bg-alt: #F4F6F8;
+  --clubup-border: #E2E5EA;
+}
+
+/* Use Poppins to align with the marketing site. Loaded from Google Fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+html {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+code, pre, kbd {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace !important;
+}
+
+/* Brand the Nextra navbar — navy background, blue accent line. */
+.nextra-nav-container {
+  background: var(--clubup-navy);
+  border-bottom: 3px solid var(--clubup-blue);
+}
+
+.nextra-nav-container nav,
+.nextra-nav-container nav a {
+  color: #FFFFFF !important;
+}
+
+.nextra-nav-container nav a:hover {
+  color: var(--clubup-blue-light) !important;
+}
+
+/* Search button on the navbar. */
+.nextra-search input {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.nextra-search input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Sidebar active link in brand blue. */
+.nextra-sidebar-container a[aria-current='page'],
+.nextra-sidebar-container button[aria-current='page'] {
+  background: var(--clubup-blue-light);
+  color: var(--clubup-navy);
+  font-weight: 600;
+}
+
+/* Headings in navy for visual consistency with the marketing site. */
+article h1,
+article h2,
+article h3,
+article h4 {
+  color: var(--clubup-navy);
+  letter-spacing: -0.015em;
+}
+
+article h1 {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* Banner — branded subtle blue. */
+.nextra-banner-container {
+  background: var(--clubup-blue);
+  color: #FFFFFF;
+}
+
+/* Footer — navy background, white text. */
+footer.nextra-footer {
+  background: var(--clubup-navy);
+  color: #FFFFFF;
+  border-top: 3px solid var(--clubup-blue);
+}
+
+footer.nextra-footer a {
+  color: var(--clubup-blue-light);
+}
+
+footer.nextra-footer a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* Make tables a touch nicer for the doc-heavy pages. */
+article table th {
+  background: var(--clubup-bg-alt);
+  color: var(--clubup-navy);
+}

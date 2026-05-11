@@ -1,0 +1,134 @@
+// SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
+// SPDX-License-Identifier: EUPL-1.2
+
+import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+import { Banner, Head } from 'nextra/components';
+import { getPageMap } from 'nextra/page-map';
+import 'nextra-theme-docs/style.css';
+import './globals.css';
+
+export const metadata = {
+  metadataBase: new URL('https://docs.clubup.sk'),
+  title: {
+    default: 'ClubUp — Dokumentácia',
+    template: '%s — ClubUp Docs',
+  },
+  description:
+    'Technická a obsahová dokumentácia projektu ClubUp.sk — vzdelávacej platformy pre slovenské športové kluby.',
+  applicationName: 'ClubUp Docs',
+  authors: [{ name: 'Ján Letko / LTK Solutions', url: 'https://clubup.sk' }],
+  generator: 'Nextra',
+  keywords: [
+    'ClubUp',
+    'SportUp',
+    'športový manažment',
+    'vzdelávanie',
+    'dokumentácia',
+    'Slovensko',
+  ],
+  openGraph: {
+    title: 'ClubUp — Dokumentácia',
+    description: 'Architektúra, doménový model, API, curriculum a operácie ClubUp.sk.',
+    url: 'https://docs.clubup.sk',
+    siteName: 'ClubUp Docs',
+    locale: 'sk_SK',
+    type: 'website',
+  },
+};
+
+const banner = (
+  <Banner storageKey="clubup-docs-v01">
+    📘 ClubUp v0.1 — koncepčný návrh. Implementácia ešte nezačala.
+  </Banner>
+);
+
+const navbar = (
+  <Navbar
+    logo={
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+        <img
+          src="/logo.svg"
+          alt="ClubUp"
+          height={28}
+          style={{ height: '28px', width: 'auto' }}
+        />
+        <span style={{ fontWeight: 700, color: 'var(--clubup-navy, #1A2D47)' }}>
+          Docs
+        </span>
+      </span>
+    }
+    projectLink="https://github.com/ltksolutions/clubup"
+    chatLink="https://clubup.sk/kontakt.html"
+    chatIcon={null}
+  />
+);
+
+const footer = (
+  <Footer>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
+      <div>
+        © {new Date().getFullYear()} <strong>Ján Letko / LTK Solutions</strong> ·{' '}
+        Dokumentácia: <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> ·{' '}
+        Kód: <a href="https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12">EUPL-1.2</a>
+      </div>
+      <div style={{ opacity: 0.7 }}>
+        ClubUp — Silné kluby. Silný šport. ·{' '}
+        <a href="https://clubup.sk">clubup.sk</a> ·{' '}
+        <a href="https://sportup.sk">sportup.sk</a> ·{' '}
+        <a href="https://github.com/ltksolutions/clubup">GitHub</a>
+      </div>
+    </div>
+  </Footer>
+);
+
+export default async function RootLayout({ children }) {
+  const pageMap = await getPageMap();
+
+  return (
+    <html lang="sk" dir="ltr" suppressHydrationWarning>
+      <Head
+        color={{
+          hue: { dark: 204, light: 207 },
+          saturation: { dark: 55, light: 56 },
+          lightness: { dark: 50, light: 48 },
+        }}
+        backgroundColor={{
+          dark: '#0E1320',
+          light: '#FFFFFF',
+        }}
+      >
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </Head>
+      <body>
+        <Layout
+          banner={banner}
+          navbar={navbar}
+          footer={footer}
+          pageMap={pageMap}
+          docsRepositoryBase="https://github.com/ltksolutions/clubup/blob/main/docs"
+          editLink="Upraviť túto stránku na GitHub"
+          feedback={{ content: 'Otázka? Diskusia.', labels: 'docs' }}
+          sidebar={{
+            defaultMenuCollapseLevel: 1,
+            toggleButton: true,
+            autoCollapse: true,
+          }}
+          toc={{
+            title: 'Na tejto stránke',
+            backToTop: 'Späť hore',
+          }}
+          navigation={{
+            prev: true,
+            next: true,
+          }}
+          search={{
+            placeholder: 'Hľadať v dokumentácii…',
+          }}
+          i18n={[{ locale: 'sk', name: 'Slovenčina' }]}
+        >
+          {children}
+        </Layout>
+      </body>
+    </html>
+  );
+}

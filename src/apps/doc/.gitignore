@@ -1,0 +1,17 @@
+# Build artifacts
+.next/
+out/
+dist/
+
+# Pagefind search index (regenerated postbuild)
+public/_pagefind/
+
+# Generated content — mirrored from /docs at repo root by scripts/mirror-content.mjs
+content/
+
+# Local env overrides
+.env*.local
+
+# Editor cruft
+.DS_Store
+*.log

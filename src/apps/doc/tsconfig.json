@@ -1,0 +1,21 @@
+{
+  "extends": "@clubup/config/tsconfig.next.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "jsx": "preserve",
+    "plugins": [{ "name": "next" }]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mdx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".next", "content"]
+}

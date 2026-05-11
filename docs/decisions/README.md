@@ -23,6 +23,7 @@ Záznamy o architektonických rozhodnutiach projektu ClubUp. Každý ADR popisuj
 | [0006](0006-video-mux.md) | Video hosting na Mux | Accepted | 2026-05-10 |
 | [0007](0007-live-teams.md) | Live výučba cez Microsoft Teams | Accepted | 2026-05-10 |
 | [0008](0008-certification-zu.md) | Certifikácia cez Žilinskú univerzitu (FRI) | Accepted | 2026-05-10 |
+| [0009](0009-documentation-site.md) | Dokumentačná stránka `docs.clubup.sk` na Nextra 4 | Accepted | 2026-05-11 |
 
 ## Status hodnoty
 

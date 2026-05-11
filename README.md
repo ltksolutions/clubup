@@ -19,6 +19,7 @@
 Repozitár obsahuje:
 
 - **Marketingový web** `clubup.sk` — verejná prezentácia programu, tém a úrovní vzdelávania
+- **Dokumentačnú stránku** `docs.clubup.sk` (v príprave) — branded čitateľná verzia obsahu `/docs` (Nextra 4, [ADR-0009](docs/decisions/0009-documentation-site.md))
 - **Webovú aplikáciu** `app.clubup.sk` (v príprave) — študentské prostredie pre absolvovanie kurzov, sledovanie progresu, testov a získanie certifikátu
 - **Administračnú aplikáciu** `admin.clubup.sk` (v príprave) — správa kurzov, lekcií, lektorov, študentov a vyhodnocovanie
 - **Kompletnú dokumentáciu** architektúry, doménového modelu a integrácie do ekosystému SportUp
@@ -74,7 +75,8 @@ Kompletná osnova je v [`docs/curriculum/sportovy-manazment.md`](docs/curriculum
 └── src/                       ← Turborepo monorepo (aplikácie)
     ├── apps/
     │   ├── app/               ← študentská aplikácia (app.clubup.sk)
-    │   └── admin/             ← admin aplikácia (admin.clubup.sk)
+    │   ├── admin/             ← admin aplikácia (admin.clubup.sk)
+    │   └── doc/               ← dokumentačná stránka (docs.clubup.sk), Nextra 4
     └── packages/
         ├── ui/                ← zdieľaný design system
         ├── db/                ← MongoDB Atlas modely
@@ -86,7 +88,7 @@ Kompletná osnova je v [`docs/curriculum/sportovy-manazment.md`](docs/curriculum
 
 | Som… | Začnem v… |
 |---|---|
-| **Nový prispievateľ** | [`docs/00-overview.md`](docs/00-overview.md) → [`docs/01-glossary.md`](docs/01-glossary.md) |
+| **Nový prispievateľ** | [`docs/00-overview.md`](docs/00-overview.md) → [`docs/01-glossary.md`](docs/01-glossary.md) · po nasadení aj na [`docs.clubup.sk`](https://docs.clubup.sk) |
 | **Architekt / tech lead** | [`docs/architecture/README.md`](docs/architecture/README.md) |
 | **Backend vývojár** | [`docs/domain/README.md`](docs/domain/README.md) → [`docs/api/README.md`](docs/api/README.md) |
 | **Frontend vývojár** | [`docs/architecture/frontend.md`](docs/architecture/frontend.md) → [`src/apps/app/README.md`](src/apps/app/README.md) |

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SPDX-FileCopyrightText: 2025 Ján Letko / LTK Solutions s.r.o.
+     SPDX-License-Identifier: CC-BY-4.0
+     ClubUp.sk — favicon icon mark (32×32 viewBox-friendly)
+     Stylized "CU" monogram derived from the ClubUp wordmark. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#1A2D47"/>
+  <!-- Letter C -->
+  <path d="M 24 18
+           C 16 18, 12 24, 12 32
+           C 12 40, 16 46, 24 46
+           C 28 46, 31 45, 33 44
+           L 33 38
+           C 31 39, 29 40, 26 40
+           C 22 40, 19 37, 19 32
+           C 19 27, 22 24, 26 24
+           C 29 24, 31 25, 33 26
+           L 33 20
+           C 31 19, 28 18, 24 18
+           Z"
+        fill="#FFFFFF"/>
+  <!-- Letter U -->
+  <path d="M 36 18
+           L 36 35
+           C 36 42, 40 46, 46 46
+           C 52 46, 56 42, 56 35
+           L 56 18
+           L 50 18
+           L 50 34
+           C 50 38, 48 40, 46 40
+           C 44 40, 42 38, 42 34
+           L 42 18
+           Z"
+        fill="#388FC3"/>
+</svg>
