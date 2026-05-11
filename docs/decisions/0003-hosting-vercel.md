@@ -81,8 +81,9 @@ Rozpočet je obmedzený — v 1. roku počítam s ~$160 / mesiac na celú infra�
 
 ## Implementačné poznámky
 
-- `vercel.json` na rooti repa: `{ "outputDirectory": "website" }` pre marketing web
-- Aplikácie majú vlastné Vercel projekty linknuté na ten istý repo s `rootDirectory` nastaveným na `src/apps/app` resp. `src/apps/admin`
+- **žiadny root `vercel.json`** — každý Vercel projekt má vlastný Root Directory v UI a vlastný `vercel.json` vo svojom Root (alebo žiadny, ak stačí Next.js auto-detekcia). Root `vercel.json` by prebil všetky projektové Root Directory nastavenia a spôsobil, že by sa do všetkých projektov nasadzoval marketingový web (úvodné zlyhanie pri nasadení `clubup-doc` 2026-05-11 — pozri ADR-0009).
+- `website/vercel.json`: `{ "outputDirectory": "." }` pre marketingový web. Root Directory v UI: `website`.
+- Aplikácie majú vlastné Vercel projekty linknuté na ten istý repo s `rootDirectory` nastaveným na `src/apps/app`, `src/apps/admin` resp. `src/apps/doc`
 - Environment variables (MONGODB_URI, OIDC secrets, 24-pay secrets) v Vercel dashboarde, **nie v kóde**
 - DNS migrácia z websupport.sk:
   1. Pripraviť stránku na Verceli (preview deploy)

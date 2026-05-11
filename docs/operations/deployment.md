@@ -4,17 +4,18 @@
 
 Decision context: [`../decisions/0003-hosting-vercel.md`](../decisions/0003-hosting-vercel.md).
 
-## Tri Vercel projekty
+## Štyri Vercel projekty
 
-ClubUp je **monorepo** s tromi Vercel projektami napojenými na rovnaký GitHub repo:
+ClubUp je **monorepo** so štyrmi Vercel projektami napojenými na rovnaký GitHub repo:
 
 | Projekt | Doména | Root directory | Output dir |
 |---|---|---|---|
-| `clubup-website` | `clubup.sk` (apex + www) | `/` | `website/` |
+| `clubup-website` | `clubup.sk` (apex + www) | `website` | `.` (rieši `website/vercel.json`) |
+| `clubup-doc` | `docs.clubup.sk` | `src/apps/doc` | (Next.js default) |
 | `clubup-app` | `app.clubup.sk` | `src/apps/app` | (Next.js default) |
 | `clubup-admin` | `admin.clubup.sk` | `src/apps/admin` | (Next.js default) |
 
-Pre každý sú v `vercel.json` definované build conditions cez [Ignored Build Step](https://vercel.com/docs/projects/overview#ignored-build-step) — projekt sa rebuilduje len keď sa zmenia relevantné súbory.
+> **Pozn.:** V koreňovom adresári repa **NIE JE** žiadny `vercel.json`. Každý Vercel projekt má buď vlastný `vercel.json` vo svojom Root Directory (prípad `website/`), alebo sa spolieha na default Next.js detekciu (prípad `src/apps/*`). Root `vercel.json` by prebil všetky projektové Root Directory nastavenia v UI a spôsobil nesprávny deployment.
 
 ## DNS migrácia z websupport.sk
 
@@ -22,8 +23,8 @@ Pre každý sú v `vercel.json` definované build conditions cez [Ignored Build 
 
 ### Krok 1 — Pripravenie
 
-1. Vytvor Vercel projekt `clubup-website`, link na repo, root directory `/`
-2. Nastav `outputDirectory: "website"` v root `vercel.json`
+1. Vytvor Vercel projekt `clubup-website`, link na repo, **Root Directory: `website`**
+2. `website/vercel.json` už obsahuje statickú konfiguráciu (`outputDirectory: "."`)
 3. Otestuj na preview URL `clubup-website.vercel.app`
 4. Skontroluj všetky linky, brand assety, kontaktný formulár
 
@@ -56,10 +57,11 @@ V Vercel projektovom dashboarde **Domains**:
 
 ## Apps subdomény
 
-`app.clubup.sk` a `admin.clubup.sk` sa nasadia po DNS migrácii apex domény:
+`docs.clubup.sk`, `app.clubup.sk` a `admin.clubup.sk` sa nasadia po DNS migrácii apex domény (resp. nezávisle, pre `docs` už teraz):
 
 | Type | Name | Value | TTL |
 |---|---|---|---|
+| CNAME | `docs` | `cname.vercel-dns.com` | 300 |
 | CNAME | `app` | `cname.vercel-dns.com` | 300 |
 | CNAME | `admin` | `cname.vercel-dns.com` | 300 |
 
@@ -70,6 +72,10 @@ V Verceli každý projekt linknúť na svoju doménu.
 ### `clubup-website` (statický web — bez env)
 
 Žiadne env vars (statický HTML/CSS/JS).
+
+### `clubup-doc` (Nextra dokumentačná stránka — bez env)
+
+Žiadne env vars. Môže mať `NEXT_PUBLIC_DOC_URL=https://docs.clubup.sk` len ak by sa používalo z runtime; aktuálne v0.1 to netreba.
 
 ### `clubup-app`
 
@@ -128,15 +134,17 @@ V root repa `package.json`:
 }
 ```
 
-Vercel build commands per projekt (cez `vercel.json` v root):
+Vercel build commands per projekt sú riešené cez Vercel UI v každom projekte zvlášť (Settings → Build & Development Settings). Pre `clubup-app` a `clubup-admin` napríklad:
 
-```json
-{
-  "buildCommand": "npm run build --workspace=@clubup/app",
-  "installCommand": "npm install",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- src/apps/app src/packages || exit 1"
-}
 ```
+Build Command:   npm run build --workspace=@clubup/app
+Install Command: npm install
+Ignored Build Step (Settings → Git):
+  git diff HEAD^ HEAD --quiet -- src/apps/app src/packages || exit 1
+```
+
+Pre `clubup-doc` stačí default Next.js detekcia (npm run build sa pustí v `src/apps/doc`).
+Pre `clubup-website` rieši build `website/vercel.json` (statický web bez build krokov).
 
 ## Database — MongoDB Atlas
 
@@ -173,7 +181,7 @@ Detailné indexy per kolekciu sú v jednotlivých `docs/domain/*.md` súboroch.
 
 ## Cron joby
 
-Vercel Cron (definované v `vercel.json`):
+Vercel Cron (definované v `src/apps/app/vercel.json` resp. `src/apps/admin/vercel.json`, nie v root-e):
 
 ```json
 {
@@ -210,14 +218,14 @@ export async function GET(req: Request) {
 ### Production deploy
 
 1. PR → review → merge do `main`
-2. Vercel auto-buildy 3 projektov (paralelne)
+2. Vercel auto-buildy 4 projektov (paralelne, každý respektuje svoj Root Directory a Ignored Build Step)
 3. Po úspechu — auto-promote na production domény
 
 ### Preview deploy (PR)
 
 1. PR pushnutý → Vercel vytvorí preview deployment
 2. URL: `clubup-app-pr-42-clubup.vercel.app`
-3. Komentár v PR s linkmi na všetky 3 preview URLs
+3. Komentár v PR s linkmi na všetky 4 preview URLs
 4. Externí review-eri môžu klikať priamo z PR
 
 ### Rollback

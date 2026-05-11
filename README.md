@@ -53,7 +53,6 @@ Kompletná osnova je v [`docs/curriculum/sportovy-manazment.md`](docs/curriculum
 ├── LICENSES/                  ← plné texty používaných licencií
 │   ├── EUPL-1.2.txt           ← pre zdrojové kódy
 │   └── CC-BY-4.0.txt          ← pre dokumentáciu a web
-├── vercel.json                ← konfigurácia Vercel deploymentu
 ├── turbo.json                 ← Turborepo pipeline (po naplnení src/)
 ├── package.json               ← workspace root
 ├── docs/                      ← kompletná dokumentácia

@@ -18,7 +18,6 @@ path = [
     "LICENSE-DOCS",
     ".gitignore",
     ".gitattributes",
-    "vercel.json",
     "REUSE.toml",
     "package.json",
     "package-lock.json",
@@ -38,8 +37,8 @@ SPDX-FileCopyrightText = "2026 Ján Letko / LTK Solutions"
 SPDX-License-Identifier = "CC-BY-4.0"
 
 # ─── 3. Marketingový web (website/) — CC-BY-4.0 ───
-# HTML, CSS, JS, OG image, manifest, brand assety, favicon. Ak by sa
-# v website/ niekedy objavili samostatné moduly s vlastnou logikou,
+# HTML, CSS, JS, OG image, manifest, brand assety, favicon, vercel.json.
+# Ak by sa v website/ niekedy objavili samostatné moduly s vlastnou logikou,
 # môžu byť presunuté do src/ a re-licencované pod EUPL-1.2.
 [[annotations]]
 path = "website/**"
