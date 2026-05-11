@@ -3,11 +3,6 @@ SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
----
-title: ClubUp Dokumentácia
-sidebarTitle: Úvod
----
-
 # ClubUp — Dokumentácia
 
 Vitajte v technickej a obsahovej dokumentácii projektu **ClubUp.sk** — vzdelávacej platformy pre slovenské športové kluby.

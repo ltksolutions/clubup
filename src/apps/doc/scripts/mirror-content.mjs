@@ -199,12 +199,21 @@ function sanitizeForMdx(content) {
  * Some docs files start with "# Title" but no YAML front-matter.
  * Nextra works fine without front-matter, but we add a minimal block
  * so the page title in browser tabs and OG metadata is set explicitly.
+ *
+ * Note: this runs AFTER sanitizeForMdx, which strips HTML comments. That
+ * can leave leading whitespace/newlines before the actual content, so we
+ * trim first and then check for an existing frontmatter block.
  */
 function ensureFrontMatter(content, fallbackTitle) {
-  if (content.startsWith('---\n')) return content;
-  const titleMatch = content.match(/^#\s+(.+)$/m);
+  const trimmed = content.replace(/^\s+/, '');
+  if (trimmed.startsWith('---\n') || trimmed.startsWith('---\r\n')) {
+    // Already has frontmatter — return the trimmed version (no leading
+    // whitespace allowed before frontmatter or MDX parses it as content).
+    return trimmed;
+  }
+  const titleMatch = trimmed.match(/^#\s+(.+)$/m);
   const title = (titleMatch?.[1] ?? fallbackTitle).trim();
-  return `---\ntitle: "${title.replace(/"/g, '\\"')}"\n---\n\n${content}`;
+  return `---\ntitle: "${title.replace(/"/g, '\\"')}"\n---\n\n${trimmed}`;
 }
 
 async function ensureDir(p) {
