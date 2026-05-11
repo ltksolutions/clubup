@@ -30,5 +30,12 @@
     "@types/react-dom": "^19.0.0",
     "pagefind": "^1.1.1",
     "typescript": "^5.6.3"
+  },
+  "optionalDependencies": {
+    "@napi-rs/simple-git-linux-x64-gnu": "0.1.22",
+    "@napi-rs/simple-git-linux-x64-musl": "0.1.22",
+    "@napi-rs/simple-git-linux-arm64-gnu": "0.1.22",
+    "@napi-rs/simple-git-darwin-arm64": "0.1.22",
+    "@napi-rs/simple-git-darwin-x64": "0.1.22"
   }
 }
