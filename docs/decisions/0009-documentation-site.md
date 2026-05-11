@@ -189,6 +189,31 @@ src/apps/doc/
 - **Ak Nextra 4 prestane byť aktívne udržiavaná** — migrácia na Docusaurus alebo Astro Starlight. `docs/` zostáva čistý Markdown, takže migrácia by bola len o novom render-i a novej navigácii.
 - **Ak prídeme na bottleneck Pagefind-u** (napr. zlé výsledky pre slovenskú diakritiku v praxi) — zvážiť Algolia DocSearch (open-source projekt má nárok zadarmo)
 - **Pri 100+ dokumentačných stránkach** — zvážiť automatickú generáciu `_meta.js` zo súborového stromu, prípadne plugin pre ADR rendering s metadata badgmi
+- **Nextra 4.5.0 pin** — skúsiť upgrade na 4.6.x a vyššie až keď bude potvrdený fix bug-u so Zod schema validation v `LayoutPropsSchema` (`expected nonoptional, received undefined → at children`). Pozri implementačné poznámky nižšie.
+
+## Implementačné poznámky (z prvej implementácie v 2026-05)
+
+### Pin na Nextra 4.5.0 (nie ^4.6.x)
+
+Nextra 4.6.1 (release 2025-12-04) priniesla update Zod na v4 stable. To zaviedlo regression v `LayoutPropsSchema`: prop `children: reactNode` (bez `.optional()`) v kombinácii s tým, že Layout komponent v `dist/layout.js` na začiatku destructure-uje `children` zo svojich props a až potom validáciu volá na zvyšných propoch, spôsobí `Invalid input: expected nonoptional, received undefined → at children` na **každej** SSR render-i. To bolo nediagnostikovateľné z Vercel build error-u ("specific message is omitted in production builds") a vyžadovalo lokálny dev mode na zobrazenie skutočnej chyby.
+
+Riešenie: `"nextra": "4.5.0"` a `"nextra-theme-docs": "4.5.0"` v `package.json` (pinned, bez caret-u).
+
+### Mirror skript a folder index pages
+
+Nextra 4 vyžaduje, aby každý folder mal `index.mdx` alebo súbor s `asIndexPage: true` v frontmatteri, ak má odpovedať na route `/<folder>`. Náš zdrojový `docs/` používa konvenciu `README.md` (štandard pre GitHub). Mirror skript preto premenováva `README.md` → `index.mdx` pri kopírovaní do `content/` a tiež prepíše zodpovedajúce `_meta.js` klúče `README:` → `index:`.
+
+### `docs/index.md` ako landing page
+
+Pre root route `/` musí existovať `content/index.mdx`. Vytvorený `docs/index.md` služí ako landing s odkazmi na hlavné sekcie. Sekcia `00-overview.md` zostáva ako podrobný prehľad systému.
+
+### `i18n` prop nepoužívať
+
+Nextra `<Layout i18n={[{ locale: 'sk', ... }]}>` spôsobí runtime `RangeError: Incorrect locale information provided` v `Date.toLocaleDateString()`. Pre single-locale stránku jednoducho `i18n` prop vynechať; HTML lang ostáva `sk` (to je pre browser/SEO, nie pre `toLocaleDateString`).
+
+### Pin pevne na 4.5.0
+
+Pôvodne `^4.6.0`. Pin na presnú `4.5.0` (bez caret-u) aby `npm install` neupgrade-oval na 4.6.x automaticky. Dev aj build oba prechádzajú.
 
 ## Odkazy
 

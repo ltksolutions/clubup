@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: 2026 Ján Letko / LTK Solutions
 // SPDX-License-Identifier: EUPL-1.2
 
+// BACKUP of branded layout — restore once minimal layout builds successfully.
+// This file is the full ClubUp-branded version with custom Navbar, Footer,
+// Banner, color theme, slovak translations, etc.
+
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
@@ -119,6 +123,7 @@ export default async function RootLayout({ children }) {
             prev: true,
             next: true,
           }}
+          i18n={[{ locale: 'sk', name: 'Slovenčina' }]}
           themeSwitch={{
             dark: 'Tmavý',
             light: 'Svetlý',

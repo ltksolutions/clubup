@@ -222,6 +222,16 @@ async function main() {
   let assetsCopied = 0;
   let skipped = 0;
 
+  // Collect known `README` → `index` renames so we can rewrite _meta.js
+  // entries that referenced README. Build a set of folders that had a README.
+  const readmeFolders = new Set();
+  for await (const probe of walk(sourceDir)) {
+    if (path.basename(probe.rel).toLowerCase() === 'readme.md') {
+      const dir = path.dirname(probe.rel).replace(/\\/g, '/');
+      readmeFolders.add(dir === '.' ? '' : dir);
+    }
+  }
+
   for await (const file of walk(sourceDir)) {
     if (skip.has(file.rel)) {
       skipped++;
@@ -236,7 +246,21 @@ async function main() {
     const isAsset = nonMarkdownAssetExtensions.has(ext);
 
     if (isMarkdown || isMetaConfig) {
-      const targetRel = isMarkdown ? file.rel.replace(/\.md$/, '.mdx') : file.rel;
+      // Folder README.md → index.mdx so Nextra serves it at /<folder> route,
+      // not at /<folder>/README. Required for getPageMap() to produce a folder
+      // item that the Layout schema accepts (folder items need an index page).
+      let targetRel;
+      if (isMarkdown) {
+        const base = path.basename(file.rel).toLowerCase();
+        if (base === 'readme.md') {
+          // Keep the same folder, swap filename to index.mdx
+          targetRel = path.join(path.dirname(file.rel), 'index.mdx');
+        } else {
+          targetRel = file.rel.replace(/\.md$/, '.mdx');
+        }
+      } else {
+        targetRel = file.rel;
+      }
       const targetPath = path.join(targetDir, targetRel);
       await ensureDir(path.dirname(targetPath));
 
@@ -254,8 +278,19 @@ async function main() {
         content = ensureFrontMatter(content, fallback);
         await fs.writeFile(targetPath, content, 'utf8');
       } else {
-        // _meta.js — copy verbatim
-        await fs.copyFile(file.abs, targetPath);
+        // _meta.js — copy verbatim, but if the parent folder had a README.md
+        // (now renamed to index.mdx), rewrite "README" keys to "index" so
+        // the sidebar shows the page at /<folder>, not /<folder>/README.
+        const parentDir = path.dirname(file.rel).replace(/\\/g, '/');
+        const folderKey = parentDir === '.' ? '' : parentDir;
+        if (readmeFolders.has(folderKey)) {
+          let metaContent = await fs.readFile(file.abs, 'utf8');
+          // Replace `README: '...'` (quoted or unquoted key) with `index: '...'`
+          metaContent = metaContent.replace(/(^|[\s,{])README(\s*:)/g, '$1index$2');
+          await fs.writeFile(targetPath, metaContent, 'utf8');
+        } else {
+          await fs.copyFile(file.abs, targetPath);
+        }
       }
       copied++;
     } else if (isAsset) {

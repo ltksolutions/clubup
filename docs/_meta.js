@@ -6,13 +6,10 @@
 // content tree by src/apps/doc/scripts/mirror-content.mjs.
 
 export default {
+  index: 'Úvod',
   '00-overview': 'Prehľad systému',
   '01-glossary': 'Slovník pojmov',
   'onboarding-developer': 'Onboarding (developer)',
-  '-- sections': {
-    type: 'separator',
-    title: 'Sekcie',
-  },
   architecture: 'Architektúra',
   domain: 'Doménový model',
   api: 'REST API',
