@@ -9,6 +9,10 @@ public/_pagefind/
 # Generated content — mirrored from /docs at repo root by scripts/mirror-content.mjs
 content/
 
+# Generated non-markdown assets from /docs (OpenAPI YAML, JSON examples, images)
+# Also produced by scripts/mirror-content.mjs.
+public/docs-assets/
+
 # Local env overrides
 .env*.local
 

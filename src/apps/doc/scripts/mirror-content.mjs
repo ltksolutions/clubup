@@ -39,11 +39,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..', '..', '..', '..');
 const sourceDir = path.join(repoRoot, 'docs');
 const targetDir = path.join(__dirname, '..', 'content');
+const assetsDir = path.join(__dirname, '..', 'public', 'docs-assets');
 
 // Files we deliberately skip — templates, READMEs that would clash with
 // folder index pages, etc.
 const skip = new Set([
   'decisions/0000-template.md',
+]);
+
+// Markdown/MDX go into content/ (where Nextra renders them).
+// Everything else that we still want to ship (OpenAPI specs, JSON schemas,
+// example payloads) goes into public/docs-assets/ so the browser can fetch
+// the raw file by URL but Nextra doesn't try to compile it as a page.
+const nonMarkdownAssetExtensions = new Set([
+  '.yaml', '.yml', '.json', '.csv', '.png', '.jpg', '.jpeg', '.svg', '.pdf',
 ]);
 
 /**
@@ -69,17 +78,40 @@ async function* walk(dir, rel = '') {
  *   [link](../foo.md)       → [link](../foo)
  *   [link](./bar/baz.md)    → [link](./bar/baz)
  *   [link](../../baz.md#h)  → [link](../../baz#h)
+ *   [link](./openapi.yaml)  → [link](/docs-assets/<dir>/openapi.yaml)
  *
- * External URLs (http*, mailto:) are left alone. So are non-doc files
- * referenced from docs (rare, but possible — e.g. ../LICENSE).
+ * External URLs (http*, mailto:) are left alone. Asset references (yaml,
+ * json, png, ...) get rewritten to absolute /docs-assets/ URLs because
+ * those files end up under public/docs-assets/, not as Nextra pages.
+ *
+ * `relDir` is the directory of the current file *relative to docs/* (e.g.
+ * "api" for docs/api/README.md, or "" for docs/00-overview.md). Needed to
+ * resolve relative asset paths to absolute /docs-assets/ URLs.
  */
-function rewriteLinks(content) {
-  // Markdown links: [text](url)
+function rewriteLinks(content, relDir) {
   return content.replace(/\]\(([^)]+)\)/g, (match, url) => {
-    if (/^(https?:|mailto:|tel:|#)/i.test(url)) return match;
-    // Strip .md / .mdx extension (preserving anchors and query strings)
-    const rewritten = url.replace(/\.mdx?(?=$|[#?])/, '');
-    return `](${rewritten})`;
+    if (/^(https?:|mailto:|tel:|#|\/)/i.test(url)) return match;
+
+    // Split URL from anchor / query for clean rewriting.
+    const hashIdx = url.search(/[#?]/);
+    const pathPart = hashIdx === -1 ? url : url.slice(0, hashIdx);
+    const suffix = hashIdx === -1 ? '' : url.slice(hashIdx);
+    const ext = path.extname(pathPart).toLowerCase();
+
+    if (ext === '.md' || ext === '.mdx') {
+      // Markdown link — strip extension, leave the rest.
+      return `](${pathPart.replace(/\.mdx?$/, '')}${suffix})`;
+    }
+
+    if (nonMarkdownAssetExtensions.has(ext)) {
+      // Asset reference — resolve to absolute /docs-assets/... path.
+      // Use POSIX joins so the URL stays forward-slash even on Windows.
+      const base = relDir ? `/${relDir}/` : '/';
+      const resolved = path.posix.normalize(path.posix.join(base, pathPart));
+      return `](/docs-assets${resolved}${suffix})`;
+    }
+
+    return match;
   });
 }
 
@@ -180,11 +212,14 @@ async function ensureDir(p) {
 }
 
 async function main() {
-  // Clean target directory to avoid stale files after deletions in docs/.
+  // Clean target directories to avoid stale files after deletions in docs/.
   await fs.rm(targetDir, { recursive: true, force: true });
+  await fs.rm(assetsDir, { recursive: true, force: true });
   await ensureDir(targetDir);
+  await ensureDir(assetsDir);
 
   let copied = 0;
+  let assetsCopied = 0;
   let skipped = 0;
 
   for await (const file of walk(sourceDir)) {
@@ -193,34 +228,53 @@ async function main() {
       continue;
     }
 
-    // Only .md and .mdx are content. Everything else (images, .json
-    // examples) is copied verbatim so relative references keep working.
     const ext = path.extname(file.rel).toLowerCase();
     const isMarkdown = ext === '.md' || ext === '.mdx';
+    // Nextra page-map walks content/ recursively and tries to require()
+    // every file as a module. Non-markdown content must live elsewhere.
+    const isMetaConfig = path.basename(file.rel) === '_meta.js';
+    const isAsset = nonMarkdownAssetExtensions.has(ext);
 
-    const targetRel = isMarkdown ? file.rel.replace(/\.md$/, '.mdx') : file.rel;
-    const targetPath = path.join(targetDir, targetRel);
-    await ensureDir(path.dirname(targetPath));
+    if (isMarkdown || isMetaConfig) {
+      const targetRel = isMarkdown ? file.rel.replace(/\.md$/, '.mdx') : file.rel;
+      const targetPath = path.join(targetDir, targetRel);
+      await ensureDir(path.dirname(targetPath));
 
-    if (isMarkdown) {
-      let content = await fs.readFile(file.abs, 'utf8');
-      content = sanitizeForMdx(content);
-      content = rewriteLinks(content);
-      const fallback = path
-        .basename(file.rel, path.extname(file.rel))
-        .replace(/^\d+-/, '')
-        .replace(/-/g, ' ');
-      content = ensureFrontMatter(content, fallback);
-      await fs.writeFile(targetPath, content, 'utf8');
-    } else {
+      if (isMarkdown) {
+        let content = await fs.readFile(file.abs, 'utf8');
+        content = sanitizeForMdx(content);
+        // relDir = directory of this file *within* docs/ (POSIX style),
+        // e.g. "api" for docs/api/README.md, "" for docs/00-overview.md
+        const relDir = path.dirname(file.rel).replace(/\\/g, '/');
+        content = rewriteLinks(content, relDir === '.' ? '' : relDir);
+        const fallback = path
+          .basename(file.rel, path.extname(file.rel))
+          .replace(/^\d+-/, '')
+          .replace(/-/g, ' ');
+        content = ensureFrontMatter(content, fallback);
+        await fs.writeFile(targetPath, content, 'utf8');
+      } else {
+        // _meta.js — copy verbatim
+        await fs.copyFile(file.abs, targetPath);
+      }
+      copied++;
+    } else if (isAsset) {
+      // OpenAPI specs, JSON schemas, example payloads, images.
+      const targetPath = path.join(assetsDir, file.rel);
+      await ensureDir(path.dirname(targetPath));
       await fs.copyFile(file.abs, targetPath);
+      assetsCopied++;
+    } else {
+      // Unknown file types are skipped with a warning so we notice them.
+      // eslint-disable-next-line no-console
+      console.warn(`[mirror-content] skipping unknown file type: ${file.rel}`);
+      skipped++;
     }
-    copied++;
   }
 
   // eslint-disable-next-line no-console
   console.log(
-    `[mirror-content] ${copied} files written to content/ (${skipped} skipped)`,
+    `[mirror-content] ${copied} pages -> content/, ${assetsCopied} assets -> public/docs-assets/ (${skipped} skipped)`,
   );
 }
 
