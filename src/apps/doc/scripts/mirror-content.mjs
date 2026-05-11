@@ -11,7 +11,9 @@
  *   1. Reads every .md and .mdx file from /docs
  *   2. Writes a corresponding .mdx file under content/
  *   3. Rewrites relative links from "*.md" → "" (Nextra route style)
- *   4. Renames internal directory references (case-sensitive on Linux)
+ *   4. Sanitizes Markdown patterns that are valid in Markdown but break MDX
+ *      (HTML comments, type generics like Record<string, T> outside code,
+ *      and stray <Something tokens that look like JSX openings).
  *   5. Skips the decisions/0000-template.md (it's a template, not a page)
  *
  * Why a script instead of symlinks: build determinism on Vercel (which
@@ -21,7 +23,8 @@
  *
  * Why we don't edit docs/ directly into MDX: that folder is the canonical
  * source consumed by editors, IDEs, GitHub renderers, and the REUSE
- * compliance tooling. Keeping it pure Markdown keeps it portable.
+ * compliance tooling. Keeping it pure Markdown keeps it portable, and
+ * REUSE headers in HTML-comment form are the standard pattern.
  *
  * The generated content/ folder is git-ignored.
  */
@@ -81,6 +84,86 @@ function rewriteLinks(content) {
 }
 
 /**
+ * Sanitize MDX-hostile patterns OUTSIDE of code blocks and inline code.
+ *
+ * Why each pattern is here:
+ *
+ * 1) HTML comments `<!-- ... -->` are valid Markdown but MDX parses them
+ *    as a JSX opening with `!` after `<`, which is illegal. REUSE-compliant
+ *    docs/* files start with an SPDX HTML comment, so this fires a lot.
+ *    Replacement: drop the comment entirely (the SPDX metadata is captured
+ *    centrally by REUSE.toml; we don't need to render it).
+ *
+ * 2) Type generics like `Record<string, string[]>` written in plain text
+ *    (typically inside table cells, where authors didn't wrap them in
+ *    backticks). MDX reads `<string,` as a JSX tag with a comma, fails.
+ *    Replacement: wrap the whole construct in backticks so it becomes
+ *    inline code, which MDX leaves alone.
+ *
+ * 3) Lone `<` followed by uppercase letter (typically `<NázovEntity>`
+ *    referring to a placeholder name in prose). MDX treats it as a JSX
+ *    component. Replacement: HTML-escape the `<` to `&lt;`.
+ *
+ * The code-fence-aware splitting is the critical bit. Without it we'd
+ * mangle TypeScript/JavaScript code samples that legitimately use these
+ * patterns inside ```ts blocks.
+ */
+function sanitizeForMdx(content) {
+  // Split on fenced code blocks (```...```), keeping the fences in place.
+  // Even-indexed parts are prose, odd-indexed are code blocks (untouched).
+  const parts = content.split(/(```[\s\S]*?```)/g);
+
+  for (let i = 0; i < parts.length; i++) {
+    if (i % 2 === 1) continue; // inside a fenced code block
+
+    // Within prose, also temporarily mask inline code (`...`) so we don't
+    // double-escape things authors already coded properly.
+    const inlineCodes = [];
+    let prose = parts[i].replace(/`[^`\n]+`/g, (m) => {
+      inlineCodes.push(m);
+      return `\u0000INLINE${inlineCodes.length - 1}\u0000`;
+    });
+
+    // (1) Drop HTML comments. Multi-line tolerant.
+    prose = prose.replace(/<!--[\s\S]*?-->/g, '');
+
+    // (2) Wrap generics like Record<X, Y>, Map<K, V>, Promise<T>, etc.
+    //     Heuristic: an identifier (with optional dot, e.g. React.FC),
+    //     immediately followed by `<`, then content up to a matching `>`
+    //     that contains a comma or another generic. Conservative: only
+    //     triggers when there's a comma or `[]` inside (typical generic).
+    prose = prose.replace(
+      /([A-Za-z_$][\w$.]*)<([^<>\n]*[,\[][^<>\n]*)>/g,
+      (m) => '`' + m + '`',
+    );
+
+    // (3) Stray `<Word` not part of an HTML/JSX construct we recognize.
+    //     Only escape if followed by an uppercase letter AND not closed
+    //     by `>` on the same line (which would be a deliberate JSX use).
+    //     This is conservative: we only escape `<` when the next char is
+    //     a letter and there's no matching `>` within 80 chars on the
+    //     same line.
+    prose = prose.replace(/<(?=[A-Z])/g, (m, offset, str) => {
+      const lineEnd = str.indexOf('\n', offset);
+      const segment = str.slice(offset, lineEnd === -1 ? offset + 200 : lineEnd);
+      // If a `>` appears within this line and the chunk looks tag-like,
+      // assume the author meant a JSX tag and leave alone.
+      if (/^<[A-Z][\w]*[\s/>]/.test(segment)) return m;
+      return '&lt;';
+    });
+
+    // Restore inline codes.
+    prose = prose.replace(/\u0000INLINE(\d+)\u0000/g, (_, idx) =>
+      inlineCodes[Number(idx)],
+    );
+
+    parts[i] = prose;
+  }
+
+  return parts.join('');
+}
+
+/**
  * Some docs files start with "# Title" but no YAML front-matter.
  * Nextra works fine without front-matter, but we add a minimal block
  * so the page title in browser tabs and OG metadata is set explicitly.
@@ -121,6 +204,7 @@ async function main() {
 
     if (isMarkdown) {
       let content = await fs.readFile(file.abs, 'utf8');
+      content = sanitizeForMdx(content);
       content = rewriteLinks(content);
       const fallback = path
         .basename(file.rel, path.extname(file.rel))
